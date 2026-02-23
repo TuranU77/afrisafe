@@ -18,15 +18,19 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
 body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white); overflow-x:hidden; }
-.container { max-width:1200px; margin:0 auto; padding:0 64px; }
+.container { max-width:1000px; margin:0 auto; padding:0 64px; }
 
 /* NAV */
 .nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:28px 64px; display:flex; align-items:center; justify-content:space-between;
+  padding:28px 0;
   transition: all 0.4s;
 }
-.nav.scrolled { background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); padding:18px 64px; }
+.nav-inner {
+  max-width:1000px; margin:0 auto; padding:0 64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav.scrolled { background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); padding:18px 0; }
 .nav-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
 .nav-brand svg { width:38px; height:38px; }
 .nav-brand span { font-weight:700; font-size:20px; color:var(--navy); letter-spacing:2px; }
@@ -38,20 +42,14 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 .nav.scrolled .nav-brand span { color:var(--navy); }
 .nav .nav-brand svg path { fill:var(--white); transition:fill 0.3s; }
 .nav.scrolled .nav-brand svg path { fill:var(--navy); }
-.nav-cta { background:none; border:1.5px solid rgba(255,255,255,0.6); color:var(--white); padding:10px 24px; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.3s; }
-.nav-cta:hover { background:var(--white); color:var(--navy); }
-.nav.scrolled .nav-cta { border-color:var(--navy); color:var(--navy); }
-.nav.scrolled .nav-cta:hover { background:var(--navy); color:var(--white); }
+.nav-cta { background:var(--gold); border:1.5px solid var(--gold); color:var(--navy); padding:10px 24px; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.3s; }
+.nav-cta:hover { background:transparent; border-color:var(--white); color:var(--white); }
+.nav.scrolled .nav-cta { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+.nav.scrolled .nav-cta:hover { background:transparent; border-color:var(--navy); color:var(--navy); }
 .hamburger { display:none; background:none; border:none; cursor:pointer; }
 .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); margin:5px 0; }
 
 /* GEOMETRIC ACCENTS */
-.geo-triangle {
-  width:0; height:0; border-style:solid;
-}
-.geo-circle {
-  border-radius:50%; position:absolute;
-}
 .geo-dot {
   width:8px; height:8px; border-radius:50%; background:var(--gold); display:inline-block;
 }
@@ -64,34 +62,22 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
     linear-gradient(180deg, rgba(14,34,64,0.18) 0%, rgba(14,34,64,0.45) 55%, rgba(14,34,64,0.82) 100%),
     url('images/bild_4.png') center/cover no-repeat;
 }
-.hero .container { max-width:none; margin:0; padding:0 64px; }
+.hero .container { width:100%; position:relative; }
 .hero-inner {
   display:flex; flex-direction:column; justify-content:flex-end;
   padding:0 0 100px; min-height:100vh;
 }
 .hero-text { position:relative; text-align:left; max-width:900px; }
 .hero-eyebrow { font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:32px; display:flex; align-items:center; gap:12px; justify-content:flex-start; }
-.hero-headline-row { display:flex; align-items:center; gap:48px; margin-bottom:28px; justify-content:flex-start; }
 .hero h1 {
-  font-family:'Playfair Display',serif; font-size:96px; font-weight:700;
+  font-family:'Playfair Display',serif; font-size:56px; font-weight:700;
   line-height:1.0; color:var(--white); margin:0 0 32px 0;
 }
 .hero h1 em { font-style:italic; color:var(--gold); }
-.hero-cta-round {
-  flex-shrink:0; width:160px; height:160px; border-radius:50%;
-  border:1.5px solid var(--gold); background:rgba(201,168,76,0.15);
-  color:var(--white); display:flex; align-items:center; justify-content:center;
-  text-align:center; font-size:12px; font-weight:600; letter-spacing:1px;
-  text-transform:uppercase; text-decoration:none; transition:all 0.4s;
-  backdrop-filter:blur(4px); line-height:1.4;
-}
-.hero-cta-round:hover { background:var(--gold); color:var(--navy); }
-.hero-cta-round span { display:block; }
-.hero-cta-round .arrow { font-size:18px; margin-top:6px; transition:transform 0.3s; }
-.hero-cta-round:hover .arrow { transform:translateX(4px); }
-.hero-desc { font-size:17px; line-height:1.8; color:rgba(255,255,255,0.7); max-width:500px; margin-bottom:0; text-align:left; }
+.hero-desc { font-size:17px; line-height:1.8; color:rgba(255,255,255,0.7); max-width:500px; margin-bottom:20px; text-align:left; }
+.hero-standards { font-size:11px; font-weight:500; letter-spacing:1.5px; color:rgba(255,255,255,0.35); }
 .hero-badge {
-  position:absolute; bottom:100px; right:48px;
+  position:absolute; bottom:80px; right:64px;
   width:160px; height:160px; background:rgba(201,168,76,0.9);
   display:flex; align-items:center; justify-content:center;
   backdrop-filter:blur(4px);
@@ -99,14 +85,6 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 .hero-badge-inner { text-align:center; }
 .hero-badge .num { font-family:'Playfair Display',serif; font-size:42px; font-weight:700; color:var(--white); }
 .hero-badge .label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--white); opacity:0.85; margin-top:4px; }
-.hero-scroll {
-  position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
-  font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
-  color:rgba(255,255,255,0.4); text-decoration:none; display:flex; flex-direction:column; align-items:center; gap:8px;
-}
-.hero-scroll::after {
-  content:''; width:1px; height:32px; background:rgba(255,255,255,0.25);
-}
 
 /* STATS ROW */
 .stats-row {
@@ -116,6 +94,7 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 .stat-item { text-align:center; }
 .stat-num { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:var(--navy); }
 .stat-label { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; opacity:0.4; margin-top:6px; }
+.stat-sub { font-size:9px; font-weight:500; letter-spacing:1px; text-transform:uppercase; opacity:0.25; margin-top:3px; }
 
 /* SECTIONS */
 .section { padding:120px 0; }
@@ -127,49 +106,57 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 }
 .section-desc { font-size:16px; line-height:1.8; opacity:0.5; max-width:480px; margin-bottom:48px; }
 
-/* PROBLEM */
-.problem-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.problem-cards { display:flex; flex-direction:column; gap:36px; }
-.problem-card { display:flex; gap:24px; align-items:flex-start; }
-.problem-icon {
-  width:48px; height:48px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
-  font-size:20px; border:1.5px solid var(--beige); border-radius:50%;
-}
-.problem-card h4 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:6px; }
-.problem-card p { font-size:14px; line-height:1.7; opacity:0.5; }
-
-/* PILLARS */
-.pillars-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:60px; }
-.pillar { position:relative; }
-.pillar-num { font-family:'Playfair Display',serif; font-size:72px; font-weight:700; color:var(--gold-light); line-height:1; margin-bottom:20px; color:var(--beige); }
-.pillar h3 { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; margin-bottom:10px; }
-.pillar p { font-size:14px; line-height:1.7; opacity:0.5; margin-bottom:16px; }
-.pillar ul { list-style:none; }
-.pillar ul li { font-size:13px; padding:4px 0; opacity:0.45; position:relative; padding-left:16px; }
-.pillar ul li::before { content:''; position:absolute; left:0; top:11px; width:6px; height:1px; background:var(--gold); }
-
-/* IMAGES ROW */
-.images-row { display:grid; grid-template-columns:2fr 1fr; gap:24px; padding:0; }
-.images-row .img-block { height:360px; background-size:cover; background-position:center; position:relative; }
-.images-row .img-overlay {
-  position:absolute; bottom:24px; left:24px; background:var(--white); padding:16px 24px;
-}
-.images-row .img-overlay span { font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; opacity:0.5; }
+/* HAFTUNG */
+.haftung-section { background:var(--creme); padding:120px 0; }
+.haftung-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+.haftung-items { display:flex; flex-direction:column; gap:28px; }
+.haftung-item { display:flex; gap:16px; align-items:flex-start; }
+.haftung-item .h-icon { flex-shrink:0; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--gold); }
+.haftung-item h4 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:4px; }
+.haftung-item p { font-size:14px; line-height:1.7; opacity:0.5; }
 
 /* TEAM */
-.team-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+.team-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
 .team-member { position:relative; }
 .team-photo {
   width:100%; height:420px; background-size:cover; background-position:center center;
   margin-bottom:28px; position:relative;
 }
-.team-photo::after {
-  content:''; position:absolute; top:-12px; right:-12px; width:80px; height:80px;
-  border:1.5px solid var(--gold); border-radius:50%; opacity:0.25;
-}
 .team-member .role { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
 .team-member h3 { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; margin-bottom:12px; }
 .team-member p { font-size:14px; line-height:1.8; opacity:0.5; }
+
+/* CASES */
+.cases-section { padding:120px 0; }
+.cases-layout { display:grid; grid-template-columns:repeat(2,1fr); gap:36px; margin-top:48px; }
+.case-card { padding:32px; border:1px solid rgba(14,34,64,0.08); transition:border-color 0.3s; display:flex; flex-direction:column; }
+.case-card:hover { border-color:var(--gold); }
+.case-card .case-icon { font-size:36px; line-height:1; height:40px; display:flex; align-items:center; margin-bottom:20px; opacity:0.3; }
+.case-card h4 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:8px; min-height:48px; }
+.case-card p { font-size:14px; line-height:1.7; opacity:0.5; }
+.case-card .case-tag { display:inline-block; font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-top:12px; }
+
+/* ABLAUF */
+.ablauf-layout { display:grid; grid-template-columns:repeat(4,1fr); gap:48px; margin-top:48px; }
+.ablauf-step { position:relative; }
+.ablauf-num { font-family:'Playfair Display',serif; font-size:56px; font-weight:700; color:var(--beige); line-height:1; margin-bottom:16px; }
+.ablauf-step h4 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:8px; }
+.ablauf-step p { font-size:13px; line-height:1.7; opacity:0.45; }
+
+/* IMAGES ROW */
+.images-row { display:grid; grid-template-columns:2fr 1fr; gap:0; padding:0; }
+.images-row .img-block { height:400px; position:relative; overflow:hidden; }
+.images-row .img-block .parallax-bg { position:absolute; top:-20%; left:0; right:0; height:140%; background-size:cover; background-position:center; will-change:transform; }
+
+/* PILLARS */
+.pillars-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:60px; }
+.pillar { position:relative; }
+.pillar-num { font-family:'Playfair Display',serif; font-size:72px; font-weight:700; line-height:1; margin-bottom:20px; color:var(--beige); }
+.pillar h3 { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; margin-bottom:10px; }
+.pillar p { font-size:14px; line-height:1.7; opacity:0.5; margin-bottom:16px; }
+.pillar ul { list-style:none; }
+.pillar ul li { font-size:13px; padding:4px 0; opacity:0.45; position:relative; padding-left:16px; }
+.pillar ul li::before { content:''; position:absolute; left:0; top:11px; width:6px; height:1px; background:var(--gold); }
 
 /* ZIELGRUPPE */
 .ziel-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
@@ -179,12 +166,13 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 .ziel-item p { font-size:14px; line-height:1.7; opacity:0.5; }
 
 /* BRANCHEN */
-.branchen { display:flex; justify-content:center; gap:80px; padding:100px 0; }
-.branche { text-align:center; opacity:0.35; transition:opacity 0.3s; }
-.branche:hover { opacity:0.7; }
+.branchen-section { background:var(--navy); padding:100px 0; }
+.branchen { display:flex; justify-content:center; gap:80px; }
+.branche { text-align:center; opacity:0.5; transition:opacity 0.3s; }
+.branche:hover { opacity:1; }
 .branche-icon { margin-bottom:20px; }
-.branche-icon svg { width:56px; height:56px; stroke:var(--navy); stroke-width:1.2; fill:none; }
-.branche-label { font-size:14px; font-weight:600; letter-spacing:2px; text-transform:uppercase; }
+.branche-icon svg { width:56px; height:56px; stroke:var(--white); stroke-width:1.2; fill:none; }
+.branche-label { font-size:14px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--white); }
 
 /* FAQ */
 .faq-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
@@ -204,7 +192,7 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 
 /* CONTACT */
 .contact-section { background:var(--navy); padding:120px 0; position:relative; overflow:hidden; }
-.contact-section .geo-circle { background:rgba(255,255,255,0.03); }
+.contact-signet { position:absolute; top:-120px; right:-120px; width:500px; height:500px; pointer-events:none; }
 .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
 .contact-left .eyebrow { color:var(--gold); }
 .contact-left .section-title { color:var(--white); }
@@ -242,18 +230,19 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 .footer-copy { font-size:11px; opacity:0.25; }
 
 /* REVEAL */
-.reveal { opacity:0; transform:translateY(16px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal { opacity:0; transform:translateY(48px); transition: opacity 1.8s ease-out, transform 1.8s ease-out; }
 .reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:0.25s; }
+.reveal-delay-2 { transition-delay:0.5s; }
+.reveal-delay-3 { transition-delay:0.75s; }
 
 /* RESPONSIVE */
 @media(max-width:1024px) {
   .container { padding:0 32px; }
-  .hero-inner, .problem-layout, .pillars-layout, .team-layout, .ziel-layout, .faq-layout, .contact-layout { grid-template-columns:1fr; gap:48px; }
-  .hero-inner { padding:0 0 80px; }
+  .haftung-layout, .pillars-layout, .team-layout, .ziel-layout, .faq-layout, .contact-layout, .cases-layout, .ablauf-layout { grid-template-columns:1fr; gap:48px; }
+  .hero-inner { padding:0 0 60px; }
   .hero h1 { font-size:56px; }
-  .hero-headline-row { gap:32px; }
-  .hero-cta-round { width:130px; height:130px; font-size:11px; }
-  .hero-badge { width:120px; height:120px; bottom:80px; right:32px; }
+  .hero-badge { width:120px; height:120px; bottom:60px; right:32px; }
   .hero-badge .num { font-size:32px; }
   .hero-scroll { display:none; }
   .section { padding:80px 0; }
@@ -268,12 +257,12 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
   .footer-inner { flex-direction:column; gap:20px; text-align:center; }
   .footer-links { justify-content:center; flex-wrap:wrap; }
   .team-photo { height:320px; }
+  .haftung-section { padding:80px 0; }
+  .cases-section { padding:80px 0; }
 }
 @media(max-width:600px) {
   .container { padding:0 24px; }
   .hero h1 { font-size:42px; }
-  .hero-headline-row { flex-direction:column; align-items:flex-start; gap:24px; }
-  .hero-cta-round { width:120px; height:120px; font-size:10px; }
   .hero-badge { display:none; }
   .hero-desc { font-size:15px; }
   .stats-row { gap:24px; }
@@ -288,6 +277,7 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 
 <!-- NAV -->
 <nav class="nav" id="nav">
+  <div class="nav-inner">
   <a href="#" class="nav-brand">
     <svg viewBox="0 0 1000 1000"><path fill="#0E2240" d="M399.35,972.55c-46.23,0-103.13-17.92-178.71-66.58h0c-2.12-1.36-211.51-143.09-209.99-389.88.72-116.86,50.24-237.67,135.86-331.44C240.62,81.57,366.91,24.8,502.11,24.8s253.84,50.89,345.48,143.29c91.4,92.17,141.74,215.3,141.74,346.7s-92.82,390.84-316.42,449.75c-48.37,12.73-102.86-1.05-149.51-37.83-.41-.32-.83-.66-1.24-.99-35.18,25.78-72.73,46.81-122.8,46.81ZM251.24,858.43c130.43,83.96,184.71,59.97,230.62,26.83-54.72-68.33-83.87-170.19-81.26-288.92.42-19-3.51-23.37-3.55-23.4-4.39-3.42-27.42.26-39.79,2.24-26.86,4.27-57.3,9.13-85.71-2.41-48.46-19.69-66.55-53.06-73.2-77.58-13.05-48.11,4.94-108.85,49.35-166.63,38.81-50.49,94.53-81.03,161.15-88.31,87.61-9.6,179.29,22.5,221.07,57.54,21.73,18.22,28.57,46.65,35.18,74.14,8.41,34.97,14.1,51.8,29.97,55.09l3.46.72c42.9,8.88,51.83,10.73,69.79,32.37,5.74,6.93,12.11,19.16,9.81,38.12-5.21,42.97-56.7,106.95-76.16,121.35-13.98,10.32-31.22,59.01-45.08,98.12-21.99,62.07-46.55,131.38-88.18,172.14,29.83,20.07,62.02,27.36,89.81,20.04,106.68-28.11,172.33-109.88,208.62-173.54,48.48-85.03,65.67-172.48,65.67-221.54,0-116.39-44.51-225.38-125.34-306.89-80.94-81.62-189.38-126.57-305.33-126.57-254.73,0-433.66,229.3-434.93,435.1-1.31,213.05,182.2,340.8,184.05,341.99h0ZM387.81,515.14c16.78,0,32.99,3.5,46.4,15.19,16.1,14.04,23.6,36.04,22.91,67.25-2.34,106.45,22.8,196.16,69.97,253.8,33.33-30.75,57.09-97.81,76.49-152.58,20.61-58.16,36.88-104.09,64.77-124.7,14.27-10.56,50.88-62.51,53.57-81.32-.78-.89-1.47-1.65-1.84-1.95-2.71-1.47-16.76-4.37-33.02-7.74l-3.47-.72c-52.72-10.92-64.71-60.81-73.47-97.23-4.25-17.71-9.08-37.79-16.53-44.03-27.31-22.9-102.96-52.95-178.6-44.67-51.65,5.65-92.85,28.04-122.46,66.56-33.07,43.02-47.88,86.9-39.61,117.38,4.88,17.98,17.93,31.07,39.92,40,13.81,5.62,35.01,2.23,55.52-1.04,12.77-2.04,26.29-4.2,39.47-4.2Z"/></svg>
     <span>AFRISAV</span>
@@ -298,71 +288,79 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
     <a href="#zielgruppe">F&uuml;r wen</a>
     <a href="#faq">FAQ</a>
     <a href="#kontakt">Kontakt</a>
-    <button class="nav-cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">Erstberatung</button>
+    <button class="nav-cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">Erstgespr&auml;ch vereinbaren</button>
   </div>
   <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- 1. HERO -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="hero-eyebrow"><span class="geo-dot"></span> Health &amp; Safety International</div>
-        <h1>Mit Sicherheit<br><em>Afrika.</em></h1>
-        <p class="hero-desc">Ihr Unternehmen ist in Sub-Sahara-Afrika aktiv? Wir &uuml;bernehmen Arbeitssicherheit und Arbeitsmedizin &ndash; damit Sie sich auf Ihr Gesch&auml;ft konzentrieren k&ouml;nnen.</p>
+        <div class="hero-eyebrow"><span class="geo-dot"></span> HSE &amp; Travel Risk Management</div>
+        <h1>Arbeitssicherheit &amp;<br>Arbeitsmedizin f&uuml;r<br>deutsche Unternehmen<br>in <em>Afrika.</em></h1>
+        <p class="hero-desc">Wir unterst&uuml;tzen Unternehmen bei der rechtssicheren, medizinischen und organisatorischen Absicherung von Entsendungen.</p>
+        <div class="hero-standards">ASiG &middot; ArbMedVV &middot; DGUV &middot; ISO 45001 konform</div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-inner">
+        <div class="num">2in1</div>
+        <div class="label">HSE<br>+<br>Medizin</div>
       </div>
     </div>
   </div>
-  <div class="hero-badge">
-    <div class="hero-badge-inner">
-      <div class="num">2in1</div>
-      <div class="label">HSE + Medizin</div>
-    </div>
-  </div>
-  <a href="#problem" class="hero-scroll">Scroll</a>
 </section>
 
-<!-- STATS -->
+<!-- 2. STATS -->
 <div class="container">
   <div class="stats-row reveal">
     <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Jahre Erfahrung</div></div>
-    <div class="stat-item"><div class="stat-num">ISO 45001</div><div class="stat-label">Zertifizierter Standard</div></div>
-    <div class="stat-item"><div class="stat-num">DGUV</div><div class="stat-label">Deutsches Regelwerk</div></div>
     <div class="stat-item"><div class="stat-num">2in1</div><div class="stat-label">HSE &amp; Medizin</div></div>
-    <div class="stat-item"><div class="stat-num">Vor Ort</div><div class="stat-label">Mitarbeiter in Afrika</div></div>
+    <div class="stat-item"><div class="stat-num">&check;</div><div class="stat-label">Haftungspr&auml;vention</div><div class="stat-sub">ASiG &middot; ArbMedVV</div></div>
+    <div class="stat-item"><div class="stat-num">&check;</div><div class="stat-label">Orientiert an</div><div class="stat-sub">DGUV &middot; ISO 45001</div></div>
+    <div class="stat-item"><div class="stat-num">Vor Ort</div><div class="stat-label">Netzwerk in Afrika</div></div>
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="section" id="problem">
+<!-- 3. HAFTUNG — "Was viele nicht wissen" -->
+<section class="haftung-section" id="haftung">
   <div class="container">
-    <div class="problem-layout reveal">
+    <div class="haftung-layout reveal">
       <div>
-        <div class="eyebrow"><span class="geo-dot"></span> Das Problem</div>
-        <div class="section-title">Die Heraus&shy;forderung</div>
-        <p class="section-desc">Deutsche Unternehmen mit Afrika-Engagement m&uuml;ssen komplexe Anforderungen erf&uuml;llen &ndash; oft ohne spezialisierten Partner vor Ort.</p>
+        <div class="eyebrow"><span class="geo-dot"></span> Was viele nicht wissen</div>
+        <div class="section-title">Deutsche Gesetze gelten auch in Afrika.</div>
+        <p class="section-desc">Wer Mitarbeiter nach Sub-Sahara-Afrika entsendet, bleibt in der vollen Arbeitgeberpflicht &ndash; unabh&auml;ngig vom Einsatzort.</p>
       </div>
-      <div class="problem-cards">
-        <div class="problem-card">
-          <div class="problem-icon">&sect;</div>
+      <div class="haftung-items">
+        <div class="haftung-item">
+          <div class="h-icon">&sect;</div>
           <div>
-            <h4>Compliance</h4>
-            <p>ASiG, LkSG, ArbMedVV &ndash; deutsche Gesetze gelten auch f&uuml;r Ihre Mitarbeiter in Afrika. L&uuml;cken k&ouml;nnen teuer werden.</p>
+            <h4>ASiG gilt auch bei Entsendung</h4>
+            <p>Die sicherheitstechnische und arbeitsmedizinische Betreuung muss auch bei Auslandseins&auml;tzen sichergestellt werden.</p>
           </div>
         </div>
-        <div class="problem-card">
-          <div class="problem-icon">&#9764;</div>
+        <div class="haftung-item">
+          <div class="h-icon">&sect;</div>
           <div>
-            <h4>Gesundheitsrisiken</h4>
-            <p>Tropenkrankheiten, fehlende Infrastruktur, Notf&auml;lle fern der Heimat &ndash; wer tr&auml;gt die Verantwortung?</p>
+            <h4>ArbMedVV-Pflichtvorsorge</h4>
+            <p>Pflicht- und Angebotsvorsorge gem&auml;&szlig; ArbMedVV, inkl. tropenmedizinischer Beratung.</p>
           </div>
         </div>
-        <div class="problem-card">
-          <div class="problem-icon">&#9678;</div>
+        <div class="haftung-item">
+          <div class="h-icon">&sect;</div>
           <div>
-            <h4>Kein spezialisierter Partner</h4>
-            <p>Viele Berater kennen Afrika oder HSE &ndash; aber niemand verbindet beides mit Arbeitsmedizin.</p>
+            <h4>Arbeitgeberverantwortung bleibt bestehen</h4>
+            <p>Die Arbeitgeberverantwortung f&uuml;r Arbeitsschutz bleibt auch bei Auslandseins&auml;tzen bestehen.</p>
+          </div>
+        </div>
+        <div class="haftung-item">
+          <div class="h-icon">&sect;</div>
+          <div>
+            <h4>Dokumentationspflichten</h4>
+            <p>Fehlende Gef&auml;hrdungsbeurteilungen oder L&uuml;cken in der Betreuung k&ouml;nnen zu rechtlichen Konsequenzen f&uuml;hren.</p>
           </div>
         </div>
       </div>
@@ -370,81 +368,28 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
   </div>
 </section>
 
-<!-- IMAGES -->
-<div class="container reveal">
-  <div class="images-row">
-    <div class="img-block" style="background-image:url('images/bild_2.png');">
-      <div class="img-overlay"><span>Vor Ort in Afrika</span></div>
-    </div>
-    <div class="img-block" style="background-image:url('images/bild_3.png');"></div>
-  </div>
-</div>
-
-<!-- PILLARS -->
-<section class="section" id="leistungen">
-  <div class="container">
-    <div class="reveal">
-      <div class="eyebrow"><span class="geo-dot"></span> Unsere L&ouml;sung</div>
-      <div class="section-title">Drei S&auml;ulen. Ein Ansprechpartner.</div>
-      <p class="section-desc">AFRISAV vereint alle Kompetenzen f&uuml;r den sicheren Betrieb in Afrika.</p>
-    </div>
-    <div class="pillars-layout reveal">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <h3>Arbeitssicherheit &amp; HSE</h3>
-        <p>Sicherheitstechnische Betreuung f&uuml;r Ihre Afrika-Aktivit&auml;ten.</p>
-        <ul>
-          <li>Gef&auml;hrdungsbeurteilungen</li>
-          <li>HSE-Systeme (ISO 45001/14001)</li>
-          <li>Schulungen &amp; Unterweisungen</li>
-          <li>Notfall- &amp; Krisenmanagement</li>
-          <li>LkSG-Compliance &amp; Audits</li>
-        </ul>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <h3>Arbeits- &amp; Reisemedizin</h3>
-        <p>Medizinischer Rundum-Schutz f&uuml;r Ihre Mitarbeiter.</p>
-        <ul>
-          <li>Vorsorgeuntersuchungen</li>
-          <li>Tropenmedizin &amp; Impfungen</li>
-          <li>24/7-Notfallhotline</li>
-          <li>Betriebs&auml;rztliche Betreuung</li>
-          <li>R&uuml;ckkehrerbegleitung</li>
-        </ul>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <h3>Strategie &amp; Netzwerk</h3>
-        <p>Ihr Navigationspartner f&uuml;r den afrikanischen Markt.</p>
-        <ul>
-          <li>Markt- &amp; Regulierungsanalysen</li>
-          <li>Lokale Partnernetzwerke</li>
-          <li>F&ouml;rdermittelberatung</li>
-          <li>Interkulturelle Schulungen</li>
-          <li>Markteintrittsstrategien</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="section" id="team" style="background:var(--creme);">
+<!-- 4. TEAM (fr&uuml;h f&uuml;r Vertrauen) -->
+<section class="section" id="team">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow"><span class="geo-dot"></span> Das Team</div>
-      <div class="section-title">Doppelte Expertise</div>
-      <p class="section-desc">Sicherheitsingenieur und Fach&auml;rztin &ndash; beide mit langj&auml;hriger internationaler Erfahrung und tiefer Afrika-Verbundenheit.</p>
+      <div class="section-title">Dreifache Expertise</div>
+      <p class="section-desc">Zwei Fach&auml;rzte und ein Sicherheitsingenieur &ndash; mit langj&auml;hriger internationaler Erfahrung und tiefer Afrika-Verbundenheit.</p>
     </div>
-    <div class="team-layout reveal">
-      <div class="team-member">
+    <div class="team-layout">
+      <div class="team-member reveal">
         <div class="team-photo" style="background-image:url('Dr_Schlaich_web.jpg');"></div>
         <div class="role">F&Auml; Innere Medizin &amp; Arbeitsmedizin</div>
         <h3>Dr. med. Clara C. Schlaich, MPH</h3>
-        <p>Hafenpraxis Dr. Schlaich &amp; Dr. Beyer, Hamburg. MPH Johns Hopkins, ehem. Leiterin Hafen&auml;rztl. Dienst Hamburg, Honorarkonsulin Rep. Malawi.</p>
+        <p>Inhaberin Hafenpraxis Dr. Schlaich &amp; Dr. Beyer, Hamburg. Schwerpunkte: Infektiologie, Reisemedizin, Psychosomatik. MPH Johns Hopkins University.</p>
       </div>
-      <div class="team-member">
+      <div class="team-member reveal reveal-delay-1">
+        <div class="team-photo" style="background-image:url('dr_beyer.jpg');"></div>
+        <div class="role">FA Innere Medizin &amp; Arbeitsmedizin</div>
+        <h3>Dr. med. Eike Beyer</h3>
+        <p>Inhaber Hafenpraxis Dr. Schlaich &amp; Dr. Beyer, Hamburg. Schwerpunkte: Notfallmedizin, Reisemedizin. Aktiver Notarzt, ERC Full Instructor Advanced Life Support.</p>
+      </div>
+      <div class="team-member reveal reveal-delay-2">
         <div class="team-photo" style="background-image:url('semhar-woldeab.jpg');"></div>
         <div class="role">Dipl. Sicherheitsingenieur &amp; QHSE-Manager</div>
         <h3>Semhar Woldeab</h3>
@@ -454,14 +399,140 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
   </div>
 </section>
 
-<!-- ZIELGRUPPE -->
-<section class="section" id="zielgruppe">
+<!-- 5. TYPISCHE F&Auml;LLE -->
+<section class="cases-section" id="faelle" style="background:var(--creme);">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow"><span class="geo-dot"></span> Typische F&auml;lle</div>
+      <div class="section-title">Szenarien, die Entscheider kennen.</div>
+      <p class="section-desc">Was passiert, wenn Ihre Mitarbeiter in Afrika medizinische oder sicherheitstechnische Hilfe brauchen?</p>
+    </div>
+    <div class="cases-layout">
+      <div class="case-card reveal">
+        <div class="case-icon">&#9763;</div>
+        <h4>Mitarbeiter erkrankt an Malaria</h4>
+        <p>Keine arbeitsmedizinische Betreuung mit tropenmedizinischer Expertise. Erforderliche Vorsorge nicht gepr&uuml;ft oder nicht dokumentiert.</p>
+        <span class="case-tag">Arbeitsmedizin</span>
+      </div>
+      <div class="case-card reveal reveal-delay-1">
+        <div class="case-icon">&#9888;</div>
+        <h4>Arbeitsunfall auf der Baustelle</h4>
+        <p>Keine Gef&auml;hrdungsbeurteilung f&uuml;r den Einsatzort. Keine dokumentierte Unterweisung. Dokumentationsl&uuml;cken.</p>
+        <span class="case-tag">HSE &amp; Compliance</span>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-icon">&#9737;</div>
+        <h4>Fehlende medizinische Infrastruktur</h4>
+        <p>N&auml;chstes geeignetes Krankenhaus 400 km entfernt. Kein Notfallplan, keine Evakuierungskette definiert.</p>
+        <span class="case-tag">Notfallmanagement</span>
+      </div>
+      <div class="case-card reveal reveal-delay-1">
+        <div class="case-icon">&#9881;</div>
+        <h4>R&uuml;ckkehrer mit psychischen Belastungen</h4>
+        <p>Kein Nachsorgeprogramm, keine R&uuml;ckkehreruntersuchung. Langzeitfolgen f&uuml;r Mitarbeiter und Unternehmen.</p>
+        <span class="case-tag">Reisemedizin</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ABLAUF -->
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow"><span class="geo-dot"></span> Ablauf</div>
+      <div class="section-title">So l&auml;uft die Zusammenarbeit</div>
+    </div>
+    <div class="ablauf-layout">
+      <div class="ablauf-step reveal">
+        <div class="ablauf-num">01</div>
+        <h4>Kurzes Gespr&auml;ch</h4>
+        <p>30 Minuten &ndash; wir verstehen Ihre Situation, Ihre Einsatzl&auml;nder und Ihren aktuellen Stand.</p>
+      </div>
+      <div class="ablauf-step reveal reveal-delay-1">
+        <div class="ablauf-num">02</div>
+        <h4>Entsendungspr&uuml;fung</h4>
+        <p>Wir analysieren Ihre Pflichten nach ASiG, ArbMedVV und DGUV &ndash; und identifizieren L&uuml;cken.</p>
+      </div>
+      <div class="ablauf-step reveal reveal-delay-2">
+        <div class="ablauf-num">03</div>
+        <h4>Ma&szlig;nahmenplan</h4>
+        <p>Sie erhalten einen konkreten Plan mit Priorit&auml;ten, Zust&auml;ndigkeiten und Zeitrahmen.</p>
+      </div>
+      <div class="ablauf-step reveal reveal-delay-3">
+        <div class="ablauf-num">04</div>
+        <h4>Betreuung vor Ort</h4>
+        <p>Laufende sicherheitstechnische und arbeitsmedizinische Betreuung &ndash; von Hamburg aus und in Afrika.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. IMAGES -->
+<div>
+  <div class="images-row">
+    <div class="img-block"><div class="parallax-bg" style="background-image:url('images/bild_2.png');"></div></div>
+    <div class="img-block"><div class="parallax-bg" style="background-image:url('images/bild_3.png');"></div></div>
+  </div>
+</div>
+
+<!-- 7. L&Ouml;SUNG / PILLARS -->
+<section class="section" id="leistungen">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow"><span class="geo-dot"></span> Unsere L&ouml;sung</div>
+      <div class="section-title">Drei S&auml;ulen. Ein Ansprechpartner.</div>
+      <p class="section-desc">AFRISAV vereint alle Kompetenzen f&uuml;r den sicheren Betrieb in Afrika.</p>
+    </div>
+    <div class="pillars-layout">
+      <div class="pillar reveal">
+        <div class="pillar-num">01</div>
+        <h3>Arbeitssicherheit &amp; HSE</h3>
+        <p>Sicherheitstechnische Betreuung f&uuml;r Ihre Afrika-Aktivit&auml;ten &ndash; inkl. Offshore-Segment Westafrika.</p>
+        <ul>
+          <li>Gef&auml;hrdungsbeurteilungen</li>
+          <li>HSE-Systeme (ISO 45001/14001)</li>
+          <li>Offshore-HSE Westafrika</li>
+          <li>Notfall- &amp; Krisenmanagement</li>
+          <li>LkSG-Compliance &amp; Audits</li>
+        </ul>
+      </div>
+      <div class="pillar reveal reveal-delay-1">
+        <div class="pillar-num">02</div>
+        <h3>Arbeits- &amp; Reisemedizin</h3>
+        <p>Ganzheitliche arbeits- und reisemedizinische Betreuung f&uuml;r Ihre Mitarbeiter.</p>
+        <ul>
+          <li>Travel Risk Management (Entsendungsbetreuung)</li>
+          <li>Vorsorgeuntersuchungen</li>
+          <li>Tropenmedizin &amp; Impfungen</li>
+          <li>Betriebs&auml;rztliche Betreuung</li>
+          <li>R&uuml;ckkehrerbegleitung</li>
+        </ul>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <div class="pillar-num">03</div>
+        <h3>Strategie &amp; Strukturen</h3>
+        <p>Aufbau und Umsetzung von HSE-Strukturen vor Ort.</p>
+        <ul>
+          <li>Compliance-Strategie Ausland</li>
+          <li>HSE-Implementierung</li>
+          <li>Aufbau lokaler Sicherheitsstrukturen</li>
+          <li>Contractor Management</li>
+          <li>Unterweisungsprogramme</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ZIELGRUPPE -->
+<section class="section" id="zielgruppe" style="background:var(--creme);">
   <div class="container">
     <div class="ziel-layout reveal">
       <div>
         <div class="eyebrow"><span class="geo-dot"></span> F&uuml;r wen</div>
         <div class="section-title">Ihr Unternehmen ist in Afrika aktiv?</div>
-        <p class="section-desc">Ob laufender Betrieb, Entsendung oder neuer Standort &ndash; wir sichern Ihr Afrika-Engagement ab.</p>
+        <p class="section-desc">Ob laufender Betrieb, Entsendung oder neuer Standort &ndash; wir begleiten Ihr mittelst&auml;ndisches Afrika-Engagement arbeitsmedizinisch und sicherheitstechnisch.</p>
       </div>
       <div class="ziel-items">
         <div class="ziel-item">
@@ -481,18 +552,21 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
   </div>
 </section>
 
-<!-- BRANCHEN -->
-<div class="container">
+<!-- 9. BRANCHEN -->
+<section class="branchen-section">
+  <div class="container">
   <div class="branchen reveal">
     <div class="branche"><div class="branche-icon"><svg viewBox="0 0 48 48"><path d="M24 4 L28 18 L42 18 L30 28 L34 42 L24 32 L14 42 L18 28 L6 18 L20 18 Z" stroke-linejoin="round"/></svg></div><div class="branche-label">Energie</div></div>
     <div class="branche"><div class="branche-icon"><svg viewBox="0 0 48 48"><path d="M8 42 L8 20 L24 8 L40 20 L40 42 Z M18 42 L18 30 L30 30 L30 42"/></svg></div><div class="branche-label">Bau</div></div>
     <div class="branche"><div class="branche-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="4"/><path d="M24 8 L24 14 M24 34 L24 40 M8 24 L14 24 M34 24 L40 24"/></svg></div><div class="branche-label">Industrie</div></div>
     <div class="branche"><div class="branche-icon"><svg viewBox="0 0 48 48"><rect x="6" y="22" width="36" height="18" rx="2"/><path d="M14 22 L14 16 L34 16 L34 22 M6 30 L42 30"/><circle cx="14" cy="40" r="4"/><circle cx="34" cy="40" r="4"/></svg></div><div class="branche-label">Logistik</div></div>
-    <div class="branche"><div class="branche-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><ellipse cx="24" cy="24" rx="8" ry="18"/><path d="M6 24 L42 24 M8 14 L40 14 M8 34 L40 34"/></svg></div><div class="branche-label">Entwicklung</div></div>
+    <div class="branche"><div class="branche-icon"><svg viewBox="0 0 48 48"><path d="M24 4 L24 18 M18 14 L30 14 M12 22 L6 40 L18 34 L24 44 L30 34 L42 40 L36 22 Z"/></svg></div><div class="branche-label">Bergbau</div></div>
+    <div class="branche"><div class="branche-icon"><svg viewBox="0 0 48 48"><path d="M4 38 C12 38 12 28 20 28 C28 28 28 38 36 38 L44 38 M4 30 C12 30 12 20 20 20 C28 20 28 30 36 30 L44 30"/><path d="M20 28 L20 12 L32 12 L32 28 M22 12 L22 6 M30 12 L30 8"/></svg></div><div class="branche-label">Offshore</div></div>
   </div>
-</div>
+  </div>
+</section>
 
-<!-- FAQ -->
+<!-- 10. FAQ -->
 <section class="section" id="faq">
   <div class="container">
     <div class="faq-layout reveal">
@@ -505,7 +579,7 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
             <span>F&uuml;r welche Unternehmen ist AFRISAV geeignet?</span><span class="arrow">+</span>
           </div>
-          <div class="faq-a"><p>AFRISAV richtet sich an deutsche Unternehmen, die in Sub-Sahara-Afrika t&auml;tig sind oder es werden &ndash; ob laufender Betrieb, Entsendung oder Standortaufbau.</p></div>
+          <div class="faq-a"><p>AFRISAV richtet sich an mittelst&auml;ndische Unternehmen, die in Sub-Sahara-Afrika t&auml;tig sind oder es werden &ndash; ob laufender Betrieb, Entsendung oder Standortaufbau.</p></div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -517,13 +591,13 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
             <span>Welche L&auml;nder deckt AFRISAV ab?</span><span class="arrow">+</span>
           </div>
-          <div class="faq-a"><p>Ganz Sub-Sahara-Afrika, mit Schwerpunkt auf M&auml;rkten mit starkem deutschen Engagement &ndash; S&uuml;dafrika, Kenia, Ghana, Nigeria, &Auml;thiopien, Mosambik.</p></div>
+          <div class="faq-a"><p>In zahlreichen L&auml;ndern Subsahara-Afrikas &ndash; mit besonderer Erfahrung in S&uuml;dafrika, Kenia, Ghana, Nigeria, &Auml;thiopien und Mosambik.</p></div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
             <span>Wie l&auml;uft eine Zusammenarbeit ab?</span><span class="arrow">+</span>
           </div>
-          <div class="faq-a"><p>Erstgespr&auml;ch, Bedarfsanalyse, individuelles Angebot, Umsetzung. In der Regel 2&ndash;4 Wochen bis zum Start.</p></div>
+          <div class="faq-a"><p>Kurzes Erstgespr&auml;ch, Entsendungspr&uuml;fung, Ma&szlig;nahmenplan, laufende Betreuung. In der Regel 2&ndash;4 Wochen bis zum Start.</p></div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -536,16 +610,15 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- 11. CONTACT -->
 <section class="contact-section" id="kontakt">
-  <div class="geo-circle" style="width:400px;height:400px;top:-100px;right:-100px;"></div>
-  <div class="geo-circle" style="width:200px;height:200px;bottom:-60px;left:10%;"></div>
+  <svg class="contact-signet" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,0.04)" d="M399.35,972.55c-46.23,0-103.13-17.92-178.71-66.58h0c-2.12-1.36-211.51-143.09-209.99-389.88.72-116.86,50.24-237.67,135.86-331.44C240.62,81.57,366.91,24.8,502.11,24.8s253.84,50.89,345.48,143.29c91.4,92.17,141.74,215.3,141.74,346.7s-92.82,390.84-316.42,449.75c-48.37,12.73-102.86-1.05-149.51-37.83-.41-.32-.83-.66-1.24-.99-35.18,25.78-72.73,46.81-122.8,46.81ZM251.24,858.43c130.43,83.96,184.71,59.97,230.62,26.83-54.72-68.33-83.87-170.19-81.26-288.92.42-19-3.51-23.37-3.55-23.4-4.39-3.42-27.42.26-39.79,2.24-26.86,4.27-57.3,9.13-85.71-2.41-48.46-19.69-66.55-53.06-73.2-77.58-13.05-48.11,4.94-108.85,49.35-166.63,38.81-50.49,94.53-81.03,161.15-88.31,87.61-9.6,179.29,22.5,221.07,57.54,21.73,18.22,28.57,46.65,35.18,74.14,8.41,34.97,14.1,51.8,29.97,55.09l3.46.72c42.9,8.88,51.83,10.73,69.79,32.37,5.74,6.93,12.11,19.16,9.81,38.12-5.21,42.97-56.7,106.95-76.16,121.35-13.98,10.32-31.22,59.01-45.08,98.12-21.99,62.07-46.55,131.38-88.18,172.14,29.83,20.07,62.02,27.36,89.81,20.04,106.68-28.11,172.33-109.88,208.62-173.54,48.48-85.03,65.67-172.48,65.67-221.54,0-116.39-44.51-225.38-125.34-306.89-80.94-81.62-189.38-126.57-305.33-126.57-254.73,0-433.66,229.3-434.93,435.1-1.31,213.05,182.2,340.8,184.05,341.99h0ZM387.81,515.14c16.78,0,32.99,3.5,46.4,15.19,16.1,14.04,23.6,36.04,22.91,67.25-2.34,106.45,22.8,196.16,69.97,253.8,33.33-30.75,57.09-97.81,76.49-152.58,20.61-58.16,36.88-104.09,64.77-124.7,14.27-10.56,50.88-62.51,53.57-81.32-.78-.89-1.47-1.65-1.84-1.95-2.71-1.47-16.76-4.37-33.02-7.74l-3.47-.72c-52.72-10.92-64.71-60.81-73.47-97.23-4.25-17.71-9.08-37.79-16.53-44.03-27.31-22.9-102.96-52.95-178.6-44.67-51.65,5.65-92.85,28.04-122.46,66.56-33.07,43.02-47.88,86.9-39.61,117.38,4.88,17.98,17.93,31.07,39.92,40,13.81,5.62,35.01,2.23,55.52-1.04,12.77-2.04,26.29-4.2,39.47-4.2Z"/></svg>
   <div class="container">
     <div class="contact-layout reveal">
       <div class="contact-left">
         <div class="eyebrow"><span class="geo-dot"></span> Kontakt</div>
-        <div class="section-title">Lassen Sie uns sprechen.</div>
-        <p class="section-desc">Kostenloses Erstgespr&auml;ch &ndash; wir analysieren Ihren Bedarf und zeigen M&ouml;glichkeiten auf.</p>
+        <div class="section-title">Wir pr&uuml;fen Ihren Einsatz auf Handlungsbedarf.</div>
+        <p class="section-desc">Unverbindliches Erstgespr&auml;ch zur Einordnung Ihres Handlungsbedarfs.</p>
         <div class="contact-info">
           <div class="contact-info-item"><span class="ci-icon">&#9993;</span><span>info@afrisav.de</span></div>
           <div class="contact-info-item"><span class="ci-icon">&#9742;</span><span>+49 40 XXX XXXX</span></div>
@@ -557,13 +630,13 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
         <label>E-Mail</label><input type="email" placeholder="name@firma.de">
         <label>Unternehmen</label><input type="text" placeholder="Firmenname">
         <label>Nachricht</label><textarea placeholder="Wie k&ouml;nnen wir Ihnen helfen?"></textarea>
-        <button class="contact-submit">Erstberatung anfragen &rarr;</button>
+        <button class="contact-submit">Unverbindliches Erstgespr&auml;ch anfragen &rarr;</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- 12. FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
@@ -591,8 +664,19 @@ window.addEventListener('scroll', () => {
 });
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
+}, { threshold: 0.05, rootMargin: '0px 0px -80px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Parallax
+const parallaxBgs = document.querySelectorAll('.parallax-bg');
+window.addEventListener('scroll', () => {
+  parallaxBgs.forEach(bg => {
+    const rect = bg.parentElement.getBoundingClientRect();
+    const speed = 0.3;
+    const yPos = -(rect.top * speed);
+    bg.style.transform = `translateY(${yPos}px)`;
+  });
+}, { passive: true });
 </script>
 </body>
 </html>
