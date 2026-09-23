@@ -231,11 +231,12 @@ body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white
 .footer-copy { font-size:11px; opacity:0.25; }
 
 /* REVEAL */
-.reveal { opacity:0; transform:translateY(48px); transition: opacity 1.8s ease-out, transform 1.8s ease-out; }
-.reveal.visible { opacity:1; transform:translateY(0); }
-.reveal-delay-1 { transition-delay:0.25s; }
-.reveal-delay-2 { transition-delay:0.5s; }
-.reveal-delay-3 { transition-delay:0.75s; }
+.reveal { opacity:1; transform:none; }
+.motion-enabled .reveal { opacity:0; transform:translateY(48px); }
+.motion-enabled .reveal.visible { opacity:1; transform:translateY(0); transition: opacity 1.8s ease-out, transform 1.8s ease-out; }
+.motion-enabled .reveal.visible.reveal-delay-1 { transition-delay:0.25s; }
+.motion-enabled .reveal.visible.reveal-delay-2 { transition-delay:0.5s; }
+.motion-enabled .reveal.visible.reveal-delay-3 { transition-delay:0.75s; }
 
 /* RESPONSIVE */
 @media(max-width:1024px) {
@@ -309,12 +310,11 @@ h1,h2,h3,p,li,.stat-label,.stat-sub { overflow-wrap:break-word; }
 .contact-placeholder { margin-top:24px; padding-top:24px; border-top:1px solid rgba(255,255,255,.2); }
 .faq-item summary { list-style:none; }
 .faq-item summary::-webkit-details-marker { display:none; }
-.faq-item summary::after { content:'+'; margin-left:18px; color:#896b20; }
-.faq-item[open] summary::after { content:'−'; }
-.faq-a { max-height:none; }
+.faq-item summary::after { content:'+'; margin-left:18px; color:#896b20; transition:transform .3s; }
+.faq-item[open] summary::after { transform:rotate(45deg); }
+.faq-a { max-height:none; transition:none; }
 .footer-copy,.footer-links a,.footer-placeholder { opacity:.7; }
 .footer-placeholder { font-size:11px; }
-.reveal { opacity:1; transform:none; }
 section[id] { scroll-margin-top:100px; }
 :focus-visible { outline:3px solid #C9A84C; outline-offset:5px; }
 .skip-link { position:fixed; left:16px; top:-100px; z-index:200; background:white; padding:12px; color:var(--navy); }
@@ -339,7 +339,7 @@ section[id] { scroll-margin-top:100px; }
  .stats-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
  .contact-card { padding:24px; }
 }
-@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; animation:none!important; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .motion-enabled .reveal { opacity:1; transform:none; } .parallax-bg { transform:none!important; } *,*::before,*::after { transition:none!important; animation:none!important; } }
 </style>
 </head>
 <body>
@@ -407,7 +407,7 @@ section[id] { scroll-margin-top:100px; }
 </div>
 </section>
 <div class="container">
-<div class="stats-row">
+<div class="stats-row reveal">
 <div class="stat-item">
 <div class="stat-num" data-i18n="t13">Hamburg</div>
 <div class="stat-label" data-i18n="t14">Our home base</div>
@@ -428,7 +428,7 @@ section[id] { scroll-margin-top:100px; }
 </div>
 <section class="haftung-section" id="ansatz">
 <div class="container">
-<div class="haftung-layout">
+<div class="haftung-layout reveal">
 <div>
 <div class="eyebrow" data-i18n="t21">Our approach</div>
 <h2 class="section-title" data-i18n="t22">A safety culture that works in practice.</h2>
@@ -469,11 +469,13 @@ section[id] { scroll-margin-top:100px; }
 </section>
 <section class="section" id="team">
 <div class="container">
+<div class="reveal">
 <div class="eyebrow" data-i18n="t32">The Hamburg network</div>
 <h2 class="section-title" data-i18n="t33">Two disciplines. A shared perspective.</h2>
 <p class="section-desc" data-i18n="t34">WOLDEAB Technology Consulting and Hafenpraxis Dr. Schlaich &amp; Dr. Beyer bring together safety engineering and occupational medicine.</p>
+</div>
 <div class="team-layout">
-<article class="team-member">
+<article class="team-member reveal">
 <div class="team-photo" role="img" aria-label="Dr. med. Clara C. Schlaich, MPH" style="background-image:url('Dr_Schlaich_web.jpg')">
 </div>
 <div class="role" data-i18n="t35">Occupational &amp; internal medicine</div>
@@ -481,7 +483,7 @@ section[id] { scroll-margin-top:100px; }
 <p data-i18n="t36">Hafenpraxis, Hamburg. Occupational, travel and maritime medicine. Master of Public Health, Johns Hopkins University.</p>
 <a class="team-link" href="https://hafenpraxis-hamburg.de">Hafenpraxis ↗</a>
 </article>
-<article class="team-member">
+<article class="team-member reveal reveal-delay-1">
 <div class="team-photo" role="img" aria-label="Dr. med. Eike Beyer" style="background-image:url('dr_beyer.jpg')">
 </div>
 <div class="role" data-i18n="t37">Occupational &amp; internal medicine</div>
@@ -489,7 +491,7 @@ section[id] { scroll-margin-top:100px; }
 <p data-i18n="t38">Hafenpraxis, Hamburg. Occupational, travel and emergency medicine — connecting prevention with practical medical expertise.</p>
 <a class="team-link" href="https://hafenpraxis-hamburg.de">Hafenpraxis ↗</a>
 </article>
-<article class="team-member">
+<article class="team-member reveal reveal-delay-2">
 <div class="team-photo" role="img" aria-label="Semhar Woldeab" style="background-image:url('semhar-woldeab.jpg')">
 </div>
 <div class="role" data-i18n="t39">Safety engineer &amp; QHSE manager</div>
@@ -502,23 +504,25 @@ section[id] { scroll-margin-top:100px; }
 </section>
 <section class="cases-section" id="faelle" style="background:var(--creme)">
 <div class="container">
+<div class="reveal">
 <div class="eyebrow" data-i18n="t41">In practice</div>
 <h2 class="section-title" data-i18n="t42">Where we can support you.</h2>
 <p class="section-desc" data-i18n="t43">From project preparation to everyday operations: connect prevention, clear processes and medical expertise.</p>
+</div>
 <div class="cases-layout">
-<article class="case-card">
+<article class="case-card reveal">
 <h3 data-i18n="t44">Preparing an overseas assignment</h3>
 <p data-i18n="t45">Bring risk assessment, occupational health advice and travel planning together before your team leaves.</p>
 </article>
-<article class="case-card">
+<article class="case-card reveal reveal-delay-1">
 <h3 data-i18n="t46">Working with subcontractors</h3>
 <p data-i18n="t47">Create shared expectations, clear responsibilities and practical safety training across project teams.</p>
 </article>
-<article class="case-card">
+<article class="case-card reveal">
 <h3 data-i18n="t48">Planning for emergencies</h3>
 <p data-i18n="t49">Review medical care options and develop emergency procedures suited to the location and assignment.</p>
 </article>
-<article class="case-card">
+<article class="case-card reveal reveal-delay-1">
 <h3 data-i18n="t50">Learning from incidents</h3>
 <p data-i18n="t51">Structure incident reporting, review processes and turn findings into improvements and training.</p>
 </article>
@@ -527,25 +531,27 @@ section[id] { scroll-margin-top:100px; }
 </section>
 <section class="section">
 <div class="container">
+<div class="reveal">
 <div class="eyebrow" data-i18n="t52">Working together</div>
 <h2 class="section-title" data-i18n="t53">From first conversation to practical support.</h2>
+</div>
 <div class="ablauf-layout">
-<div class="ablauf-step">
+<div class="ablauf-step reveal">
 <div class="ablauf-num">01</div>
 <h3 data-i18n="t54">Understand your needs</h3>
 <p data-i18n="t55">We discuss your business, projects and operating conditions in Africa.</p>
 </div>
-<div class="ablauf-step">
+<div class="ablauf-step reveal reveal-delay-1">
 <div class="ablauf-num">02</div>
 <h3 data-i18n="t56">Review the situation</h3>
 <p data-i18n="t57">Together, we review existing HSE processes and occupational health needs.</p>
 </div>
-<div class="ablauf-step">
+<div class="ablauf-step reveal reveal-delay-2">
 <div class="ablauf-num">03</div>
 <h3 data-i18n="t58">Set priorities</h3>
 <p data-i18n="t59">Define practical measures, responsibilities and the scope of support.</p>
 </div>
-<div class="ablauf-step">
+<div class="ablauf-step reveal reveal-delay-3">
 <div class="ablauf-num">04</div>
 <h3 data-i18n="t60">Put plans into practice</h3>
 <p data-i18n="t61">Support your teams through implementation, training and ongoing review.</p>
@@ -565,11 +571,13 @@ section[id] { scroll-margin-top:100px; }
 </div>
 <section class="section" id="leistungen">
 <div class="container">
+<div class="reveal">
 <div class="eyebrow" data-i18n="t62">Our services</div>
 <h2 class="section-title" data-i18n="t63">Connected expertise. Practical solutions.</h2>
 <p class="section-desc" data-i18n="t64">Technical, medical and organisational support from one Hamburg-based network.</p>
+</div>
 <div class="pillars-layout">
-<article class="pillar">
+<article class="pillar reveal">
 <div class="pillar-num">01</div>
 <h3 data-i18n="t65">Occupational safety &amp; HSE</h3>
 <p data-i18n="t66">Build and maintain the systems that support safer operations.</p>
@@ -581,7 +589,7 @@ section[id] { scroll-margin-top:100px; }
 <li data-i18n="t71">External system audits</li>
 </ul>
 </article>
-<article class="pillar">
+<article class="pillar reveal reveal-delay-1">
 <div class="pillar-num">02</div>
 <h3 data-i18n="t72">Occupational &amp; travel health</h3>
 <p data-i18n="t73">Connect employee health with the realities of overseas assignments.</p>
@@ -593,7 +601,7 @@ section[id] { scroll-margin-top:100px; }
 <li data-i18n="t78">Advice before and after assignments</li>
 </ul>
 </article>
-<article class="pillar">
+<article class="pillar reveal reveal-delay-2">
 <div class="pillar-num">03</div>
 <h3 data-i18n="t79">Training &amp; safety culture</h3>
 <p data-i18n="t80">Help teams make safety part of their everyday work.</p>
@@ -610,7 +618,7 @@ section[id] { scroll-margin-top:100px; }
 </section>
 <section class="section" id="zielgruppe" style="background:var(--creme)">
 <div class="container">
-<div class="ziel-layout">
+<div class="ziel-layout reveal">
 <div>
 <div class="eyebrow" data-i18n="t86">For German businesses</div>
 <h2 class="section-title" data-i18n="t87">Active in Africa. Supported from Hamburg.</h2>
@@ -635,7 +643,7 @@ section[id] { scroll-margin-top:100px; }
 </section>
 <section class="branchen-section">
 <div class="container">
-<div class="branchen">
+<div class="branchen reveal">
 <div class="branche-label" data-i18n="t95">Energy</div>
 <div class="branche-label" data-i18n="t96">Construction</div>
 <div class="branche-label" data-i18n="t97">Industry</div>
@@ -647,7 +655,7 @@ section[id] { scroll-margin-top:100px; }
 </section>
 <section class="section" id="faq">
 <div class="container">
-<div class="faq-layout">
+<div class="faq-layout reveal">
 <div>
 <div class="eyebrow" data-i18n="t101">FAQ</div>
 <h2 class="section-title" data-i18n="t102">Your questions.</h2>
@@ -689,7 +697,7 @@ section[id] { scroll-margin-top:100px; }
 </section>
 <section class="contact-section" id="kontakt">
 <div class="container">
-<div class="contact-layout">
+<div class="contact-layout reveal">
 <div class="contact-left">
 <div class="eyebrow" data-i18n="t113">Contact</div>
 <h2 class="section-title" data-i18n="t114">Let’s talk about your operations in Africa.</h2>
@@ -1260,4 +1268,74 @@ const updateNav=()=>nav.classList.toggle('scrolled',window.scrollY>40);
 window.addEventListener('scroll',updateNav,{passive:true});updateNav();
 let preferred='en';try { preferred=localStorage.getItem('afrisav-language')||'en'; } catch {}
 setLanguage(preferred);
+
+// Preserve the original soft reveals and staggered timing as progressive enhancements.
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealElements = document.querySelectorAll('.reveal');
+let revealObserver;
+function configureReveals() {
+ if (revealObserver) revealObserver.disconnect();
+ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+  document.documentElement.classList.remove('motion-enabled');
+  revealElements.forEach(el => el.classList.add('visible'));
+  return;
+ }
+ revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting) {
+    entry.target.classList.add('visible');
+    revealObserver.unobserve(entry.target);
+   }
+  });
+ }, {threshold:0.05, rootMargin:'0px 0px -80px 0px'});
+ document.documentElement.classList.add('motion-enabled');
+ revealElements.forEach(el => { if (!el.classList.contains('visible')) revealObserver.observe(el); });
+}
+configureReveals();
+
+// Keep the original 0.3 scroll speed; clamp movement to the image's overscan.
+const parallaxBgs = document.querySelectorAll('.parallax-bg');
+let parallaxFrame = 0;
+function updateParallax() {
+ parallaxFrame = 0;
+ parallaxBgs.forEach(bg => {
+  if (reducedMotion.matches) { bg.style.transform = 'none'; return; }
+  const rect = bg.parentElement.getBoundingClientRect();
+  const maxShift = Math.max(0,(bg.offsetHeight - rect.height)/2);
+  const y = Math.max(-maxShift,Math.min(maxShift,-rect.top * 0.3));
+  bg.style.transform = `translateY(${y}px)`;
+ });
+}
+function requestParallax() { if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateParallax); }
+window.addEventListener('scroll',requestParallax,{passive:true});
+window.addEventListener('resize',requestParallax);
+reducedMotion.addEventListener('change',() => { configureReveals(); requestParallax(); });
+requestParallax();
+
+// Native, keyboard-accessible details with the original 400 ms accordion motion.
+document.querySelectorAll('.faq-item').forEach(item => {
+ const summary = item.querySelector('summary');
+ let animation;
+ let closing = false;
+ summary.addEventListener('click',event => {
+  if (reducedMotion.matches || !item.animate) return;
+  event.preventDefault();
+  const startHeight = item.getBoundingClientRect().height;
+  const shouldOpen = !item.open || closing;
+  if (animation) animation.cancel();
+  closing = !shouldOpen;
+  item.open = true;
+  item.style.height = '';
+  const endHeight = shouldOpen ? item.getBoundingClientRect().height : summary.getBoundingClientRect().height + 1;
+  item.style.overflow = 'hidden';
+  animation = item.animate({height:[`${startHeight}px`,`${endHeight}px`]}, {duration:400,easing:'ease'});
+  animation.onfinish = () => {
+   item.open = shouldOpen;
+   item.style.overflow = '';
+   animation = null;
+   closing = false;
+  };
+ });
+});
+
 </script></body></html>
