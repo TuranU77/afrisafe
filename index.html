@@ -1,401 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-// Reload starts at the top, including when an in-page anchor is in the URL.
-if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
-  const resetScroll = () => window.scrollTo({top: 0, left: 0, behavior: 'instant'});
-  resetScroll();
-  window.addEventListener('pageshow', resetScroll, {once: true});
-}
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HAFRIVA – Hamburg-based HSE experts for Africa</title>
-<meta name="description" content="Hamburg-based HSE and occupational health experts supporting German businesses in Africa. Safety systems, travel risk management and practical training.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --navy: #0E2240;
-  --royal: #1B4F72;
-  --gold: #C9A84C;
-  --gold-light: rgba(201,168,76,0.12);
-  --beige: #E8DCC8;
-  --creme: #F7F5F0;
-  --white: #FFFFFF;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body { font-family:'Inter',sans-serif; color:var(--navy); background:var(--white); overflow-x:hidden; }
-.container { max-width:1000px; margin:0 auto; padding:0 64px; }
-
-/* NAV */
-.nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:28px 0;
-  transition: all 0.4s;
-}
-.nav-inner {
-  max-width:1000px; margin:0 auto; padding:0 64px;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.nav.scrolled { background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); padding:18px 0; }
-.nav-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
-.nav-brand svg { width:38px; height:38px; }
-.nav-brand span { font-weight:700; font-size:20px; color:var(--navy); letter-spacing:2px; }
-.nav-links { display:flex; align-items:center; gap:36px; }
-.nav-links a { text-decoration:none; color:var(--white); font-size:13px; font-weight:500; letter-spacing:0.5px; opacity:0.7; transition:all 0.3s; }
-.nav-links a:hover { opacity:1; }
-.nav.scrolled .nav-links a { color:var(--navy); }
-.nav .nav-brand span { color:var(--white); transition:color 0.3s; }
-.nav.scrolled .nav-brand span { color:var(--navy); }
-.nav .nav-brand svg path { fill:var(--white); transition:fill 0.3s; }
-.nav.scrolled .nav-brand svg path { fill:var(--navy); }
-.nav-cta { background:var(--gold); border:1.5px solid var(--gold); color:var(--navy); padding:10px 24px; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.3s; }
-.nav-cta:hover { background:transparent; border-color:var(--white); color:var(--white); }
-.nav.scrolled .nav-cta { background:var(--gold); border-color:var(--gold); color:var(--navy); }
-.nav.scrolled .nav-cta:hover { background:transparent; border-color:var(--navy); color:var(--navy); }
-.hamburger { display:none; background:none; border:none; cursor:pointer; }
-.hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); margin:5px 0; }
-
-/* GEOMETRIC ACCENTS */
-.geo-dot {
-  width:8px; height:8px; border-radius:50%; background:var(--gold); display:inline-block;
-}
-
-/* HERO */
-.hero {
-  min-height:100vh; display:flex; align-items:flex-end; position:relative;
-  padding:0;
-  background:
-    linear-gradient(180deg, rgba(14,34,64,0.18) 0%, rgba(14,34,64,0.45) 55%, rgba(14,34,64,0.82) 100%),
-    url('bild_4.png') center/cover no-repeat;
-}
-.hero .container { width:100%; position:relative; }
-.hero-inner {
-  display:flex; flex-direction:column; justify-content:flex-end;
-  padding:0 0 100px; min-height:100vh;
-}
-.hero-text { position:relative; text-align:left; max-width:900px; }
-.hero-eyebrow { text-shadow:0 1px 8px #000; font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:32px; display:flex; align-items:center; gap:12px; justify-content:flex-start; }
-.hero h1 {
-  font-family:'Playfair Display',serif; font-size:56px; font-weight:700;
-  line-height:1.0; color:var(--white); margin:0 0 32px 0;
-}
-.hero h1 em { font-style:italic; color:var(--gold); }
-.hero-desc { font-size:17px; line-height:1.8; color:rgba(255,255,255,0.7); max-width:500px; margin-bottom:20px; text-align:left; }
-.hero-standards { font-size:11px; font-weight:500; letter-spacing:1.5px; color:rgba(255,255,255,0.35); }
-.hero-badge {
-  position:absolute; bottom:80px; right:64px;
-  width:160px; height:160px; background:rgba(201,168,76,0.9);
-  display:flex; align-items:center; justify-content:center;
-  backdrop-filter:blur(4px);
-}
-.hero-badge-inner { text-align:center; }
-.hero-badge .num { font-family:'Playfair Display',serif; font-size:42px; font-weight:700; color:var(--white); }
-.hero-badge .label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--white); opacity:0.85; margin-top:4px; }
-
-/* STATS ROW */
-.stats-row {
-  padding:60px 0; display:flex; justify-content:center; gap:80px;
-  border-bottom:1px solid rgba(14,34,64,0.08);
-}
-.stat-item { text-align:center; }
-.stat-num { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:var(--navy); }
-.stat-label { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; opacity:0.4; margin-top:6px; }
-.stat-sub { font-size:9px; font-weight:500; letter-spacing:1px; text-transform:uppercase; opacity:0.25; margin-top:3px; }
-
-/* SECTIONS */
-.section { padding:120px 0; }
-.section-sm { padding:80px 0; }
-.eyebrow { font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:flex; align-items:center; gap:12px; }
-.section-title {
-  font-family:'Playfair Display',serif; font-size:48px; font-weight:700;
-  line-height:1.12; margin-bottom:20px; max-width:560px;
-}
-.section-desc { font-size:16px; line-height:1.8; opacity:0.5; max-width:480px; margin-bottom:48px; }
-
-/* HAFTUNG */
-.haftung-section { background:var(--creme); padding:120px 0; }
-.haftung-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.haftung-items { display:flex; flex-direction:column; gap:28px; }
-.haftung-item { display:flex; gap:16px; align-items:flex-start; }
-.haftung-item .h-icon { flex-shrink:0; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--gold); }
-.haftung-item h3 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:4px; }
-.haftung-item p { font-size:14px; line-height:1.7; opacity:0.5; }
-
-/* TEAM */
-.team-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
-.team-member { position:relative; }
-.team-photo {
-  width:100%; height:420px; background-size:cover; background-position:center center;
-  margin-bottom:28px; position:relative;
-}
-.team-member .role { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
-.team-member h3 { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; margin-bottom:12px; }
-.team-member p { font-size:14px; line-height:1.8; opacity:0.5; }
-
-/* CASES */
-.cases-section { padding:120px 0; }
-.cases-layout { display:grid; grid-template-columns:repeat(2,1fr); gap:36px; margin-top:48px; }
-.case-card { padding:32px; border:1px solid rgba(14,34,64,0.08); transition:border-color 0.3s; display:flex; flex-direction:column; }
-.case-card:hover { border-color:var(--gold); }
-.case-card .case-icon { font-size:36px; line-height:1; height:40px; display:flex; align-items:center; margin-bottom:20px; opacity:0.3; }
-.case-card h3 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:8px; min-height:48px; }
-.case-card p { font-size:14px; line-height:1.7; opacity:0.5; }
-.case-card .case-tag { display:inline-block; font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-top:12px; }
-
-/* ABLAUF */
-.ablauf-layout { display:grid; grid-template-columns:repeat(4,1fr); gap:48px; margin-top:48px; }
-.ablauf-step { position:relative; }
-.ablauf-num { font-family:'Playfair Display',serif; font-size:56px; font-weight:700; color:var(--beige); line-height:1; margin-bottom:16px; }
-.ablauf-step h3 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:8px; }
-.ablauf-step p { font-size:13px; line-height:1.7; opacity:0.45; }
-
-/* IMAGES ROW */
-.images-row { display:grid; grid-template-columns:2fr 1fr; gap:0; padding:0; }
-.images-row .img-block { height:400px; position:relative; overflow:hidden; }
-.images-row .img-block .parallax-bg { position:absolute; top:-20%; left:0; right:0; height:140%; background-size:cover; background-position:center; will-change:transform; }
-
-/* PILLARS */
-.pillars-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:60px; }
-.pillar { position:relative; }
-.pillar-num { font-family:'Playfair Display',serif; font-size:72px; font-weight:700; line-height:1; margin-bottom:20px; color:var(--beige); }
-.pillar h3 { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; margin-bottom:10px; }
-.pillar p { font-size:14px; line-height:1.7; opacity:0.5; margin-bottom:16px; }
-.pillar ul { list-style:none; }
-.pillar ul li { font-size:13px; padding:4px 0; opacity:0.45; position:relative; padding-left:16px; }
-.pillar ul li::before { content:''; position:absolute; left:0; top:11px; width:6px; height:1px; background:var(--gold); }
-
-/* ZIELGRUPPE */
-.ziel-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.ziel-items { display:flex; flex-direction:column; gap:36px; }
-.ziel-item { padding-left:24px; border-left:2px solid var(--beige); }
-.ziel-item h3 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:6px; }
-.ziel-item p { font-size:14px; line-height:1.7; opacity:0.5; }
-
-/* BRANCHEN */
-.branchen-section { background:var(--navy); padding:100px 0; }
-.branchen { display:flex; justify-content:center; flex-wrap:wrap; gap:36px; }
-.branche { text-align:center; opacity:0.5; transition:opacity 0.3s; }
-.branche:hover { opacity:1; }
-.branche-icon { margin-bottom:20px; }
-.branche-icon svg { width:56px; height:56px; stroke:var(--white); stroke-width:1.2; fill:none; }
-.branche-label { font-size:14px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--white); }
-
-/* FAQ */
-.faq-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.faq-list { }
-.faq-item { border-bottom:1px solid rgba(14,34,64,0.08); }
-.faq-q {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:24px 0; cursor:pointer; font-size:16px; font-weight:500;
-  transition:color 0.2s;
-}
-.faq-q:hover { color:var(--gold); }
-.faq-q .arrow { font-size:16px; transition:transform 0.3s; opacity:0.25; font-weight:300; }
-.faq-item.open .arrow { transform:rotate(45deg); color:var(--gold); opacity:1; }
-.faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
-.faq-item.open .faq-a { max-height:200px; }
-.faq-a p { font-size:14px; line-height:1.8; opacity:0.5; padding-bottom:24px; }
-
-/* CONTACT */
-.contact-section { background:var(--navy); padding:120px 0; position:relative; overflow:hidden; }
-.contact-signet { position:absolute; top:-120px; right:-120px; width:500px; height:500px; pointer-events:none; }
-.contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.contact-left .eyebrow { color:var(--gold); }
-.contact-left .section-title { color:var(--white); }
-.contact-left .section-desc { color:rgba(255,255,255,0.4); }
-.contact-info { margin-top:40px; display:flex; flex-direction:column; gap:20px; }
-.contact-info-item { display:flex; gap:16px; align-items:center; }
-.contact-info-item .ci-icon { color:var(--gold); font-size:16px; width:20px; text-align:center; }
-.contact-info-item span { color:rgba(255,255,255,0.5); font-size:14px; }
-
-.contact-form label { display:block; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px; }
-.contact-form input, .contact-form textarea {
-  width:100%; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.12);
-  padding:14px 0; color:var(--white); font-size:15px; font-family:'Inter',sans-serif;
-  outline:none; margin-bottom:24px; transition:border-color 0.3s;
-}
-.contact-form input:focus, .contact-form textarea:focus { border-color:var(--gold); }
-.contact-form textarea { height:80px; resize:none; }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color:rgba(255,255,255,0.2); }
-.contact-submit {
-  background:none; border:1.5px solid var(--gold); color:var(--gold); padding:14px 36px;
-  font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
-  cursor:pointer; transition:all 0.3s; margin-top:8px;
-}
-.contact-submit:hover { background:var(--gold); color:var(--navy); }
-
-/* FOOTER */
-.footer { padding:40px 0; border-top:1px solid rgba(14,34,64,0.06); }
-.footer-inner { display:flex; justify-content:space-between; align-items:center; gap:24px; }
-.footer-brand { display:flex; align-items:center; gap:8px; }
-.footer-brand svg { width:20px; height:20px; }
-.footer-brand span { font-size:13px; font-weight:700; letter-spacing:2px; color:var(--navy); }
-.footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
-.footer-links a { font-size:11px; color:var(--navy); opacity:0.3; text-decoration:none; letter-spacing:0.5px; transition:opacity 0.2s; }
-.footer-links a:hover { opacity:0.7; }
-.footer-copy { font-size:11px; opacity:0.25; }
-
-/* REVEAL */
-.reveal { opacity:1; transform:none; }
-.motion-enabled .reveal { opacity:0; transform:translateY(48px); }
-.motion-enabled .reveal.visible { opacity:1; transform:translateY(0); transition: opacity 1.8s ease-out, transform 1.8s ease-out; }
-.motion-enabled .reveal.visible.reveal-delay-1 { transition-delay:0.25s; }
-.motion-enabled .reveal.visible.reveal-delay-2 { transition-delay:0.5s; }
-.motion-enabled .reveal.visible.reveal-delay-3 { transition-delay:0.75s; }
-
-/* RESPONSIVE */
-@media(max-width:1024px) {
-  .container { padding:0 32px; }
-  .haftung-layout, .pillars-layout, .team-layout, .ziel-layout, .faq-layout, .contact-layout, .cases-layout, .ablauf-layout { grid-template-columns:1fr; gap:48px; }
-  .hero-inner { padding:0 0 60px; }
-  .hero h1 { font-size:56px; }
-  .hero-badge { width:120px; height:120px; bottom:60px; right:32px; }
-  .hero-badge .num { font-size:32px; }
-  .hero-scroll { display:none; }
-  .section { padding:80px 0; }
-  .section-title { font-size:36px; }
-  .images-row { grid-template-columns:1fr; }
-  .stats-row { gap:40px; flex-wrap:wrap; }
-  .branchen { flex-wrap:wrap; gap:24px; }
-  .nav { padding:18px 24px; }
-  .nav-links { display:none; }
-  .hamburger { display:block; }
-  .nav-links.open { display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--white); padding:24px 32px; gap:16px; border-bottom:1px solid rgba(14,34,64,0.08); }
-  .footer-inner { flex-direction:column; gap:20px; text-align:center; }
-  .footer-links { justify-content:center; flex-wrap:wrap; }
-  .team-photo { height:320px; }
-  .haftung-section { padding:80px 0; }
-  .cases-section { padding:80px 0; }
-}
-@media(max-width:600px) {
-  .container { padding:0 24px; }
-  .hero h1 { font-size:42px; }
-  .hero-badge { display:none; }
-  .hero-desc { font-size:15px; }
-  .stats-row { gap:24px; }
-  .stat-num { font-size:32px; }
-  .pillar-num { font-size:56px; }
-  .section { padding:60px 0; }
-  .contact-section { padding:80px 0; }
-}
-
-/* Bilingual network edition */
-.haftung-layout > *, .team-layout > *, .cases-layout > *, .ablauf-layout > *, .pillars-layout > *, .ziel-layout > *, .faq-layout > *, .contact-layout > *, .stats-row > * { min-width:0; }
-h1,h2,h3,p,li,.stat-label,.stat-sub { overflow-wrap:break-word; }
-.stat-label,.stat-sub { hyphens:auto; }
-.nav-inner { max-width:1280px; gap:24px; padding:0 32px; }
-.nav-links { gap:22px; }
-.nav-tools { display:flex; align-items:center; gap:20px; }
-.language-switch { display:flex; gap:2px; border:0; padding:3px; color:white; }
-.language-switch button { font:600 12px Inter,sans-serif; padding:7px 9px; border:0; background:transparent; color:inherit; cursor:pointer; }
-.language-switch button[aria-pressed="true"] { background:var(--gold); color:var(--navy); }
-.nav.scrolled .language-switch { color:var(--navy); }
-.hamburger span { background:white; }
-.nav.scrolled .hamburger span { background:var(--navy); }
-.nav-cta { white-space:nowrap; text-decoration:none; opacity:1!important; color:var(--navy)!important; }
-.hero h1 { max-width:700px; font-size:clamp(40px,5.3vw,64px); line-height:1.08; }
-.hero-desc { max-width:600px; color:rgba(255,255,255,.87); }
-.hero-inner { padding-top:160px; }
-.hero-standards { color:rgba(255,255,255,.8); letter-spacing:1px; margin-bottom:28px; }
-.hero-action { display:inline-block; background:var(--gold); color:var(--navy); padding:16px 24px; font-size:13px; font-weight:600; text-decoration:none; }
-.hero-badge { display:none; }
-.stats-row { gap:40px; justify-content:space-between; }
-.stat-num { font-size:30px; }
-.stat-label,.stat-sub { opacity:.75; }
-.section-title { font-weight:700; }
-.section-desc,.pillar p,.pillar ul li,.team-member p,.case-card p,.ziel-item p,.haftung-item p,.ablauf-step p,.faq-a p { opacity:.78; }
-.team-photo { background-position: center; }
-.team-link { display:inline-block; margin-top:16px; color:var(--royal); font-size:13px; text-underline-offset:4px; }
-.eyebrow { color:#896b20; }
-.contact-left .eyebrow { color:var(--gold); }
-.contact-left .section-desc,.contact-info-item span { color:rgba(255,255,255,.8); }
-.contact-card { border:1px solid rgba(255,255,255,.25); padding:32px; color:white; }
-.contact-card h3 { font:700 28px 'Playfair Display',serif; margin-bottom:18px; }
-.contact-card p { font-size:15px; line-height:1.8; color:rgba(255,255,255,.8); }
-.contact-placeholder { margin-top:24px; padding-top:24px; border-top:1px solid rgba(255,255,255,.2); }
-.faq-item summary { list-style:none; }
-.faq-item summary::-webkit-details-marker { display:none; }
-.faq-item summary::after { content:'+'; margin-left:18px; color:#896b20; transition:transform .3s; }
-.faq-item[open] summary::after { transform:rotate(45deg); }
-.faq-a { max-height:none; transition:none; }
-.footer-copy,.footer-links a,.footer-placeholder { opacity:.7; }
-.footer-placeholder { font-size:11px; }
-section[id] { scroll-margin-top:100px; }
-:focus-visible { outline:3px solid #C9A84C; outline-offset:5px; }
-.skip-link { position:fixed; left:16px; top:-100px; z-index:200; background:white; padding:12px; color:var(--navy); }
-.skip-link:focus { top:12px; }
-@media(max-width:1100px) {
- .nav { padding:18px 0; }
- .nav-links { display:none; }
- .hamburger { display:block; }
- .nav-links.open { display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:white; padding:24px 32px; gap:22px; box-shadow:0 10px 20px #0001; }
- .nav .nav-links.open a { color:var(--navy); opacity:1; }
- .nav .nav-links.open .nav-cta:hover { background:var(--beige); }
-}
-@media(max-width:600px) {
- .nav-inner { padding:0 20px; gap:12px; }
- .nav-brand span { font-size:16px; }
- .nav-brand svg { width:30px; height:30px; }
- .nav-tools { gap:14px; }
- .language-switch button { padding:6px; }
- .hero-inner { min-height:100svh; padding-bottom:48px; padding-top:140px; }
- .hero h1 { font-size:40px; }
- .hero-eyebrow { font-size:9px; letter-spacing:2px; }
- .stats-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
- .contact-card { padding:24px; }
-}
-@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .motion-enabled .reveal { opacity:1; transform:none; } .parallax-bg { transform:none!important; } *,*::before,*::after { transition:none!important; animation:none!important; } }
-
-/* HAFRIVA logo: original colours on light surfaces, white over the hero. */
-.nav-brand { flex-shrink:0; }
-.nav-brand img { display:block; width:200px; height:auto; filter:brightness(0) invert(1); transition:filter .3s; }
-.nav.scrolled .nav-brand img { filter:none; }
-.footer-brand img { display:block; width:185px; height:auto; }
-@media(max-width:600px) {
- .nav-brand img { width:145px; }
- .nav-inner { gap:10px; }
-}
-</style>
+<meta name="description" content="Hamburg-based network supporting German businesses in Africa with HSE, occupational health, travel risk management, psychological counselling and training.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HAFRIVA">
+<meta property="og:title" content="HAFRIVA – Hamburg-based HSE experts for Africa" data-meta-i18n="document.title">
+<meta property="og:description" content="Hamburg-based network supporting German businesses in Africa with HSE, occupational health, travel risk management, psychological counselling and training." data-meta-i18n="document.description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HAFRIVA – Hamburg-based HSE experts for Africa" data-meta-i18n="document.title">
+<meta name="twitter:description" content="Hamburg-based network supporting German businesses in Africa with HSE, occupational health, travel risk management, psychological counselling and training." data-meta-i18n="document.description">
+<style id="critical-css">:root{--navy:#0E2240;--royal:#1B4F72;--gold:#C9A84C;--gold-ink:#896B20;--number-ink:#9C8458;--beige:#E8DCC8;--cream:#F7F5F0;--white:#FFFFFF}*{margin:0;padding:0;box-sizing:border-box}body{font-family:"Inter",sans-serif;overflow-x:hidden}.container{max-width:1000px;margin:0 auto;padding:0 64px}.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 0;transition:all 0.4s}.nav-inner{margin:0 auto;display:flex;align-items:center;justify-content:space-between;max-width:1280px;gap:24px;padding:0 32px}.nav.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);padding:18px 0}.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}.nav-links{display:flex;align-items:center;gap:22px}.nav-links a{text-decoration:none;color:var(--white);font-size:13px;font-weight:500;letter-spacing:0.5px;opacity:0.7;transition:all 0.3s}.nav-links a:hover{opacity:1}.nav.scrolled .nav-links a{color:var(--navy)}.nav-cta{background:var(--gold);border:1.5px solid var(--gold);padding:10px 24px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;white-space:nowrap;text-decoration:none}.nav-links .nav-cta{opacity:1;color:var(--navy)}.nav-cta:hover{background:transparent;border-color:var(--white);color:var(--white)}.nav.scrolled .nav-cta{background:var(--gold);border-color:var(--gold);color:var(--navy)}.nav.scrolled .nav-cta:hover{background:transparent;border-color:var(--navy);color:var(--navy)}.hamburger{display:none;background:none;border:none;cursor:pointer}.hamburger span{display:block;width:22px;height:1.5px;margin:5px 0;background:white}.hero{display:flex;position:relative;padding:0;background:var(--navy);min-height:760px;align-items:center}.hero-text{position:relative;text-align:left;max-width:900px;min-width:0}.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:26px;text-shadow:none}.hero h1{font-family:"Playfair Display",serif;font-weight:700;color:var(--white);margin:0 0 32px;max-width:700px;line-height:1.08;font-size:clamp(40px,4vw,58px)}.hero-desc{line-height:1.8;margin-bottom:20px;text-align:left;max-width:600px;color:rgba(255,255,255,.87);font-size:16px}.hero-standards{font-size:11px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:1px;margin-bottom:28px}.competency-strip{padding:60px 0;border-bottom:1px solid rgba(14,34,64,0.08);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;scroll-margin-top:100px}.competency-item{text-align:center}.competency-title{font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);font-size:clamp(24px,2.5vw,30px);line-height:1.25}.competency-subtitle{font-weight:600;text-transform:uppercase;overflow-wrap:break-word;opacity:.75;font-size:10px;letter-spacing:.65px;line-height:1.6;margin-top:10px;hyphens:none;text-wrap:balance}.section{padding:120px 0}.eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}.section-title{font-family:"Playfair Display",serif;font-size:48px;line-height:1.12;margin-bottom:20px;max-width:560px;font-weight:700}.section-desc{font-size:16px;line-height:1.8;max-width:480px;margin-bottom:48px}.approach-section{padding:120px 0}.approach-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}.approach-items{display:flex;flex-direction:column;gap:28px}.approach-item{display:flex;gap:16px;align-items:flex-start}.approach-item .approach-icon{flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px}.approach-icon svg{display:block;width:24px;height:24px}.approach-item h3{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;margin-bottom:4px}.approach-item p{font-size:14px;line-height:1.7}.team-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px 56px}.team-member{position:relative}.team-photo{margin-bottom:28px;position:relative;display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}.team-member h3{font-family:"Playfair Display",serif;font-weight:700;margin-bottom:12px;font-size:26px;line-height:1.3}.team-member p{font-size:14px;line-height:1.8}.cases-section{padding:120px 0}.cases-section .section-title{max-width:100%;text-wrap:balance}.cases-layout{display:grid;grid-template-columns:repeat(2,1fr);gap:36px;margin-top:48px}.case-card{padding:32px;border:1px solid rgba(14,34,64,0.08);display:flex;flex-direction:column}.case-card h3{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;margin-bottom:8px;min-height:48px}.case-card p{font-size:14px;line-height:1.7}.process-layout{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-top:48px}.process-step{position:relative}.process-number{font-family:"Playfair Display",serif;font-size:56px;font-weight:700;line-height:1;margin-bottom:16px}.process-step h3{font-family:"Playfair Display",serif;font-size:18px;font-weight:700;margin-bottom:8px}.process-step p{font-size:13px;line-height:1.7}.images-row{grid-template-columns:2fr 1fr;gap:0;display:block;max-width:1400px;margin:0 auto;padding:0 32px}.images-row .img-block{position:relative;overflow:hidden;height:auto;aspect-ratio:3/2}.images-row .img-block .parallax-image{position:absolute;left:0;right:0;top:-6%;height:112%;width:100%;object-fit:cover;object-position:center}.pillars-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px 56px}.pillar{position:relative}.pillar-num{font-family:"Playfair Display",serif;font-size:72px;font-weight:700;line-height:1;margin-bottom:20px}.pillar h3{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;margin-bottom:10px}.pillar p{font-size:14px;line-height:1.7;margin-bottom:16px}.pillar ul{list-style:none}.pillar ul li{font-size:13px;padding:4px 0 4px 16px;position:relative}.pillar ul li::before{content:"";position:absolute;left:0;top:0.8em;width:5px;height:5px}.audience-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}.audience-items{display:flex;flex-direction:column;gap:36px}.audience-item{padding-left:24px;border-left:2px solid var(--beige)}.audience-item h3{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;margin-bottom:6px}.audience-item p{font-size:14px;line-height:1.7}.industries-section{padding:100px 0}.industries{display:flex;justify-content:center;flex-wrap:wrap;gap:36px}.industry-label{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase}.faq-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}.faq-item{border-bottom:1px solid rgba(14,34,64,0.08)}.faq-question{display:flex;justify-content:space-between;align-items:center;padding:24px 0;font-size:16px;font-weight:500}.faq-answer{overflow:hidden;max-height:none}.faq-answer p{font-size:14px;line-height:1.8;padding-bottom:24px}.contact-section{padding:120px 0;position:relative;overflow:hidden}.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}.contact-info{margin-top:40px;display:flex;flex-direction:column;gap:20px}.footer{padding:40px 0;border-top:1px solid rgba(14,34,64,0.06)}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px}.footer-brand{display:flex;align-items:center;gap:8px}.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}.footer-links a{font-size:11px;letter-spacing:0.5px}.footer-copy{font-size:11px}.reveal{opacity:1;transform:none}.motion-enabled .reveal{opacity:0;transform:translateY(48px)}.motion-enabled .reveal.visible{opacity:1;transform:translateY(0);transition:opacity 1.8s ease-out,transform 1.8s ease-out}.motion-enabled .reveal.visible.reveal-delay-1{transition-delay:0.25s}.motion-enabled .reveal.visible.reveal-delay-2{transition-delay:0.5s}.motion-enabled .reveal.visible.reveal-delay-3{transition-delay:0.75s}.approach-layout>*,.team-layout>*,.cases-layout>*,.process-layout>*,.pillars-layout>*,.audience-layout>*,.faq-layout>*,.contact-layout>*,.competency-strip>*{min-width:0}h1,h2,h3,p,li{overflow-wrap:break-word}.nav-tools{display:flex;align-items:center;gap:20px}.language-switch{display:flex;gap:2px;border:0;padding:3px;color:white}.language-switch button{font:600 12px Inter,sans-serif;padding:7px 9px;border:0;background:transparent;color:inherit;cursor:pointer}.language-switch button[aria-pressed="true"]{background:var(--gold);color:var(--navy)}.nav.scrolled .language-switch{color:var(--navy)}.nav.scrolled .hamburger span{background:var(--navy)}.hero-inner{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:56px;align-items:center;min-height:760px;padding:170px 0 100px}.hero-action{display:inline-block;background:var(--gold);color:var(--navy);padding:16px 24px;font-size:13px;font-weight:600;text-decoration:none}.team-link{display:inline-block;margin-top:16px;font-size:13px}.contact-card{border:1px solid rgba(255,255,255,.25);padding:32px}.contact-card h3{font:700 28px "Playfair Display",serif;margin-bottom:18px}.contact-card p{font-size:15px;line-height:1.8}.contact-placeholder{margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2)}.faq-item summary{list-style:none}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary::after{content:"+";margin-left:18px}.footer-placeholder{font-size:11px}section[id]{scroll-margin-top:100px}.skip-link{position:fixed;left:16px;top:-100px;z-index:200;background:white;padding:12px;color:var(--navy)}.skip-link:focus{top:12px}.nav-brand img{display:block;width:200px;height:auto;filter:brightness(0) invert(1);transition:filter .3s}.nav.scrolled .nav-brand img{filter:none}.footer-brand img{display:block;width:185px;height:auto}.hero>.container{width:100%;position:relative;max-width:1440px;padding:0 64px}.hero-photo{min-width:0;position:relative;margin:0;aspect-ratio:3 / 2}.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2}.team-container{max-width:1120px}.team-member .profile-qualification{white-space:pre-line;font-size:14px;line-height:1.75;margin-bottom:18px}.team-member .profile-expertise{white-space:pre-line;margin-bottom:24px}.profile-quote{margin:0;border-left:2px solid var(--gold);padding-left:18px;font:italic 22px/1.5 "Playfair Display",serif}#psychologische-beratung{scroll-margin-top:120px}.competency-container{max-width:1200px}.motion-enabled .reveal:focus-within,.motion-enabled .reveal.visible:focus-within{opacity:1;transform:none;transition:none;transition-delay:0s}@media (max-width:1100px){.nav{padding:18px 0}.nav-links{display:none}.hamburger{display:block;width:44px;height:44px;flex-shrink:0}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:24px 32px;box-shadow:0 10px 20px #0001;max-height:calc(100svh - 90px);overflow-y:auto;overscroll-behavior:contain;gap:8px}.nav-links.open .nav-cta:hover{background:var(--beige)}.hero>.container{padding:0 32px}.hero-inner{grid-template-columns:1fr;gap:40px;min-height:0;padding:150px 0 64px}.hero{min-height:0}.hero-text{max-width:760px}.hero h1{max-width:760px;font-size:clamp(40px,5.5vw,58px)}.hero-photo{width:100%;max-width:800px}.language-switch button{min-width:44px;min-height:44px}.hamburger span{margin:5px auto}.nav-tools{gap:8px}.nav-links.open a{color:var(--navy);opacity:1;display:flex;align-items:center;justify-content:center;min-height:44px}.team-link,.footer-links a{display:inline-flex;align-items:center;min-height:44px}}@media (max-width:1024px){.container{padding:0 32px}.approach-layout,.audience-layout,.faq-layout,.contact-layout,.cases-layout,.process-layout{grid-template-columns:1fr;gap:48px}.section{padding:80px 0}.section-title{font-size:36px}.images-row{grid-template-columns:1fr}.industries{flex-wrap:wrap;gap:24px}.nav-links.open{border-bottom:1px solid rgba(14,34,64,0.08)}.footer-inner{flex-direction:column;gap:20px;text-align:center}.footer-links{justify-content:center;flex-wrap:wrap}.approach-section,.cases-section{padding:80px 0}}@media (min-width:601px) and (max-width:1024px){.team-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 32px}}@media (max-width:900px){.competency-strip{grid-template-columns:1fr;gap:30px;padding:40px 0}.competency-title{font-size:30px}.competency-subtitle{margin-top:6px}}@media (max-width:600px){.container{padding:0 24px}.pillar-num{font-size:56px}.section{padding:60px 0}.contact-section{padding:80px 0}.nav-inner{padding:0 20px;gap:10px}.language-switch button{padding:6px}.hero-inner{padding:112px 0 56px;gap:32px}.contact-card{padding:24px}.nav-brand img{width:145px}.hero>.container{padding:0 24px}.hero h1{font-size:clamp(34px,8.5vw,46px);margin-bottom:24px}.hero-desc{font-size:15px;margin-bottom:16px}.hero-eyebrow{font-size:9px;letter-spacing:2px;margin-bottom:20px}.hero-standards{line-height:1.7;margin-bottom:20px}.images-row{padding:0 16px}.team-layout{grid-template-columns:1fr;gap:56px}.team-photo{max-width:none}.team-member h3{font-size:25px}.pillars-layout{grid-template-columns:1fr;gap:48px}.case-card{padding:24px}.case-card h3{min-height:0;margin-bottom:14px}.profile-quote{font-size:20px}}@media (max-width:360px){.nav-brand img{width:120px}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.motion-enabled .reveal{opacity:1;transform:none}.parallax-image{transform:none !important}*,*::before,*::after{transition:none !important;animation:none !important}}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" type="image/webp" href="images/shooting-2026/team-hamburg-1200.webp" imagesrcset="images/shooting-2026/team-hamburg-360.webp 360w, images/shooting-2026/team-hamburg-480.webp 480w, images/shooting-2026/team-hamburg-720.webp 720w, images/shooting-2026/team-hamburg-1200.webp 1200w, images/shooting-2026/team-hamburg-1800.webp 1800w" imagesizes="(max-width:600px) calc(100vw - 48px), (max-width:864px) calc(100vw - 64px), (max-width:1100px) 800px, (max-width:1440px) calc(52.5vw - 96.6px), 660px" fetchpriority="high">
+<link rel="preload" href="website/styles/site.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600;700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link rel="stylesheet" href="website/styles/site.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600;700&display=optional">
+</noscript>
+<script defer src="website/scripts/reload.js"></script>
+<script type="module" src="website/scripts/main.js"></script>
+<link rel="modulepreload" href="website/scripts/translations.js">
 </head>
 <body>
 <a class="skip-link" href="#main">
-<span data-i18n="t6">Skip to content</span>
+<span data-i18n="navigation.skip">Skip to content</span>
 </a>
-<nav class="nav" id="nav" aria-label="Main navigation">
+<header>
+<nav class="nav" id="nav" aria-label="Main navigation" data-aria-label-i18n="navigation.label">
 <div class="nav-inner">
-<a href="#" class="nav-brand">
-<img src="hafriva-logo-v2.png" width="345" height="92" alt="HAFRIVA – German Health &amp; Safety">
+<a href="#main" class="nav-brand">
+<img src="images/hafriva-logo-v2.png" width="345" height="92" alt="HAFRIVA – home" decoding="async" loading="eager" data-alt-en="HAFRIVA – home" data-alt-de="HAFRIVA – Startseite">
 </a>
 <div class="nav-links" id="navLinks">
 <a href="#leistungen">
-<span data-i18n="t1">Services</span>
+<span data-i18n="navigation.services">Services</span>
 </a>
 <a href="#team">
-<span data-i18n="t2">Network</span>
+<span data-i18n="navigation.network">Network</span>
 </a>
 <a href="#zielgruppe">
-<span data-i18n="t3">For whom</span>
+<span data-i18n="navigation.audience">For whom</span>
 </a>
 <a href="#faq">
-<span data-i18n="t4">FAQ</span>
+<span data-i18n="navigation.faq">FAQ</span>
 </a>
 <a href="#kontakt">
-<span data-i18n="t5">Contact</span>
+<span data-i18n="navigation.contact">Contact</span>
 </a>
 <a class="nav-cta" href="#kontakt">
-<span data-i18n="t7">Let’s talk</span>
+<span data-i18n="navigation.cta">Let’s talk</span>
 </a>
 </div>
 <div class="nav-tools">
-<div class="language-switch" role="group" aria-label="Language / Sprache">
-<button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
-<button type="button" data-lang="de" lang="de" aria-label="Deutsch" aria-pressed="false">DE</button>
+<div class="language-switch" role="group" aria-label="Choose language" data-aria-label-i18n="language.label">
+<button type="button" data-lang="en" lang="en" aria-label="EN – English" aria-pressed="true">EN</button>
+<button type="button" data-lang="de" lang="de" aria-label="DE – Deutsch" aria-pressed="false">DE</button>
 </div>
 <button type="button" class="hamburger" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
 <span>
@@ -408,328 +72,358 @@ section[id] { scroll-margin-top:100px; }
 </div>
 </div>
 </nav>
-<main id="main">
-<section class="hero">
+</header>
+<main id="main" tabindex="-1">
+<section class="hero" aria-labelledby="hero-title">
 <div class="container">
 <div class="hero-inner">
 <div class="hero-text">
-<div class="hero-eyebrow" data-i18n="t8">Health &amp; Safety International</div>
-<h1 data-i18n="t9">Hamburg-based HSE experts for your business in Africa.</h1>
-<p class="hero-desc" data-i18n="t10">Your bridge between German expertise and your business in Africa — combining occupational safety, occupational health and travel risk management.</p>
-<div class="hero-standards" data-i18n="t11">One network. Practical support. Direct access to experts.</div>
+<div class="hero-eyebrow" data-i18n="hero.eyebrow">Health &amp; Safety International</div>
+<h1 id="hero-title" data-i18n="hero.title">Hamburg-based HSE experts for your business in Africa.</h1>
+<p class="hero-desc" data-i18n="hero.description">Your bridge between German expertise and your business in Africa — combining occupational safety, occupational health, travel risk management and psychological counselling.</p>
+<div class="hero-standards" data-i18n="hero.summary">One network. Practical support. Direct access to experts.</div>
 <a class="hero-action" href="#kontakt">
-<span data-i18n="t12">Discuss your project →</span>
+<span data-i18n="hero.cta">Discuss your project →</span>
 </a>
 </div>
+<figure class="hero-photo reveal reveal-delay-1">
+<img src="images/shooting-2026/team-hamburg-1200.webp" srcset="images/shooting-2026/team-hamburg-360.webp 360w, images/shooting-2026/team-hamburg-480.webp 480w, images/shooting-2026/team-hamburg-720.webp 720w, images/shooting-2026/team-hamburg-1200.webp 1200w, images/shooting-2026/team-hamburg-1800.webp 1800w" sizes="(max-width:600px) calc(100vw - 48px), (max-width:864px) calc(100vw - 64px), (max-width:1100px) 800px, (max-width:1440px) calc(52.5vw - 96.6px), 660px" width="1800" height="1200" fetchpriority="high" alt="The three HAFRIVA experts together in Hamburg" data-alt-en="The three HAFRIVA experts together in Hamburg" data-alt-de="Die drei HAFRIVA-Experten gemeinsam in Hamburg" decoding="async" loading="eager">
+</figure>
 </div>
 </div>
 </section>
+<div class="container competency-container">
+<div class="competency-strip reveal" id="kompetenzen">
+<div class="competency-item">
+<div class="competency-title" data-i18n="competencies.safety.title">Occupational safety</div>
+<div class="competency-subtitle" data-i18n="competencies.safety.subtitle">Systems &amp; safety culture</div>
+</div>
+<div class="competency-item">
+<div class="competency-title" data-i18n="competencies.medicine.title">Medicine</div>
+<div class="competency-subtitle" data-i18n="competencies.medicine.subtitle">Occupational &amp; travel medicine</div>
+</div>
+<div class="competency-item">
+<div class="competency-title" data-i18n="competencies.psychology.title">Psychology</div>
+<div class="competency-subtitle" data-i18n="competencies.psychology.subtitle">Counselling &amp; individual support</div>
+</div>
+</div>
+</div>
+<section class="approach-section" id="ansatz" aria-labelledby="approach-title" tabindex="-1">
 <div class="container">
-<div class="stats-row reveal">
-<div class="stat-item">
-<div class="stat-num" data-i18n="t13">Hamburg</div>
-<div class="stat-label" data-i18n="t14">Our home base</div>
-</div>
-<div class="stat-item">
-<div class="stat-num" data-i18n="t15">HSE</div>
-<div class="stat-label" data-i18n="t16">Safety systems &amp; culture</div>
-</div>
-<div class="stat-item">
-<div class="stat-num" data-i18n="t17">Health</div>
-<div class="stat-label" data-i18n="t18">Occupational &amp; travel health</div>
-</div>
-<div class="stat-item">
-<div class="stat-num" data-i18n="t19">Africa</div>
-<div class="stat-label" data-i18n="t20">Your business focus</div>
-</div>
-</div>
-</div>
-<section class="haftung-section" id="ansatz">
-<div class="container">
-<div class="haftung-layout reveal">
+<div class="approach-layout reveal">
 <div>
-<div class="eyebrow" data-i18n="t21">Our approach</div>
-<h2 class="section-title" data-i18n="t22">A safety culture that works in practice.</h2>
-<p class="section-desc" data-i18n="t23">Strong systems matter when people put them into practice. We connect technical, medical and organisational expertise for your operations in Africa.</p>
+<div class="eyebrow" data-i18n="approach.eyebrow">Our approach</div>
+<h2 class="section-title" id="approach-title" data-i18n="approach.title">A safety culture that works in practice.</h2>
+<p class="section-desc" data-i18n="approach.description">Strong systems matter when people put them into practice. We connect technical, medical, psychological and organisational expertise for your operations in Africa.</p>
 </div>
-<div class="haftung-items">
-<div class="haftung-item">
-<div class="h-icon" aria-hidden="true">↗</div>
+<div class="approach-items">
+<div class="approach-item">
+<div class="approach-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></svg></div>
 <div>
-<h3 data-i18n="t24">Build reliable systems</h3>
-<p data-i18n="t25">Establish and maintain HSE processes suited to your projects, people and operating conditions.</p>
+<h3 data-i18n="approach.systems.title">Build reliable systems</h3>
+<p data-i18n="approach.systems.description">Establish and maintain HSE processes suited to your projects, people and operating conditions.</p>
 </div>
 </div>
-<div class="haftung-item">
-<div class="h-icon" aria-hidden="true">↗</div>
+<div class="approach-item">
+<div class="approach-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="2.5"/><circle cx="5" cy="9" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7.5 20v-2.5a4.5 4.5 0 0 1 9 0V20M2.5 18v-2a3.5 3.5 0 0 1 3.5-3.5M21.5 18v-2a3.5 3.5 0 0 0-3.5-3.5"/></svg></div>
 <div>
-<h3 data-i18n="t26">Involve your teams</h3>
-<p data-i18n="t27">Integrate subcontractors and strengthen everyday safety through training and clear responsibilities.</p>
+<h3 data-i18n="approach.teams.title">Involve your teams</h3>
+<p data-i18n="approach.teams.description">Integrate subcontractors and strengthen everyday safety through training and clear responsibilities.</p>
 </div>
 </div>
-<div class="haftung-item">
-<div class="h-icon" aria-hidden="true">↗</div>
+<div class="approach-item">
+<div class="approach-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 8a8 8 0 0 0-13.7-2L3 9m0-5v5h5M4 16a8 8 0 0 0 13.7 2l3.3-3m0 5v-5h-5M9 12l2 2 4-4"/></svg></div>
 <div>
-<h3 data-i18n="t28">Learn and improve</h3>
-<p data-i18n="t29">Use incident reporting and external system audits to identify opportunities for improvement.</p>
+<h3 data-i18n="approach.learning.title">Learn and improve</h3>
+<p data-i18n="approach.learning.description">Use incident reporting and external system audits to identify opportunities for improvement.</p>
 </div>
 </div>
-<div class="haftung-item">
-<div class="h-icon" aria-hidden="true">↗</div>
+<div class="approach-item">
+<div class="approach-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 4h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8l-4 3V6a2 2 0 0 1 2-2ZM10 17h6l4 3V10"/></svg></div>
 <div>
-<h3 data-i18n="t30">Keep expertise within reach</h3>
-<p data-i18n="t31">A direct line to occupational health and safety specialists, with local and international requirements in view.</p>
+<h3 data-i18n="approach.expertise.title">Keep expertise within reach</h3>
+<p data-i18n="approach.expertise.description">A direct line to occupational health, safety and psychological counselling specialists, with local and international requirements in view.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section class="section" id="team">
-<div class="container">
+<section class="section" id="team" aria-labelledby="team-title" tabindex="-1">
+<div class="container team-container">
 <div class="reveal">
-<div class="eyebrow" data-i18n="t32">The Hamburg network</div>
-<h2 class="section-title" data-i18n="t33">Two disciplines. A shared perspective.</h2>
-<p class="section-desc" data-i18n="t34">WOLDEAB Technology Consulting and Hafenpraxis Dr. Schlaich &amp; Dr. Beyer bring together safety engineering and occupational medicine.</p>
+<div class="eyebrow" data-i18n="team.eyebrow">The Hamburg network</div>
+<h2 class="section-title" id="team-title" data-i18n="team.title">Different disciplines. A shared perspective.</h2>
+<p class="section-desc" data-i18n="team.description">Our Hamburg network brings together safety engineering, occupational medicine and psychological counselling.</p>
 </div>
 <div class="team-layout">
 <article class="team-member reveal">
-<div class="team-photo" role="img" aria-label="Dr. med. Clara C. Schlaich, MPH" style="background-image:url('Dr_Schlaich_web.jpg')">
-</div>
-<div class="role" data-i18n="t35">Occupational &amp; internal medicine</div>
-<h3>Dr. med. Clara C. Schlaich, MPH</h3>
-<p data-i18n="t36">Hafenpraxis, Hamburg. Occupational, travel and maritime medicine. Master of Public Health, Johns Hopkins University.</p>
+<img class="team-photo" src="images/shooting-2026/clara-schlaich-800.webp" srcset="images/shooting-2026/clara-schlaich-400.webp 400w, images/shooting-2026/clara-schlaich-600.webp 600w, images/shooting-2026/clara-schlaich-800.webp 800w, images/shooting-2026/clara-schlaich-1200.webp 1200w" sizes="(max-width:600px) calc(100vw - 48px), (max-width:1024px) calc(50vw - 48px), (max-width:1120px) calc(50vw - 92px), 468px" width="800" height="1000" alt="Portrait of Dr. med. Clara Schlaich" loading="lazy" decoding="async" data-alt-en="Portrait of Dr. med. Clara Schlaich" data-alt-de="Porträt von Dr. med. Clara Schlaich">
+<h3 data-i18n="team.clara.name">Dr. med. Clara Schlaich, MPH (Johns Hopkins U. /USA)</h3>
+<p class="profile-qualification" data-i18n="team.clara.qualification">Specialist in occupational medicine and internal medicine
+Infectious diseases, addiction medicine and psychosomatic medicine</p>
+<p class="profile-expertise" data-i18n="team.clara.expertise">Work experience in Africa
+Expertise includes tropical and travel medicine, with a network in international occupational medicine</p>
+<blockquote class="profile-quote" data-i18n="team.clara.quote">“Expertise to support safety in your African operations”</blockquote>
 <a class="team-link" href="https://hafenpraxis-hamburg.de">Hafenpraxis ↗</a>
 </article>
 <article class="team-member reveal reveal-delay-1">
-<div class="team-photo" role="img" aria-label="Dr. med. Eike Beyer" style="background-image:url('dr_beyer.jpg')">
-</div>
-<div class="role" data-i18n="t37">Occupational &amp; internal medicine</div>
-<h3>Dr. med. Eike Beyer</h3>
-<p data-i18n="t38">Hafenpraxis, Hamburg. Occupational, travel and emergency medicine — connecting prevention with practical medical expertise.</p>
+<img class="team-photo" src="images/shooting-2026/eike-beyer-800.webp" srcset="images/shooting-2026/eike-beyer-400.webp 400w, images/shooting-2026/eike-beyer-600.webp 600w, images/shooting-2026/eike-beyer-800.webp 800w, images/shooting-2026/eike-beyer-1200.webp 1200w" sizes="(max-width:600px) calc(100vw - 48px), (max-width:1024px) calc(50vw - 48px), (max-width:1120px) calc(50vw - 92px), 468px" width="800" height="1000" alt="Portrait of Dr. med. Eike Beyer" loading="lazy" decoding="async" data-alt-en="Portrait of Dr. med. Eike Beyer" data-alt-de="Porträt von Dr. med. Eike Beyer">
+<h3 data-i18n="team.eike.name">Dr. med. Eike Beyer</h3>
+<p class="profile-qualification" data-i18n="team.eike.qualification">Specialist in occupational medicine and internal medicine
+Emergency, travel and maritime medicine</p>
+<p class="profile-expertise" data-i18n="team.eike.expertise">International experience as a physician
+Expertise includes offshore operations, ships and ports</p>
+<blockquote class="profile-quote" data-i18n="team.eike.quote">“Finding solutions to your challenges”</blockquote>
 <a class="team-link" href="https://hafenpraxis-hamburg.de">Hafenpraxis ↗</a>
 </article>
-<article class="team-member reveal reveal-delay-2">
-<div class="team-photo" role="img" aria-label="Semhar Woldeab" style="background-image:url('semhar-woldeab.jpg')">
-</div>
-<div class="role" data-i18n="t39">Safety engineer &amp; QHSE manager</div>
-<h3>Semhar Woldeab</h3>
-<p data-i18n="t40">WOLDEAB Technology Consulting, Hamburg. HSE systems, risk management, audits and training. Coordination of multinational teams.</p>
+<article class="team-member reveal">
+<img class="team-photo" src="images/shooting-2026/semhar-woldeab-800.webp" srcset="images/shooting-2026/semhar-woldeab-400.webp 400w, images/shooting-2026/semhar-woldeab-600.webp 600w, images/shooting-2026/semhar-woldeab-800.webp 800w, images/shooting-2026/semhar-woldeab-1200.webp 1200w" sizes="(max-width:600px) calc(100vw - 48px), (max-width:1024px) calc(50vw - 48px), (max-width:1120px) calc(50vw - 92px), 468px" width="800" height="1000" alt="Portrait of Semhar Woldeab" loading="lazy" decoding="async" data-alt-en="Portrait of Semhar Woldeab" data-alt-de="Porträt von Semhar Woldeab">
+<h3 data-i18n="team.semhar.name">Semhar Woldeab</h3>
+<p class="profile-qualification" data-i18n="team.semhar.qualification">Safety engineer (Diplom)
+Q-HSE manager, consultant and inspector across industries</p>
+<p class="profile-expertise" data-i18n="team.semhar.expertise">Expertise includes employee safety in the workplace and establishing a safety culture in your organisation</p>
+<blockquote class="profile-quote" data-i18n="team.semhar.quote">“Well organised. A systematic approach.”</blockquote>
 <a class="team-link" href="https://www.woldeab-consulting.com">WOLDEAB Technology Consulting ↗</a>
+</article>
+<article class="team-member reveal reveal-delay-1">
+<img class="team-photo" src="images/shooting-2026/elysia-selina-woldeab-800.webp" srcset="images/shooting-2026/elysia-selina-woldeab-400.webp 400w, images/shooting-2026/elysia-selina-woldeab-600.webp 600w, images/shooting-2026/elysia-selina-woldeab-800.webp 800w, images/shooting-2026/elysia-selina-woldeab-1200.webp 1200w" sizes="(max-width:600px) calc(100vw - 48px), (max-width:1024px) calc(50vw - 48px), (max-width:1120px) calc(50vw - 92px), 468px" width="800" height="1000" alt="Portrait of Elysia Selina Woldeab" loading="lazy" decoding="async" data-alt-en="Portrait of Elysia Selina Woldeab" data-alt-de="Porträt von Elysia Selina Woldeab">
+<h3 data-i18n="team.elysia.name">Elysia Selina Woldeab</h3>
+<p class="profile-qualification" data-i18n="team.elysia.qualification">B.Sc. in Psychology
+Psychological counselling for occupational safety, rehabilitation, and emergency and crisis management</p>
+<p class="profile-expertise" data-i18n="team.elysia.expertise">Expertise includes individual support and new perspectives in challenging situations</p>
+<blockquote class="profile-quote" data-i18n="team.elysia.quote">“Beyond expertise – putting people first”</blockquote>
+
 </article>
 </div>
 </div>
 </section>
-<section class="cases-section" id="faelle" style="background:var(--creme)">
+<section class="cases-section" id="faelle" aria-labelledby="scenarios-title" tabindex="-1" style="background:var(--cream)">
 <div class="container">
 <div class="reveal">
-<div class="eyebrow" data-i18n="t41">In practice</div>
-<h2 class="section-title" data-i18n="t42">Where we can support you.</h2>
-<p class="section-desc" data-i18n="t43">From project preparation to everyday operations: connect prevention, clear processes and medical expertise.</p>
+<div class="eyebrow" data-i18n="scenarios.eyebrow">In practice</div>
+<h2 class="section-title" id="scenarios-title" data-i18n="scenarios.title">Where we can support you.</h2>
+<p class="section-desc" data-i18n="scenarios.description">From project preparation to challenging situations: connect prevention, clear processes, medical expertise and individual psychological support.</p>
 </div>
 <div class="cases-layout">
 <article class="case-card reveal">
-<h3 data-i18n="t44">Preparing an overseas assignment</h3>
-<p data-i18n="t45">Bring risk assessment, occupational health advice and travel planning together before your team leaves.</p>
+<h3 data-i18n="scenarios.assignments.title">Preparing an overseas assignment</h3>
+<p data-i18n="scenarios.assignments.description">Bring risk assessment, occupational health advice and travel planning together before your team leaves.</p>
 </article>
 <article class="case-card reveal reveal-delay-1">
-<h3 data-i18n="t46">Working with subcontractors</h3>
-<p data-i18n="t47">Create shared expectations, clear responsibilities and practical safety training across project teams.</p>
+<h3 data-i18n="scenarios.subcontractors.title">Working with subcontractors</h3>
+<p data-i18n="scenarios.subcontractors.description">Create shared expectations, clear responsibilities and practical safety training across project teams.</p>
 </article>
 <article class="case-card reveal">
-<h3 data-i18n="t48">Planning for emergencies</h3>
-<p data-i18n="t49">Review medical care options and develop emergency procedures suited to the location and assignment.</p>
+<h3 data-i18n="scenarios.emergencies.title">Planning for emergencies</h3>
+<p data-i18n="scenarios.emergencies.description">Review medical care options and develop emergency procedures suited to the location and assignment.</p>
 </article>
 <article class="case-card reveal reveal-delay-1">
-<h3 data-i18n="t50">Learning from incidents</h3>
-<p data-i18n="t51">Structure incident reporting, review processes and turn findings into improvements and training.</p>
+<h3 data-i18n="scenarios.incidents.title">Learning from incidents</h3>
+<p data-i18n="scenarios.incidents.description">Structure incident reporting, review processes and turn findings into improvements and training.</p>
+</article>
+<article class="case-card reveal">
+<h3 data-i18n="scenarios.crisis.title">Support in crisis situations</h3>
+<p data-i18n="scenarios.crisis.description">Include psychological counselling in emergency and crisis management and offer individual support in challenging situations.</p>
+</article>
+<article class="case-card reveal reveal-delay-1">
+<h3 data-i18n="scenarios.rehabilitation.title">Support during rehabilitation</h3>
+<p data-i18n="scenarios.rehabilitation.description">Psychological counselling offers individual support and new perspectives during rehabilitation.</p>
 </article>
 </div>
 </div>
 </section>
-<section class="section">
+<section class="section" id="zusammenarbeit" aria-labelledby="process-title" tabindex="-1">
 <div class="container">
 <div class="reveal">
-<div class="eyebrow" data-i18n="t52">Working together</div>
-<h2 class="section-title" data-i18n="t53">From first conversation to practical support.</h2>
+<div class="eyebrow" data-i18n="process.eyebrow">Working together</div>
+<h2 class="section-title" id="process-title" data-i18n="process.title">From first conversation to practical support.</h2>
 </div>
-<div class="ablauf-layout">
-<div class="ablauf-step reveal">
-<div class="ablauf-num">01</div>
-<h3 data-i18n="t54">Understand your needs</h3>
-<p data-i18n="t55">We discuss your business, projects and operating conditions in Africa.</p>
-</div>
-<div class="ablauf-step reveal reveal-delay-1">
-<div class="ablauf-num">02</div>
-<h3 data-i18n="t56">Review the situation</h3>
-<p data-i18n="t57">Together, we review existing HSE processes and occupational health needs.</p>
-</div>
-<div class="ablauf-step reveal reveal-delay-2">
-<div class="ablauf-num">03</div>
-<h3 data-i18n="t58">Set priorities</h3>
-<p data-i18n="t59">Define practical measures, responsibilities and the scope of support.</p>
-</div>
-<div class="ablauf-step reveal reveal-delay-3">
-<div class="ablauf-num">04</div>
-<h3 data-i18n="t60">Put plans into practice</h3>
-<p data-i18n="t61">Support your teams through implementation, training and ongoing review.</p>
-</div>
-</div>
+<ol class="process-layout">
+<li class="process-step reveal">
+<div class="process-number" aria-hidden="true">01</div>
+<h3 data-i18n="process.needs.title">Understand your needs</h3>
+<p data-i18n="process.needs.description">We discuss your business, projects and operating conditions in Africa.</p>
+</li>
+<li class="process-step reveal reveal-delay-1">
+<div class="process-number" aria-hidden="true">02</div>
+<h3 data-i18n="process.review.title">Review the situation</h3>
+<p data-i18n="process.review.description">Together, we review existing HSE processes and occupational health needs.</p>
+</li>
+<li class="process-step reveal reveal-delay-2">
+<div class="process-number" aria-hidden="true">03</div>
+<h3 data-i18n="process.priorities.title">Set priorities</h3>
+<p data-i18n="process.priorities.description">Define practical measures, responsibilities and the scope of support.</p>
+</li>
+<li class="process-step reveal reveal-delay-3">
+<div class="process-number" aria-hidden="true">04</div>
+<h3 data-i18n="process.support.title">Put plans into practice</h3>
+<p data-i18n="process.support.description">Support your teams through implementation, training and ongoing review.</p>
+</li>
+</ol>
 </div>
 </section>
-<div class="images-row" aria-hidden="true">
+<div class="images-row">
 <div class="img-block">
-<div class="parallax-bg" style="background-image:url('bild_2.png')">
+<img class="parallax-image" src="images/shooting-2026/zusammenarbeit-1200.webp" srcset="images/shooting-2026/zusammenarbeit-360.webp 360w, images/shooting-2026/zusammenarbeit-480.webp 480w, images/shooting-2026/zusammenarbeit-720.webp 720w, images/shooting-2026/zusammenarbeit-1200.webp 1200w, images/shooting-2026/zusammenarbeit-1800.webp 1800w" sizes="(max-width:600px) calc(100vw - 32px), (max-width:1400px) calc(100vw - 64px), 1336px" width="1800" height="1200" loading="lazy" decoding="async" alt="A discussion in Hamburg with safety vests, a helmet and medical equipment" data-alt-en="A discussion in Hamburg with safety vests, a helmet and medical equipment" data-alt-de="Gespräch in Hamburg mit Warnwesten, Schutzhelm und medizinischer Ausrüstung">
 </div>
 </div>
-<div class="img-block">
-<div class="parallax-bg" style="background-image:url('bild_3.png')">
-</div>
-</div>
-</div>
-<section class="section" id="leistungen">
+<section class="section" id="leistungen" aria-labelledby="services-title" tabindex="-1">
 <div class="container">
 <div class="reveal">
-<div class="eyebrow" data-i18n="t62">Our services</div>
-<h2 class="section-title" data-i18n="t63">Connected expertise. Practical solutions.</h2>
-<p class="section-desc" data-i18n="t64">Technical, medical and organisational support from one Hamburg-based network.</p>
+<div class="eyebrow" data-i18n="services.eyebrow">Our services</div>
+<h2 class="section-title" id="services-title" data-i18n="services.title">Connected expertise. Practical solutions.</h2>
+<p class="section-desc" data-i18n="services.description">Technical, medical, psychological and organisational support from one Hamburg-based network.</p>
 </div>
 <div class="pillars-layout">
 <article class="pillar reveal">
-<div class="pillar-num">01</div>
-<h3 data-i18n="t65">Occupational safety &amp; HSE</h3>
-<p data-i18n="t66">Build and maintain the systems that support safer operations.</p>
+<div class="pillar-num" aria-hidden="true">01</div>
+<h3 data-i18n="services.safety.title">Occupational safety &amp; HSE</h3>
+<p data-i18n="services.safety.description">Build and maintain the systems that support safer operations.</p>
 <ul>
-<li data-i18n="t67">HSE system development and maintenance</li>
-<li data-i18n="t68">Risk assessments</li>
-<li data-i18n="t69">Subcontractor integration</li>
-<li data-i18n="t70">Incident reporting</li>
-<li data-i18n="t71">External system audits</li>
+<li data-i18n="services.safety.systems">HSE system development and maintenance</li>
+<li data-i18n="services.safety.risks">Risk assessments</li>
+<li data-i18n="services.safety.subcontractors">Subcontractor integration</li>
+<li data-i18n="services.safety.reporting">Incident reporting</li>
+<li data-i18n="services.safety.audits">External system audits</li>
 </ul>
 </article>
 <article class="pillar reveal reveal-delay-1">
-<div class="pillar-num">02</div>
-<h3 data-i18n="t72">Occupational &amp; travel health</h3>
-<p data-i18n="t73">Connect employee health with the realities of overseas assignments.</p>
+<div class="pillar-num" aria-hidden="true">02</div>
+<h3 data-i18n="services.medicine.title">Occupational &amp; travel health</h3>
+<p data-i18n="services.medicine.description">Connect employee health with the realities of overseas assignments.</p>
 <ul>
-<li data-i18n="t74">Occupational health services</li>
-<li data-i18n="t75">Travel risk management</li>
-<li data-i18n="t76">Travel medicine advice</li>
-<li data-i18n="t77">Medical emergency planning</li>
-<li data-i18n="t78">Advice before and after assignments</li>
+<li data-i18n="services.medicine.occupational">Occupational health services</li>
+<li data-i18n="services.medicine.travelRisk">Travel risk management</li>
+<li data-i18n="services.medicine.travelAdvice">Travel medicine advice</li>
+<li data-i18n="services.medicine.emergencies">Medical emergency planning</li>
+<li data-i18n="services.medicine.assignments">Advice before and after assignments</li>
 </ul>
 </article>
 <article class="pillar reveal reveal-delay-2">
-<div class="pillar-num">03</div>
-<h3 data-i18n="t79">Training &amp; safety culture</h3>
-<p data-i18n="t80">Help teams make safety part of their everyday work.</p>
+<div class="pillar-num" aria-hidden="true">03</div>
+<h3 data-i18n="services.training.title">Training &amp; safety culture</h3>
+<p data-i18n="services.training.description">Help teams make safety part of their everyday work, with psychological perspectives on handling risks and acting safely.</p>
 <ul>
-<li data-i18n="t81">Practical safety training</li>
-<li data-i18n="t82">Clear roles and responsibilities</li>
-<li data-i18n="t83">Coordination of multinational teams</li>
-<li data-i18n="t84">Learning from incidents</li>
-<li data-i18n="t85">Continuous process improvement</li>
+<li data-i18n="services.training.practice">Practical safety training</li>
+<li data-i18n="services.training.roles">Clear roles and responsibilities</li>
+<li data-i18n="services.training.teams">Coordination of multinational teams</li>
+<li data-i18n="services.training.incidents">Learning from incidents</li>
+<li data-i18n="services.training.improvement">Continuous process improvement</li>
+<li data-i18n="services.training.psychology">Psychological perspectives on safety-conscious behaviour</li>
+</ul>
+</article>
+<article class="pillar reveal reveal-delay-3" id="psychologische-beratung">
+<div class="pillar-num" aria-hidden="true">04</div>
+<h3 data-i18n="services.psychology.title">Psychological counselling</h3>
+<p data-i18n="services.psychology.description">Individual support and new perspectives in challenging situations at work.</p>
+<ul>
+<li data-i18n="services.psychology.safety">Psychological counselling for occupational safety</li>
+<li data-i18n="services.psychology.rehabilitation">Support during rehabilitation</li>
+<li data-i18n="services.psychology.crisis">Counselling for emergency and crisis management</li>
+<li data-i18n="services.psychology.individual">Individual support in challenging situations</li>
 </ul>
 </article>
 </div>
 </div>
 </section>
-<section class="section" id="zielgruppe" style="background:var(--creme)">
+<section class="section" id="zielgruppe" aria-labelledby="audience-title" tabindex="-1" style="background:var(--cream)">
 <div class="container">
-<div class="ziel-layout reveal">
+<div class="audience-layout reveal">
 <div>
-<div class="eyebrow" data-i18n="t86">For German businesses</div>
-<h2 class="section-title" data-i18n="t87">Active in Africa. Supported from Hamburg.</h2>
-<p class="section-desc" data-i18n="t88">For German companies building, operating or sending teams to Africa — with a particular focus on small and medium-sized businesses.</p>
+<div class="eyebrow" data-i18n="audience.eyebrow">For German businesses</div>
+<h2 class="section-title" id="audience-title" data-i18n="audience.title">Active in Africa. Supported from Hamburg.</h2>
+<p class="section-desc" data-i18n="audience.description">For German companies building, operating or sending teams to Africa — with a particular focus on small and medium-sized businesses.</p>
 </div>
-<div class="ziel-items">
-<div class="ziel-item">
-<h3 data-i18n="t89">Ongoing operations</h3>
-<p data-i18n="t90">Strengthen existing HSE systems, support your teams and review processes.</p>
+<div class="audience-items">
+<div class="audience-item">
+<h3 data-i18n="audience.operations.title">Ongoing operations</h3>
+<p data-i18n="audience.operations.description">Strengthen existing HSE systems, support your teams and review processes.</p>
 </div>
-<div class="ziel-item">
-<h3 data-i18n="t91">Overseas assignments</h3>
-<p data-i18n="t92">Prepare your people with coordinated health, safety and travel risk support.</p>
+<div class="audience-item">
+<h3 data-i18n="audience.assignments.title">Overseas assignments</h3>
+<p data-i18n="audience.assignments.description">Prepare your people with coordinated health, safety and travel risk support.</p>
 </div>
-<div class="ziel-item">
-<h3 data-i18n="t93">New projects and locations</h3>
-<p data-i18n="t94">Include occupational safety and health from the start.</p>
+<div class="audience-item">
+<h3 data-i18n="audience.projects.title">New projects and locations</h3>
+<p data-i18n="audience.projects.description">Include occupational safety and health from the start.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section class="branchen-section">
+<section class="industries-section" aria-labelledby="industries-title">
 <div class="container">
-<div class="branchen reveal">
-<div class="branche-label" data-i18n="t95">Energy</div>
-<div class="branche-label" data-i18n="t96">Construction</div>
-<div class="branche-label" data-i18n="t97">Industry</div>
-<div class="branche-label" data-i18n="t98">Logistics</div>
-<div class="branche-label" data-i18n="t99">Mining</div>
-<div class="branche-label" data-i18n="t100">Offshore</div>
+<h2 class="visually-hidden" id="industries-title" data-i18n="industries.title">Industries</h2>
+<div class="industries reveal">
+<div class="industry-label" data-i18n="industries.energy">Energy</div>
+<div class="industry-label" data-i18n="industries.construction">Construction</div>
+<div class="industry-label" data-i18n="industries.industry">Industry</div>
+<div class="industry-label" data-i18n="industries.logistics">Logistics</div>
+<div class="industry-label" data-i18n="industries.mining">Mining</div>
+<div class="industry-label" data-i18n="industries.offshore">Offshore</div>
 </div>
 </div>
 </section>
-<section class="section" id="faq">
+<section class="section" id="faq" aria-labelledby="faq-title" tabindex="-1">
 <div class="container">
 <div class="faq-layout reveal">
 <div>
-<div class="eyebrow" data-i18n="t101">FAQ</div>
-<h2 class="section-title" data-i18n="t102">Your questions.</h2>
+<div class="eyebrow" data-i18n="faq.eyebrow">FAQ</div>
+<h2 class="section-title" id="faq-title" data-i18n="faq.title">Your questions.</h2>
 </div>
-<div class="faq-list">
+<div>
 <details class="faq-item">
-<summary class="faq-q" data-i18n="t103">Who is HAFRIVA for?</summary>
-<div class="faq-a">
-<p data-i18n="t104">We support German businesses with operations, projects or employee assignments in Africa, particularly small and medium-sized companies.</p>
-</div>
-</details>
-<details class="faq-item">
-<summary class="faq-q" data-i18n="t105">What does the network bring together?</summary>
-<div class="faq-a">
-<p data-i18n="t106">WOLDEAB Technology Consulting contributes safety engineering and HSE expertise. Hafenpraxis Dr. Schlaich &amp; Dr. Beyer contributes occupational and travel medicine.</p>
+<summary class="faq-question" data-i18n="faq.audience.question">Who is HAFRIVA for?</summary>
+<div class="faq-answer">
+<p data-i18n="faq.audience.answer">We support German businesses with operations, projects or employee assignments in Africa, particularly small and medium-sized companies.</p>
 </div>
 </details>
 <details class="faq-item">
-<summary class="faq-q" data-i18n="t107">Can support focus on a specific need?</summary>
-<div class="faq-a">
-<p data-i18n="t108">We discuss the services you need and agree a suitable scope, from individual training or audits to combined HSE and medical support.</p>
+<summary class="faq-question" data-i18n="faq.network.question">What does the network bring together?</summary>
+<div class="faq-answer">
+<p data-i18n="faq.network.answer">Our network brings together safety engineering and HSE expertise from WOLDEAB Technology Consulting, occupational and travel medicine from Hafenpraxis Dr. Schlaich &amp; Dr. Beyer, and psychological counselling from Elysia Selina Woldeab.</p>
 </div>
 </details>
 <details class="faq-item">
-<summary class="faq-q" data-i18n="t109">Which locations can you support?</summary>
-<div class="faq-a">
-<p data-i18n="t110">Tell us where your business operates. We assess the requirements and possible support for the specific country, location and project.</p>
+<summary class="faq-question" data-i18n="faq.scope.question">Can support focus on a specific need?</summary>
+<div class="faq-answer">
+<p data-i18n="faq.scope.answer">We discuss the services you need and agree a suitable scope, from individual training, audits or psychological counselling to combined support.</p>
 </div>
 </details>
 <details class="faq-item">
-<summary class="faq-q" data-i18n="t111">How does cooperation start?</summary>
-<div class="faq-a">
-<p data-i18n="t112">An initial conversation helps us understand your situation. We then agree priorities, services and the next steps with you.</p>
+<summary class="faq-question" data-i18n="faq.locations.question">Which locations can you support?</summary>
+<div class="faq-answer">
+<p data-i18n="faq.locations.answer">Tell us where your business operates. We assess the requirements and possible support for the specific country, location and project.</p>
+</div>
+</details>
+<details class="faq-item">
+<summary class="faq-question" data-i18n="faq.start.question">How does cooperation start?</summary>
+<div class="faq-answer">
+<p data-i18n="faq.start.answer">An initial conversation helps us understand your situation. We then agree priorities, services and the next steps with you.</p>
 </div>
 </details>
 </div>
 </div>
 </div>
 </section>
-<section class="contact-section" id="kontakt">
+<section class="contact-section" id="kontakt" aria-labelledby="contact-title" tabindex="-1">
 <div class="container">
 <div class="contact-layout reveal">
 <div class="contact-left">
-<div class="eyebrow" data-i18n="t113">Contact</div>
-<h2 class="section-title" data-i18n="t114">Let’s talk about your operations in Africa.</h2>
-<p class="section-desc" data-i18n="t115">Tell us about your project, your team and the challenges you want to address.</p>
+<div class="eyebrow" data-i18n="contact.eyebrow">Contact</div>
+<h2 class="section-title" id="contact-title" data-i18n="contact.title">Let’s talk about your operations in Africa.</h2>
+<p class="section-desc" data-i18n="contact.description">Tell us about your project, your team and the challenges you want to address.</p>
 <div class="contact-info">
-<p data-i18n="t116">Hamburg, Germany</p>
+<p data-i18n="contact.location">Hamburg, Germany</p>
 </div>
 </div>
 <div class="contact-card">
-<h3 data-i18n="t117">A direct line to the network</h3>
-<p data-i18n="t118">HSE systems, occupational health or travel risk management — we will discuss the support that fits your needs.</p>
+<h3 data-i18n="contact.cardTitle">A direct line to the network</h3>
+<p data-i18n="contact.cardDescription">HSE systems, occupational health, travel risk management or psychological counselling — we will discuss the support that fits your needs.</p>
 <div class="contact-placeholder">
-<p data-i18n="t119">[Central email address to follow]</p>
-<p data-i18n="t120">[Central telephone number to follow]</p>
+<p data-i18n="contact.email">[Central email address to follow]</p>
+<p data-i18n="contact.telephone">[Central telephone number to follow]</p>
 </div>
 </div>
 </div>
@@ -740,617 +434,30 @@ section[id] { scroll-margin-top:100px; }
 <div class="container">
 <div class="footer-inner">
 <div class="footer-brand">
-<img src="hafriva-logo-v2.png" width="345" height="92" alt="HAFRIVA – German Health &amp; Safety" loading="lazy">
+<img src="images/hafriva-logo-v2.png" width="345" height="92" alt="HAFRIVA – German Health &amp; Safety" loading="lazy" decoding="async">
 </div>
-<div class="footer-links">
+<nav class="footer-links" aria-label="Footer navigation" data-aria-label-i18n="navigation.footerLabel">
 <a href="#leistungen">
-<span data-i18n="t1">Services</span>
+<span data-i18n="navigation.services">Services</span>
 </a>
 <a href="#team">
-<span data-i18n="t2">Network</span>
+<span data-i18n="navigation.network">Network</span>
 </a>
 <a href="#zielgruppe">
-<span data-i18n="t3">For whom</span>
+<span data-i18n="navigation.audience">For whom</span>
 </a>
 <a href="#faq">
-<span data-i18n="t4">FAQ</span>
+<span data-i18n="navigation.faq">FAQ</span>
 </a>
 <a href="#kontakt">
-<span data-i18n="t5">Contact</span>
+<span data-i18n="navigation.contact">Contact</span>
 </a>
-<span class="footer-placeholder" data-i18n="t121">Legal notice · details to follow</span>
-<span class="footer-placeholder" data-i18n="t122">Privacy · details to follow</span>
-</div>
+<span class="footer-placeholder" data-i18n="footer.legal">Legal notice · details to follow</span>
+<span class="footer-placeholder" data-i18n="footer.privacy">Privacy · details to follow</span>
+</nav>
 <div class="footer-copy">© 2026 HAFRIVA</div>
 </div>
 </div>
 </footer>
-<script>
-const translations = {
-  "t1": {
-    "en": "Services",
-    "de": "Leistungen"
-  },
-  "t2": {
-    "en": "Network",
-    "de": "Netzwerk"
-  },
-  "t3": {
-    "en": "For whom",
-    "de": "Für wen"
-  },
-  "t4": {
-    "en": "FAQ",
-    "de": "FAQ"
-  },
-  "t5": {
-    "en": "Contact",
-    "de": "Kontakt"
-  },
-  "t6": {
-    "en": "Skip to content",
-    "de": "Zum Inhalt"
-  },
-  "t7": {
-    "en": "Let’s talk",
-    "de": "Gespräch vereinbaren"
-  },
-  "t8": {
-    "en": "Health & Safety International",
-    "de": "Health & Safety International"
-  },
-  "t9": {
-    "en": "Hamburg-based HSE experts for your business in Africa.",
-    "de": "Hamburger HSE-Experten für Ihr Afrika-Geschäft."
-  },
-  "t10": {
-    "en": "Your bridge between German expertise and your business in Africa — combining occupational safety, occupational health and travel risk management.",
-    "de": "Ihre Brücke zwischen deutscher Expertise und Ihrem Geschäft in Afrika – mit Arbeitssicherheit, Arbeitsmedizin und Travel Risk Management."
-  },
-  "t11": {
-    "en": "One network. Practical support. Direct access to experts.",
-    "de": "Ein Netzwerk. Praktische Unterstützung. Direkter Kontakt zu Experten."
-  },
-  "t12": {
-    "en": "Discuss your project →",
-    "de": "Über Ihr Vorhaben sprechen →"
-  },
-  "t13": {
-    "en": "Hamburg",
-    "de": "Hamburg"
-  },
-  "t14": {
-    "en": "Our home base",
-    "de": "Unser Standort"
-  },
-  "t15": {
-    "en": "HSE",
-    "de": "HSE"
-  },
-  "t16": {
-    "en": "Safety systems & culture",
-    "de": "Systeme & Sicherheitskultur"
-  },
-  "t17": {
-    "en": "Health",
-    "de": "Medizin"
-  },
-  "t18": {
-    "en": "Occupational & travel health",
-    "de": "Arbeits- & Reisemedizin"
-  },
-  "t19": {
-    "en": "Africa",
-    "de": "Afrika"
-  },
-  "t20": {
-    "en": "Your business focus",
-    "de": "Ihr Geschäftsfokus"
-  },
-  "t21": {
-    "en": "Our approach",
-    "de": "Unser Ansatz"
-  },
-  "t22": {
-    "en": "A safety culture that works in practice.",
-    "de": "Sicherheitskultur, die im Alltag funktioniert."
-  },
-  "t23": {
-    "en": "Strong systems matter when people put them into practice. We connect technical, medical and organisational expertise for your operations in Africa.",
-    "de": "Gute Systeme wirken, wenn Menschen sie im Alltag umsetzen. Wir verbinden technische, medizinische und organisatorische Expertise für Ihre Aktivitäten in Afrika."
-  },
-  "t24": {
-    "en": "Build reliable systems",
-    "de": "Verlässliche Systeme aufbauen"
-  },
-  "t25": {
-    "en": "Establish and maintain HSE processes suited to your projects, people and operating conditions.",
-    "de": "HSE-Prozesse aufbauen und pflegen, die zu Ihren Projekten, Menschen und Einsatzbedingungen passen."
-  },
-  "t26": {
-    "en": "Involve your teams",
-    "de": "Teams einbeziehen"
-  },
-  "t27": {
-    "en": "Integrate subcontractors and strengthen everyday safety through training and clear responsibilities.",
-    "de": "Subunternehmer einbinden und mit Trainings und klaren Zuständigkeiten Sicherheit im Alltag stärken."
-  },
-  "t28": {
-    "en": "Learn and improve",
-    "de": "Lernen und verbessern"
-  },
-  "t29": {
-    "en": "Use incident reporting and external system audits to identify opportunities for improvement.",
-    "de": "Mit Incident Reporting und externen Systemprüfungen Verbesserungspotenziale erkennen."
-  },
-  "t30": {
-    "en": "Keep expertise within reach",
-    "de": "Expertise direkt erreichen"
-  },
-  "t31": {
-    "en": "A direct line to occupational health and safety specialists, with local and international requirements in view.",
-    "de": "Ein kurzer Draht zu medizinischer und sicherheitstechnischer Beratung – mit Blick auf lokale und internationale Anforderungen."
-  },
-  "t32": {
-    "en": "The Hamburg network",
-    "de": "Das Hamburger Netzwerk"
-  },
-  "t33": {
-    "en": "Two disciplines. A shared perspective.",
-    "de": "Zwei Disziplinen. Ein gemeinsamer Blick."
-  },
-  "t34": {
-    "en": "WOLDEAB Technology Consulting and Hafenpraxis Dr. Schlaich & Dr. Beyer bring together safety engineering and occupational medicine.",
-    "de": "WOLDEAB Technology Consulting und die Hafenpraxis Dr. Schlaich & Dr. Beyer verbinden Sicherheitstechnik und Arbeitsmedizin."
-  },
-  "t35": {
-    "en": "Occupational & internal medicine",
-    "de": "Innere Medizin & Arbeitsmedizin"
-  },
-  "t36": {
-    "en": "Hafenpraxis, Hamburg. Occupational, travel and maritime medicine. Master of Public Health, Johns Hopkins University.",
-    "de": "Hafenpraxis, Hamburg. Arbeits-, Reise- und Schifffahrtsmedizin. Master of Public Health, Johns Hopkins University."
-  },
-  "t37": {
-    "en": "Occupational & internal medicine",
-    "de": "Innere Medizin & Arbeitsmedizin"
-  },
-  "t38": {
-    "en": "Hafenpraxis, Hamburg. Occupational, travel and emergency medicine — connecting prevention with practical medical expertise.",
-    "de": "Hafenpraxis, Hamburg. Arbeits-, Reise- und Notfallmedizin – Prävention verbunden mit praktischer medizinischer Expertise."
-  },
-  "t39": {
-    "en": "Safety engineer & QHSE manager",
-    "de": "Sicherheitsingenieur & QHSE-Manager"
-  },
-  "t40": {
-    "en": "WOLDEAB Technology Consulting, Hamburg. HSE systems, risk management, audits and training. Coordination of multinational teams.",
-    "de": "WOLDEAB Technology Consulting, Hamburg. HSE-Systeme, Risikomanagement, Audits und Trainings. Koordinierung multinationaler Teams."
-  },
-  "t41": {
-    "en": "In practice",
-    "de": "In der Praxis"
-  },
-  "t42": {
-    "en": "Where we can support you.",
-    "de": "Wo wir Sie unterstützen."
-  },
-  "t43": {
-    "en": "From project preparation to everyday operations: connect prevention, clear processes and medical expertise.",
-    "de": "Von der Projektvorbereitung bis zum laufenden Betrieb: Prävention, klare Prozesse und medizinische Expertise verbinden."
-  },
-  "t44": {
-    "en": "Preparing an overseas assignment",
-    "de": "Einen Auslandseinsatz vorbereiten"
-  },
-  "t45": {
-    "en": "Bring risk assessment, occupational health advice and travel planning together before your team leaves.",
-    "de": "Gefährdungsbeurteilung, arbeitsmedizinische Beratung und Reiseplanung vor der Abreise zusammenführen."
-  },
-  "t46": {
-    "en": "Working with subcontractors",
-    "de": "Mit Subunternehmern arbeiten"
-  },
-  "t47": {
-    "en": "Create shared expectations, clear responsibilities and practical safety training across project teams.",
-    "de": "Gemeinsame Erwartungen, klare Zuständigkeiten und praxisnahe Unterweisungen für alle Projektteams schaffen."
-  },
-  "t48": {
-    "en": "Planning for emergencies",
-    "de": "Notfälle vorausdenken"
-  },
-  "t49": {
-    "en": "Review medical care options and develop emergency procedures suited to the location and assignment.",
-    "de": "Medizinische Versorgungsmöglichkeiten einordnen und Notfallabläufe passend zu Standort und Einsatz entwickeln."
-  },
-  "t50": {
-    "en": "Learning from incidents",
-    "de": "Aus Vorfällen lernen"
-  },
-  "t51": {
-    "en": "Structure incident reporting, review processes and turn findings into improvements and training.",
-    "de": "Vorfälle strukturiert erfassen, Prozesse prüfen und Erkenntnisse in Verbesserungen und Trainings übersetzen."
-  },
-  "t52": {
-    "en": "Working together",
-    "de": "Zusammenarbeit"
-  },
-  "t53": {
-    "en": "From first conversation to practical support.",
-    "de": "Vom ersten Gespräch zur praktischen Begleitung."
-  },
-  "t54": {
-    "en": "Understand your needs",
-    "de": "Bedarf verstehen"
-  },
-  "t55": {
-    "en": "We discuss your business, projects and operating conditions in Africa.",
-    "de": "Wir besprechen Ihr Geschäft, Ihre Projekte und die Einsatzbedingungen in Afrika."
-  },
-  "t56": {
-    "en": "Review the situation",
-    "de": "Situation einordnen"
-  },
-  "t57": {
-    "en": "Together, we review existing HSE processes and occupational health needs.",
-    "de": "Gemeinsam betrachten wir bestehende HSE-Prozesse und den arbeitsmedizinischen Bedarf."
-  },
-  "t58": {
-    "en": "Set priorities",
-    "de": "Prioritäten festlegen"
-  },
-  "t59": {
-    "en": "Define practical measures, responsibilities and the scope of support.",
-    "de": "Praktische Maßnahmen, Zuständigkeiten und den Umfang der Unterstützung festlegen."
-  },
-  "t60": {
-    "en": "Put plans into practice",
-    "de": "Umsetzung begleiten"
-  },
-  "t61": {
-    "en": "Support your teams through implementation, training and ongoing review.",
-    "de": "Ihre Teams bei Umsetzung, Trainings und der Weiterentwicklung begleiten."
-  },
-  "t62": {
-    "en": "Our services",
-    "de": "Unsere Leistungen"
-  },
-  "t63": {
-    "en": "Connected expertise. Practical solutions.",
-    "de": "Verbundene Expertise. Praktische Lösungen."
-  },
-  "t64": {
-    "en": "Technical, medical and organisational support from one Hamburg-based network.",
-    "de": "Technische, medizinische und organisatorische Unterstützung aus einem Hamburger Netzwerk."
-  },
-  "t65": {
-    "en": "Occupational safety & HSE",
-    "de": "Arbeitssicherheit & HSE"
-  },
-  "t66": {
-    "en": "Build and maintain the systems that support safer operations.",
-    "de": "Systeme aufbauen und pflegen, die einen sicheren Betrieb unterstützen."
-  },
-  "t67": {
-    "en": "HSE system development and maintenance",
-    "de": "Aufbau und Pflege von HSE-Systemen"
-  },
-  "t68": {
-    "en": "Risk assessments",
-    "de": "Gefährdungsbeurteilungen"
-  },
-  "t69": {
-    "en": "Subcontractor integration",
-    "de": "Einbindung von Subunternehmern"
-  },
-  "t70": {
-    "en": "Incident reporting",
-    "de": "Incident Reporting"
-  },
-  "t71": {
-    "en": "External system audits",
-    "de": "Externe Systemprüfungen"
-  },
-  "t72": {
-    "en": "Occupational & travel health",
-    "de": "Arbeits- & Reisemedizin"
-  },
-  "t73": {
-    "en": "Connect employee health with the realities of overseas assignments.",
-    "de": "Mitarbeitergesundheit und die Anforderungen von Auslandseinsätzen zusammenbringen."
-  },
-  "t74": {
-    "en": "Occupational health services",
-    "de": "Arbeitsmedizinische Betreuung"
-  },
-  "t75": {
-    "en": "Travel risk management",
-    "de": "Travel Risk Management"
-  },
-  "t76": {
-    "en": "Travel medicine advice",
-    "de": "Reisemedizinische Beratung"
-  },
-  "t77": {
-    "en": "Medical emergency planning",
-    "de": "Medizinische Notfallplanung"
-  },
-  "t78": {
-    "en": "Advice before and after assignments",
-    "de": "Beratung vor und nach Auslandseinsätzen"
-  },
-  "t79": {
-    "en": "Training & safety culture",
-    "de": "Trainings & Sicherheitskultur"
-  },
-  "t80": {
-    "en": "Help teams make safety part of their everyday work.",
-    "de": "Teams dabei unterstützen, Sicherheit im Arbeitsalltag zu verankern."
-  },
-  "t81": {
-    "en": "Practical safety training",
-    "de": "Praxisnahe Sicherheitstrainings"
-  },
-  "t82": {
-    "en": "Clear roles and responsibilities",
-    "de": "Klare Rollen und Zuständigkeiten"
-  },
-  "t83": {
-    "en": "Coordination of multinational teams",
-    "de": "Koordinierung multinationaler Teams"
-  },
-  "t84": {
-    "en": "Learning from incidents",
-    "de": "Lernen aus Vorfällen"
-  },
-  "t85": {
-    "en": "Continuous process improvement",
-    "de": "Kontinuierliche Prozessverbesserung"
-  },
-  "t86": {
-    "en": "For German businesses",
-    "de": "Für deutsche Unternehmen"
-  },
-  "t87": {
-    "en": "Active in Africa. Supported from Hamburg.",
-    "de": "In Afrika aktiv. Aus Hamburg begleitet."
-  },
-  "t88": {
-    "en": "For German companies building, operating or sending teams to Africa — with a particular focus on small and medium-sized businesses.",
-    "de": "Für deutsche Unternehmen, die in Afrika Standorte aufbauen, Betriebe führen oder Teams entsenden – mit besonderem Fokus auf den Mittelstand."
-  },
-  "t89": {
-    "en": "Ongoing operations",
-    "de": "Laufender Betrieb"
-  },
-  "t90": {
-    "en": "Strengthen existing HSE systems, support your teams and review processes.",
-    "de": "Bestehende HSE-Systeme stärken, Teams begleiten und Prozesse überprüfen."
-  },
-  "t91": {
-    "en": "Overseas assignments",
-    "de": "Mitarbeiterentsendung"
-  },
-  "t92": {
-    "en": "Prepare your people with coordinated health, safety and travel risk support.",
-    "de": "Ihre Mitarbeitenden mit abgestimmter Gesundheits-, Sicherheits- und Reiserisikobetreuung vorbereiten."
-  },
-  "t93": {
-    "en": "New projects and locations",
-    "de": "Neue Projekte und Standorte"
-  },
-  "t94": {
-    "en": "Include occupational safety and health from the start.",
-    "de": "Arbeitssicherheit und Gesundheitsschutz von Anfang an mitdenken."
-  },
-  "t95": {
-    "en": "Energy",
-    "de": "Energie"
-  },
-  "t96": {
-    "en": "Construction",
-    "de": "Bau"
-  },
-  "t97": {
-    "en": "Industry",
-    "de": "Industrie"
-  },
-  "t98": {
-    "en": "Logistics",
-    "de": "Logistik"
-  },
-  "t99": {
-    "en": "Mining",
-    "de": "Bergbau"
-  },
-  "t100": {
-    "en": "Offshore",
-    "de": "Offshore"
-  },
-  "t101": {
-    "en": "FAQ",
-    "de": "FAQ"
-  },
-  "t102": {
-    "en": "Your questions.",
-    "de": "Ihre Fragen."
-  },
-  "t103": {
-    "en": "Who is HAFRIVA for?",
-    "de": "Für wen ist HAFRIVA da?"
-  },
-  "t104": {
-    "en": "We support German businesses with operations, projects or employee assignments in Africa, particularly small and medium-sized companies.",
-    "de": "Wir unterstützen deutsche Unternehmen mit Betrieben, Projekten oder Mitarbeiterentsendungen in Afrika, insbesondere kleine und mittlere Unternehmen."
-  },
-  "t105": {
-    "en": "What does the network bring together?",
-    "de": "Was verbindet das Netzwerk?"
-  },
-  "t106": {
-    "en": "WOLDEAB Technology Consulting contributes safety engineering and HSE expertise. Hafenpraxis Dr. Schlaich & Dr. Beyer contributes occupational and travel medicine.",
-    "de": "WOLDEAB Technology Consulting bringt sicherheitstechnische und HSE-Expertise ein. Die Hafenpraxis Dr. Schlaich & Dr. Beyer ergänzt Arbeits- und Reisemedizin."
-  },
-  "t107": {
-    "en": "Can support focus on a specific need?",
-    "de": "Ist Unterstützung für einzelne Themen möglich?"
-  },
-  "t108": {
-    "en": "We discuss the services you need and agree a suitable scope, from individual training or audits to combined HSE and medical support.",
-    "de": "Wir besprechen Ihren Bedarf und vereinbaren einen passenden Umfang – von einzelnen Trainings oder Audits bis zur kombinierten HSE- und medizinischen Betreuung."
-  },
-  "t109": {
-    "en": "Which locations can you support?",
-    "de": "Welche Standorte können Sie unterstützen?"
-  },
-  "t110": {
-    "en": "Tell us where your business operates. We assess the requirements and possible support for the specific country, location and project.",
-    "de": "Teilen Sie uns mit, wo Ihr Unternehmen tätig ist. Wir prüfen Anforderungen und Unterstützungsmöglichkeiten für das konkrete Land, den Standort und das Projekt."
-  },
-  "t111": {
-    "en": "How does cooperation start?",
-    "de": "Wie beginnt die Zusammenarbeit?"
-  },
-  "t112": {
-    "en": "An initial conversation helps us understand your situation. We then agree priorities, services and the next steps with you.",
-    "de": "Im Erstgespräch lernen wir Ihre Situation kennen. Anschließend stimmen wir Prioritäten, Leistungen und die nächsten Schritte mit Ihnen ab."
-  },
-  "t113": {
-    "en": "Contact",
-    "de": "Kontakt"
-  },
-  "t114": {
-    "en": "Let’s talk about your operations in Africa.",
-    "de": "Sprechen wir über Ihr Afrika-Geschäft."
-  },
-  "t115": {
-    "en": "Tell us about your project, your team and the challenges you want to address.",
-    "de": "Erzählen Sie uns von Ihrem Vorhaben, Ihrem Team und den Herausforderungen, die Sie angehen möchten."
-  },
-  "t116": {
-    "en": "Hamburg, Germany",
-    "de": "Hamburg, Deutschland"
-  },
-  "t117": {
-    "en": "A direct line to the network",
-    "de": "Ihr direkter Kontakt zum Netzwerk"
-  },
-  "t118": {
-    "en": "HSE systems, occupational health or travel risk management — we will discuss the support that fits your needs.",
-    "de": "HSE-Systeme, Arbeitsmedizin oder Travel Risk Management – wir besprechen, welche Unterstützung zu Ihrem Bedarf passt."
-  },
-  "t119": {
-    "en": "[Central email address to follow]",
-    "de": "[Zentrale E-Mail-Adresse folgt]"
-  },
-  "t120": {
-    "en": "[Central telephone number to follow]",
-    "de": "[Zentrale Telefonnummer folgt]"
-  },
-  "t121": {
-    "en": "Legal notice · details to follow",
-    "de": "Impressum · Angaben folgen"
-  },
-  "t122": {
-    "en": "Privacy · details to follow",
-    "de": "Datenschutz · Angaben folgen"
-  }
-};
-const nav = document.getElementById('nav');
-const menu = document.getElementById('navLinks');
-const menuButton = document.querySelector('.hamburger');
-let language = 'en';
-function closeMenu() { menu.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); updateMenuLabel(); }
-function updateMenuLabel() { const open=menuButton.getAttribute('aria-expanded')==='true'; menuButton.setAttribute('aria-label',language==='de'?(open?'Menü schließen':'Menü öffnen'):(open?'Close menu':'Open menu')); }
-function setLanguage(lang) {
- language=lang==='de'?'de':'en';
- document.documentElement.lang=language;
- document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=translations[el.dataset.i18n][language];});
- document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
- document.title=language==='de'?'HAFRIVA – Hamburger HSE-Experten für Afrika':'HAFRIVA – Hamburg-based HSE experts for Africa';
- document.querySelector('meta[name="description"]').content=language==='de'?'Hamburger Expertennetzwerk für HSE, Arbeitsmedizin und Travel Risk Management für deutsche Unternehmen mit Afrika-Engagement.':'Hamburg-based HSE and occupational health experts supporting German businesses in Africa. Safety systems, travel risk management and practical training.';
- nav.setAttribute('aria-label',language==='de'?'Hauptnavigation':'Main navigation');
- updateMenuLabel();
- try { localStorage.setItem('afrisav-language',language); } catch {}
-}
-document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));
-menuButton.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));updateMenuLabel();});
-menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.classList.contains('open')){closeMenu();menuButton.focus();}});
-document.addEventListener('click',event=>{if(!nav.contains(event.target))closeMenu();});
-window.matchMedia('(min-width:1101px)').addEventListener('change',closeMenu);
-const updateNav=()=>nav.classList.toggle('scrolled',window.scrollY>40);
-window.addEventListener('scroll',updateNav,{passive:true});updateNav();
-let preferred='en';try { preferred=localStorage.getItem('afrisav-language')||'en'; } catch {}
-setLanguage(preferred);
-
-// Preserve the original soft reveals and staggered timing as progressive enhancements.
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const revealElements = document.querySelectorAll('.reveal');
-let revealObserver;
-function configureReveals() {
- if (revealObserver) revealObserver.disconnect();
- if (reducedMotion.matches || !('IntersectionObserver' in window)) {
-  document.documentElement.classList.remove('motion-enabled');
-  revealElements.forEach(el => el.classList.add('visible'));
-  return;
- }
- revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-   if (entry.isIntersecting) {
-    entry.target.classList.add('visible');
-    revealObserver.unobserve(entry.target);
-   }
-  });
- }, {threshold:0.05, rootMargin:'0px 0px -80px 0px'});
- document.documentElement.classList.add('motion-enabled');
- revealElements.forEach(el => { if (!el.classList.contains('visible')) revealObserver.observe(el); });
-}
-configureReveals();
-
-// Keep the original 0.3 scroll speed; clamp movement to the image's overscan.
-const parallaxBgs = document.querySelectorAll('.parallax-bg');
-let parallaxFrame = 0;
-function updateParallax() {
- parallaxFrame = 0;
- parallaxBgs.forEach(bg => {
-  if (reducedMotion.matches) { bg.style.transform = 'none'; return; }
-  const rect = bg.parentElement.getBoundingClientRect();
-  const maxShift = Math.max(0,(bg.offsetHeight - rect.height)/2);
-  const y = Math.max(-maxShift,Math.min(maxShift,-rect.top * 0.3));
-  bg.style.transform = `translateY(${y}px)`;
- });
-}
-function requestParallax() { if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateParallax); }
-window.addEventListener('scroll',requestParallax,{passive:true});
-window.addEventListener('resize',requestParallax);
-reducedMotion.addEventListener('change',() => { configureReveals(); requestParallax(); });
-requestParallax();
-
-// Native, keyboard-accessible details with the original 400 ms accordion motion.
-document.querySelectorAll('.faq-item').forEach(item => {
- const summary = item.querySelector('summary');
- let animation;
- let closing = false;
- summary.addEventListener('click',event => {
-  if (reducedMotion.matches || !item.animate) return;
-  event.preventDefault();
-  const startHeight = item.getBoundingClientRect().height;
-  const shouldOpen = !item.open || closing;
-  if (animation) animation.cancel();
-  closing = !shouldOpen;
-  item.open = true;
-  item.style.height = '';
-  const endHeight = shouldOpen ? item.getBoundingClientRect().height : summary.getBoundingClientRect().height + 1;
-  item.style.overflow = 'hidden';
-  animation = item.animate({height:[`${startHeight}px`,`${endHeight}px`]}, {duration:400,easing:'ease'});
-  animation.onfinish = () => {
-   item.open = shouldOpen;
-   item.style.overflow = '';
-   animation = null;
-   closing = false;
-  };
- });
-});
-
-</script></body></html>
+<p class="visually-hidden" id="language-status" role="status" aria-live="polite" aria-atomic="true"></p>
+</body></html>
