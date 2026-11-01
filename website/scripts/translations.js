@@ -57,7 +57,7 @@ export const translations = {
     "de": "Systeme & Sicherheitskultur"
   },
   "competencies.medicine.title": {
-    "en": "Medicine",
+    "en": "Health Care",
     "de": "Medizin"
   },
   "competencies.medicine.subtitle": {
@@ -169,7 +169,7 @@ export const translations = {
     "de": "Aus Vorfällen lernen"
   },
   "scenarios.incidents.description": {
-    "en": "Structure incident reporting, review processes and turn findings into improvements and training.",
+    "en": "Structure incident reporting, review processes and turn findings into improvements and training in compliance with ISO 45001",
     "de": "Vorfälle strukturiert erfassen, Prozesse prüfen und Erkenntnisse in Verbesserungen und Trainings übersetzen."
   },
   "process.eyebrow": {
