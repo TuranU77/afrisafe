@@ -800,10 +800,56 @@ h1, h2, h3, p, li {
   color: rgba(255,255,255,.8);
 }
 
-.contact-placeholder {
+.contact-details {
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,.2);
+}
+
+.contact-details a {
+  color: inherit;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+.legal-section {
+  background: var(--cream);
+}
+
+.legal-notice {
+  scroll-margin-top: 120px;
+}
+
+.legal-notice summary {
+  cursor: pointer;
+  padding: 16px 0;
+}
+
+.legal-notice summary h2 {
+  display: inline;
+  font: 700 28px "Playfair Display",serif;
+}
+
+.legal-content {
+  max-width: 720px;
+  padding-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+.legal-content h3 {
+  margin-top: 28px;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.legal-content p {
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.legal-content a {
+  color: var(--royal);
+  text-underline-offset: 4px;
 }
 
 .faq-item summary {

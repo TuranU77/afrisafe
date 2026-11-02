@@ -441,16 +441,16 @@ export const translations = {
     "de": "HSE-Systeme, Arbeitsmedizin, Travel Risk Management oder psychologische Beratung – wir besprechen, welche Unterstützung zu Ihrem Bedarf passt."
   },
   "contact.email": {
-    "en": "[Central email address to follow]",
-    "de": "[Zentrale E-Mail-Adresse folgt]"
+    "en": "info@hafriva.com",
+    "de": "info@hafriva.com"
   },
   "contact.telephone": {
-    "en": "[Central telephone number to follow]",
-    "de": "[Zentrale Telefonnummer folgt]"
+    "en": "+49 157 868 56 324",
+    "de": "+49 157 868 56 324"
   },
   "footer.legal": {
-    "en": "Legal notice · details to follow",
-    "de": "Impressum · Angaben folgen"
+    "en": "Legal notice",
+    "de": "Impressum"
   },
   "footer.privacy": {
     "en": "Privacy · details to follow",
@@ -599,5 +599,109 @@ export const translations = {
   "industries.title": {
     "en": "Industries",
     "de": "Branchen"
+  },
+  "contact.provider": {
+    "en": "WOLDEAB Technology Consulting · Semhar Woldeab",
+    "de": "WOLDEAB Technology Consulting · Semhar Woldeab"
+  },
+  "contact.address": {
+    "en": "Cäcilienstr. 10 · 22301 Hamburg",
+    "de": "Cäcilienstr. 10 · 22301 Hamburg"
+  },
+  "legal.title": {
+    "en": "Legal notice",
+    "de": "Impressum"
+  },
+  "legal.provider.title": {
+    "en": "Information pursuant to Section 5 DDG (German Digital Services Act)",
+    "de": "Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)"
+  },
+  "legal.provider.name": {
+    "en": "WOLDEAB Technology Consulting",
+    "de": "WOLDEAB Technology Consulting"
+  },
+  "legal.provider.person": {
+    "en": "Dipl. Sicherheitsingenieur Semhar Woldeab (QHSE)",
+    "de": "Dipl. Sicherheitsingenieur Semhar Woldeab (QHSE)"
+  },
+  "legal.address": {
+    "en": "Cäcilienstr. 10\n22301 Hamburg",
+    "de": "Cäcilienstr. 10\n22301 Hamburg"
+  },
+  "legal.contact.title": {
+    "en": "Contact",
+    "de": "Kontakt"
+  },
+  "legal.phoneLabel": {
+    "en": "Telephone:",
+    "de": "Telefon:"
+  },
+  "legal.emailLabel": {
+    "en": "Email:",
+    "de": "E-Mail:"
+  },
+  "legal.tax.title": {
+    "en": "Tax number",
+    "de": "Steuernummer"
+  },
+  "legal.tax.office": {
+    "en": "Tax office: Hamburg-Barmbek-Uhlenhorst",
+    "de": "Finanzamt: Hamburg-Barmbek-Uhlenhorst"
+  },
+  "legal.tax.number": {
+    "en": "Tax number: 43/668/01915",
+    "de": "Steuernummer: 43/668/01915"
+  },
+  "legal.profession.title": {
+    "en": "Professional title",
+    "de": "Berufsbezeichnung"
+  },
+  "legal.profession.description": {
+    "en": "Dipl. Sicherheitsingenieur\nQHSE manager, occupational safety specialist (SIFA/FASI)\nAwarded in the Federal Republic of Germany",
+    "de": "Dipl. Sicherheitsingenieur\nQHSE-Manager, Fachkraft für Arbeitssicherheit (SIFA/FASI)\nVerliehen in der Bundesrepublik Deutschland"
+  },
+  "legal.responsible.title": {
+    "en": "Responsible for content",
+    "de": "Verantwortlich für den Inhalt"
+  },
+  "legal.disputes.title": {
+    "en": "Dispute resolution",
+    "de": "Streitschlichtung"
+  },
+  "legal.disputes.description": {
+    "en": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.",
+    "de": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+  },
+  "legal.content.title": {
+    "en": "Liability for content",
+    "de": "Haftung für Inhalte"
+  },
+  "legal.content.description": {
+    "en": "We are responsible for our own content on these pages under general law. Obligations to remove or block the use of information under general law remain unaffected. If we become aware of infringements, we will remove the relevant content without delay.",
+    "de": "Für eigene Inhalte auf diesen Seiten sind wir nach den allgemeinen Gesetzen verantwortlich. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben unberührt. Bei Bekanntwerden von Rechtsverletzungen werden wir die betreffenden Inhalte umgehend entfernen."
+  },
+  "legal.links.title": {
+    "en": "Liability for links",
+    "de": "Haftung für Links"
+  },
+  "legal.links.description": {
+    "en": "Our website contains links to external third-party websites whose content is beyond our control. We therefore cannot assume liability for that content. The respective provider or operator is responsible for the content of linked pages. The linked pages were checked for possible legal violations at the time of linking. No unlawful content was identifiable at that time.",
+    "de": "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar."
+  },
+  "legal.copyright.title": {
+    "en": "Copyright",
+    "de": "Urheberrecht"
+  },
+  "legal.copyright.description": {
+    "en": "The content and works created by the website operators on these pages are subject to German copyright law. Reproduction, editing, distribution and any use beyond the limits of copyright law require the written consent of the respective author or creator.",
+    "de": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers."
+  },
+  "legal.design.title": {
+    "en": "Design & implementation",
+    "de": "Gestaltung & Umsetzung"
+  },
+  "legal.design.label": {
+    "en": "Website design:",
+    "de": "Website Design:"
   }
 };

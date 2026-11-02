@@ -54,11 +54,20 @@ export function initializeNavigation() {
     link.addEventListener('click', () => {
       if (menu.contains(link)) closeMenu();
       const target = document.getElementById(link.hash.slice(1));
+      if (target?.matches('details')) target.open = true;
       if (target?.hasAttribute('tabindex')) {
         requestAnimationFrame(() => target.focus({ preventScroll: true }));
       }
     });
   });
+
+  // Direct legal-notice links must reveal their destination as well.
+  function revealFragment() {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (target?.matches('details')) target.open = true;
+  }
+  window.addEventListener('hashchange', revealFragment);
+  revealFragment();
 
   function updateScrollAppearance() {
     navigation.classList.toggle('scrolled', window.scrollY > 40);
