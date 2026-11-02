@@ -703,5 +703,9 @@ export const translations = {
   "legal.design.label": {
     "en": "Website design:",
     "de": "Website Design:"
+  },
+  "legal.close": {
+    "en": "Close",
+    "de": "Schließen"
   }
 };

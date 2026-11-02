@@ -812,22 +812,47 @@ h1, h2, h3, p, li {
   overflow-wrap: anywhere;
 }
 
-.legal-section {
+.legal-dialog {
+  margin: auto;
+  width: calc(100% - 32px);
+  max-width: 800px;
+  max-height: calc(100dvh - 48px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 0;
+  padding: 24px;
+  color: var(--navy);
   background: var(--cream);
 }
 
-.legal-notice {
-  scroll-margin-top: 120px;
+.legal-dialog::backdrop {
+  background: rgba(14,34,64,.7);
 }
 
-.legal-notice summary {
-  cursor: pointer;
-  padding: 16px 0;
+body:has(.legal-dialog[open]) {
+  overflow: hidden;
 }
 
-.legal-notice summary h2 {
-  display: inline;
+.legal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.legal-toolbar h2 {
   font: 700 28px "Playfair Display",serif;
+}
+
+.legal-close {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
 }
 
 .legal-content {

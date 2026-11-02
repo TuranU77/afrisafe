@@ -1,3 +1,4 @@
+import { initializeLegalDialog } from './legal-dialog.js';
 import { initializeLanguage } from './i18n.js';
 import { initializeNavigation } from './navigation.js';
 import { initializeReveals } from './reveal.js';
@@ -11,3 +12,5 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 initializeReveals(reducedMotion);
 initializeParallax(reducedMotion);
 initializeAccordions(reducedMotion);
+
+initializeLegalDialog();
