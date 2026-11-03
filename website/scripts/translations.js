@@ -170,7 +170,7 @@ export const translations = {
   },
   "scenarios.incidents.description": {
     "en": "Structure incident reporting, review processes and turn findings into improvements and training in compliance with ISO 45001",
-    "de": "Vorfälle strukturiert erfassen, Prozesse prüfen und Erkenntnisse in Verbesserungen und Trainings übersetzen."
+    "de": "Vorfälle strukturiert erfassen, Prozesse prüfen und Erkenntnisse gemäß ISO 45001 in Verbesserungen und Trainings übersetzen."
   },
   "process.eyebrow": {
     "en": "Working together",
