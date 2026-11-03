@@ -1,5 +1,5 @@
 import { initializeLegalDialogs } from './legal-dialog.js?v=20261103-privacy-release';
-import { initializeLanguage } from './i18n.js?v=20261103-privacy-release';
+import { initializeLanguage } from './i18n.js?v=20261103-contact-encoding';
 import { initializeNavigation } from './navigation.js?v=20261103-privacy-release';
 import { initializeReveals } from './reveal.js';
 import { initializeParallax } from './parallax.js';

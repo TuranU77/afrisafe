@@ -441,12 +441,12 @@ export const translations = {
     "de": "HSE-Systeme, Arbeitsmedizin, Travel Risk Management oder psychologische Beratung – wir besprechen, welche Unterstützung zu Ihrem Bedarf passt."
   },
   "contact.email": {
-    "en": "info@hafriva.com",
-    "de": "info@hafriva.com"
+    "en": "\u0069\u006e\u0066\u006f\u0040\u0068\u0061\u0066\u0072\u0069\u0076\u0061\u002e\u0063\u006f\u006d",
+    "de": "\u0069\u006e\u0066\u006f\u0040\u0068\u0061\u0066\u0072\u0069\u0076\u0061\u002e\u0063\u006f\u006d"
   },
   "contact.telephone": {
-    "en": "+49 157 868 56 324",
-    "de": "+49 157 868 56 324"
+    "en": "\u002b\u0034\u0039\u0020\u0031\u0035\u0037\u0020\u0038\u0036\u0038\u0020\u0035\u0036\u0020\u0033\u0032\u0034",
+    "de": "\u002b\u0034\u0039\u0020\u0031\u0035\u0037\u0020\u0038\u0036\u0038\u0020\u0035\u0036\u0020\u0033\u0032\u0034"
   },
   "footer.legal": {
     "en": "Legal notice",
@@ -681,8 +681,8 @@ export const translations = {
     "de": "Clara Schlaich, Eike Beyer"
   },
   "contact.medicalPhone": {
-    "en": "+49 151 206 88 416",
-    "de": "+49 151 206 88 416"
+    "en": "\u002b\u0034\u0039\u0020\u0031\u0035\u0031\u0020\u0032\u0030\u0036\u0020\u0038\u0038\u0020\u0034\u0031\u0036",
+    "de": "\u002b\u0034\u0039\u0020\u0031\u0035\u0031\u0020\u0032\u0030\u0036\u0020\u0038\u0038\u0020\u0034\u0031\u0036"
   },
   "contact.safetyName": {
     "en": "Semhar Woldeab",
@@ -853,7 +853,7 @@ export const translations = {
     "de": "Ausübung Ihrer Rechte"
   },
   "privacy.requests.description": {
-    "en": "You can exercise your rights by emailing info@hafriva.com or writing to Hafriva GmbH at the address above. No particular form is required. If we have reasonable doubts about your identity, we may request only the additional information necessary to confirm it.\nUnder Article 12 GDPR, information on action taken must be provided without undue delay and generally within one month of receipt. Where a legally permitted extension is necessary, you must be informed within the first month of the extension and its reasons. Information and the first copy are generally free of charge; statutory exceptions apply, in particular to manifestly unfounded or excessive requests.",
-    "de": "Sie können Ihre Rechte per E-Mail an info@hafriva.com oder postalisch gegenüber Hafriva GmbH unter der oben genannten Anschrift ausüben. Eine bestimmte Form ist nicht vorgeschrieben. Bestehen begründete Zweifel an Ihrer Identität, dürfen wir nur die zusätzlich erforderlichen Angaben zur Bestätigung anfordern.\nNach Art. 12 DSGVO ist über Maßnahmen auf einen Antrag unverzüglich, grundsätzlich innerhalb eines Monats nach Eingang zu informieren. Ist eine gesetzlich zulässige Fristverlängerung erforderlich, muss innerhalb des ersten Monats über die Verlängerung und ihre Gründe informiert werden. Informationen und die erste Datenkopie sind grundsätzlich unentgeltlich; gesetzliche Ausnahmen gelten insbesondere bei offensichtlich unbegründeten oder exzessiven Anträgen."
+    "en": "You can exercise your rights by emailing \u0069\u006e\u0066\u006f\u0040\u0068\u0061\u0066\u0072\u0069\u0076\u0061\u002e\u0063\u006f\u006d or writing to Hafriva GmbH at the address above. No particular form is required. If we have reasonable doubts about your identity, we may request only the additional information necessary to confirm it.\nUnder Article 12 GDPR, information on action taken must be provided without undue delay and generally within one month of receipt. Where a legally permitted extension is necessary, you must be informed within the first month of the extension and its reasons. Information and the first copy are generally free of charge; statutory exceptions apply, in particular to manifestly unfounded or excessive requests.",
+    "de": "Sie können Ihre Rechte per E-Mail an \u0069\u006e\u0066\u006f\u0040\u0068\u0061\u0066\u0072\u0069\u0076\u0061\u002e\u0063\u006f\u006d oder postalisch gegenüber Hafriva GmbH unter der oben genannten Anschrift ausüben. Eine bestimmte Form ist nicht vorgeschrieben. Bestehen begründete Zweifel an Ihrer Identität, dürfen wir nur die zusätzlich erforderlichen Angaben zur Bestätigung anfordern.\nNach Art. 12 DSGVO ist über Maßnahmen auf einen Antrag unverzüglich, grundsätzlich innerhalb eines Monats nach Eingang zu informieren. Ist eine gesetzlich zulässige Fristverlängerung erforderlich, muss innerhalb des ersten Monats über die Verlängerung und ihre Gründe informiert werden. Informationen und die erste Datenkopie sind grundsätzlich unentgeltlich; gesetzliche Ausnahmen gelten insbesondere bei offensichtlich unbegründeten oder exzessiven Anträgen."
   }
 };
