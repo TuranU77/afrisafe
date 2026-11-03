@@ -1,6 +1,6 @@
 import { initializeLegalDialog } from './legal-dialog.js';
-import { initializeLanguage } from './i18n.js';
-import { initializeNavigation } from './navigation.js';
+import { initializeLanguage } from './i18n.js?v=20261103-contact';
+import { initializeNavigation } from './navigation.js?v=20261103-contact';
 import { initializeReveals } from './reveal.js';
 import { initializeParallax } from './parallax.js';
 import { initializeAccordions } from './accordion.js';

@@ -1,4 +1,4 @@
-import { translate } from './i18n.js';
+import { translate } from './i18n.js?v=20261103-contact';
 
 export function initializeNavigation() {
   const navigation = document.getElementById('nav');

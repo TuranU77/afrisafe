@@ -806,6 +806,11 @@ h1, h2, h3, p, li {
   border-top: 1px solid rgba(255,255,255,.2);
 }
 
+.contact-person {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
 .contact-details a {
   color: inherit;
   text-underline-offset: 4px;

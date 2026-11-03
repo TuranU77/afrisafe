@@ -601,12 +601,12 @@ export const translations = {
     "de": "Branchen"
   },
   "contact.provider": {
-    "en": "WOLDEAB Technology Consulting · Semhar Woldeab",
-    "de": "WOLDEAB Technology Consulting · Semhar Woldeab"
+    "en": "Hafriva GmbH",
+    "de": "Hafriva GmbH"
   },
   "contact.address": {
-    "en": "Cäcilienstr. 10 · 22301 Hamburg",
-    "de": "Cäcilienstr. 10 · 22301 Hamburg"
+    "en": "Cäcilienstraße 10 · 22301 Hamburg",
+    "de": "Cäcilienstraße 10 · 22301 Hamburg"
   },
   "legal.title": {
     "en": "Legal notice",
@@ -617,52 +617,20 @@ export const translations = {
     "de": "Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)"
   },
   "legal.provider.name": {
-    "en": "WOLDEAB Technology Consulting",
-    "de": "WOLDEAB Technology Consulting"
-  },
-  "legal.provider.person": {
-    "en": "Dipl. Sicherheitsingenieur Semhar Woldeab (QHSE)",
-    "de": "Dipl. Sicherheitsingenieur Semhar Woldeab (QHSE)"
+    "en": "Hafriva GmbH",
+    "de": "Hafriva GmbH"
   },
   "legal.address": {
-    "en": "Cäcilienstr. 10\n22301 Hamburg",
-    "de": "Cäcilienstr. 10\n22301 Hamburg"
+    "en": "Cäcilienstraße 10\n22301 Hamburg",
+    "de": "Cäcilienstraße 10\n22301 Hamburg"
   },
   "legal.contact.title": {
     "en": "Contact",
     "de": "Kontakt"
   },
-  "legal.phoneLabel": {
-    "en": "Telephone:",
-    "de": "Telefon:"
-  },
   "legal.emailLabel": {
     "en": "Email:",
     "de": "E-Mail:"
-  },
-  "legal.tax.title": {
-    "en": "Tax number",
-    "de": "Steuernummer"
-  },
-  "legal.tax.office": {
-    "en": "Tax office: Hamburg-Barmbek-Uhlenhorst",
-    "de": "Finanzamt: Hamburg-Barmbek-Uhlenhorst"
-  },
-  "legal.tax.number": {
-    "en": "Tax number: 43/668/01915",
-    "de": "Steuernummer: 43/668/01915"
-  },
-  "legal.profession.title": {
-    "en": "Professional title",
-    "de": "Berufsbezeichnung"
-  },
-  "legal.profession.description": {
-    "en": "Dipl. Sicherheitsingenieur\nQHSE manager, occupational safety specialist (SIFA/FASI)\nAwarded in the Federal Republic of Germany",
-    "de": "Dipl. Sicherheitsingenieur\nQHSE-Manager, Fachkraft für Arbeitssicherheit (SIFA/FASI)\nVerliehen in der Bundesrepublik Deutschland"
-  },
-  "legal.responsible.title": {
-    "en": "Responsible for content",
-    "de": "Verantwortlich für den Inhalt"
   },
   "legal.disputes.title": {
     "en": "Dispute resolution",
@@ -707,5 +675,21 @@ export const translations = {
   "legal.close": {
     "en": "Close",
     "de": "Schließen"
+  },
+  "contact.medicalNames": {
+    "en": "Clara Schlaich, Eike Beyer",
+    "de": "Clara Schlaich, Eike Beyer"
+  },
+  "contact.medicalPhone": {
+    "en": "+49 151 206 88 416",
+    "de": "+49 151 206 88 416"
+  },
+  "contact.safetyName": {
+    "en": "Semhar Woldeab",
+    "de": "Semhar Woldeab"
+  },
+  "contact.mobileLabel": {
+    "en": "Mobile:",
+    "de": "Mobil:"
   }
 };
