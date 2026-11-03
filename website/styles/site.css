@@ -625,13 +625,6 @@ body {
   color: var(--white);
 }
 
-.contact-info {
-  color: rgba(255,255,255,.85);
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
 .footer {
   padding: 40px 0;

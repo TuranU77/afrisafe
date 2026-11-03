@@ -1,4 +1,4 @@
-import { translations } from './translations.js?v=20261103-contact-encoding';
+import { translations } from './translations.js?v=20261103-contact-location';
 
 const LANGUAGE_STORAGE_KEY = 'afrisav-language';
 const DEFAULT_LANGUAGE = 'en';

@@ -428,10 +428,6 @@ export const translations = {
     "en": "Tell us about your project, your team and the challenges you want to address.",
     "de": "Erzählen Sie uns von Ihrem Vorhaben, Ihrem Team und den Herausforderungen, die Sie angehen möchten."
   },
-  "contact.location": {
-    "en": "Hamburg, Germany",
-    "de": "Hamburg, Deutschland"
-  },
   "contact.cardTitle": {
     "en": "A direct line to the network",
     "de": "Ihr direkter Kontakt zum Netzwerk"
