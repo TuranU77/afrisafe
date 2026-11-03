@@ -1,0 +1,36 @@
+{
+  "retrieved": "2026-11-03",
+  "css_source": "Google Fonts CSS API, existing requested styles; Latin / Latin Extended",
+  "fonts": [
+    {
+      "file": "inter-normal-400-latin-ext.woff2",
+      "source": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2",
+      "bytes": 85272
+    },
+    {
+      "file": "inter-normal-400-latin.woff2",
+      "source": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+      "bytes": 48432
+    },
+    {
+      "file": "playfair-display-italic-400-latin-ext.woff2",
+      "source": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXt_A-X-uE0qEE5Do.woff2",
+      "bytes": 13684
+    },
+    {
+      "file": "playfair-display-italic-400-latin.woff2",
+      "source": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA-X-uE0qEEw.woff2",
+      "bytes": 21952
+    },
+    {
+      "file": "playfair-display-normal-700-latin-ext.woff2",
+      "source": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiunDZbtPK-F2qC0usEw.woff2",
+      "bytes": 13052
+    },
+    {
+      "file": "playfair-display-normal-700-latin.woff2",
+      "source": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiunDXbtPK-F2qC0s.woff2",
+      "bytes": 23316
+    }
+  ]
+}

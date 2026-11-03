@@ -1,4 +1,4 @@
-import { translations } from './translations.js?v=20261103-contact';
+import { translations } from './translations.js?v=20261103-privacy-release';
 
 const LANGUAGE_STORAGE_KEY = 'afrisav-language';
 const DEFAULT_LANGUAGE = 'en';
@@ -16,7 +16,7 @@ export function initializeLanguage(onLanguageChange) {
   const metadataElements = document.querySelectorAll('[data-meta-i18n]');
   const languageStatus = document.getElementById('language-status');
 
-  function setLanguage(requestedLanguage) {
+  function setLanguage(requestedLanguage, rememberChoice = false) {
     const language = requestedLanguage === 'de' ? 'de' : DEFAULT_LANGUAGE;
     document.documentElement.lang = language;
     textElements.forEach(element => {
@@ -40,7 +40,7 @@ export function initializeLanguage(onLanguageChange) {
     });
     onLanguageChange(language);
     try {
-      localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+      if (rememberChoice) localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
     } catch {
       // Private browsing or blocked storage must not prevent language switching.
     }
@@ -48,7 +48,7 @@ export function initializeLanguage(onLanguageChange) {
 
   languageButtons.forEach(button => {
     button.addEventListener('click', () => {
-      setLanguage(button.dataset.lang);
+      setLanguage(button.dataset.lang, true);
       languageStatus.textContent = translate('language.changed', document.documentElement.lang);
     });
   });

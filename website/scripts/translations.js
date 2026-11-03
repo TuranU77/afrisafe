@@ -453,8 +453,8 @@ export const translations = {
     "de": "Impressum"
   },
   "footer.privacy": {
-    "en": "Privacy · details to follow",
-    "de": "Datenschutz · Angaben folgen"
+    "en": "Privacy",
+    "de": "Datenschutz"
   },
   "team.clara.name": {
     "en": "Dr. med. Clara Schlaich, MPH (Johns Hopkins U. /USA)",
@@ -691,5 +691,169 @@ export const translations = {
   "contact.mobileLabel": {
     "en": "Mobile:",
     "de": "Mobil:"
+  },
+  "privacy.title": {
+    "en": "Privacy notice",
+    "de": "Datenschutzerklärung"
+  },
+  "privacy.updated": {
+    "en": "Last updated: 3 November 2026",
+    "de": "Stand: 3. November 2026"
+  },
+  "privacy.intro": {
+    "en": "This notice explains how personal data is processed when you visit this information website or contact us through the contact details shown here. Personal data means information relating to an identified or identifiable person.",
+    "de": "Diese Hinweise erläutern die Verarbeitung personenbezogener Daten beim Besuch dieser Informationswebsite und bei einer Kontaktaufnahme über die hier genannten Kontaktdaten. Personenbezogene Daten sind Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen."
+  },
+  "privacy.controller.title": {
+    "en": "Controller and privacy contact",
+    "de": "Verantwortlicher und Datenschutzkontakt"
+  },
+  "privacy.hosting.title": {
+    "en": "Website delivery and hosting",
+    "de": "Bereitstellung der Website und Hosting"
+  },
+  "privacy.hosting.description": {
+    "en": "This website is hosted using GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. To deliver pages and protect its infrastructure, GitHub processes technical connection data. Depending on the request, this can include your IP address, time of access, requested URL, browser and operating system information, response status and a referring page where transmitted. GitHub expressly states that visitors’ IP addresses are logged and stored for security purposes.\nOur purpose is to provide a reliable, secure information website. The legal basis for our processing for this purpose is Article 6(1)(f) GDPR, reflecting our legitimate interest in secure website delivery. GitHub’s processing and retention practices are described in its privacy statement linked below. We cannot specify a verified, fixed retention period for GitHub Pages security logs.",
+    "de": "Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Zur Auslieferung der Seiten und zum Schutz seiner Infrastruktur verarbeitet GitHub technische Verbindungsdaten. Dazu können je nach Anfrage IP-Adresse, Zugriffszeitpunkt, angeforderte URL, Angaben zu Browser und Betriebssystem, Antwortstatus und eine übermittelte Herkunftsseite gehören. GitHub weist ausdrücklich darauf hin, IP-Adressen von Besuchern zu Sicherheitszwecken zu protokollieren und zu speichern.\nUnser Zweck ist die zuverlässige und sichere Bereitstellung dieser Informationswebsite. Rechtsgrundlage für unsere Verarbeitung zu diesem Zweck ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt in der sicheren Auslieferung des Webangebots. Angaben zu GitHubs Verarbeitung und Aufbewahrung finden Sie in der unten verlinkten Datenschutzerklärung. Eine verifizierte feste Speicherfrist für Sicherheitsprotokolle von GitHub Pages können wir derzeit nicht angeben."
+  },
+  "privacy.transfers.title": {
+    "en": "Processing outside the EU/EEA",
+    "de": "Verarbeitung außerhalb der EU/des EWR"
+  },
+  "privacy.transfers.description": {
+    "en": "Use of GitHub Pages can involve processing in the USA and other countries. GitHub states that it participates in the EU–US Data Privacy Framework and generally uses European Commission standard contractual clauses for relevant international transfers. Details of these safeguards and contact options for obtaining further information are provided in GitHub’s privacy statement.",
+    "de": "Bei der Nutzung von GitHub Pages kann eine Verarbeitung in den USA und weiteren Ländern stattfinden. GitHub erklärt, am EU–US Data Privacy Framework teilzunehmen und für entsprechende internationale Übermittlungen grundsätzlich Standardvertragsklauseln der Europäischen Kommission einzusetzen. Einzelheiten zu diesen Garantien und Kontaktmöglichkeiten für weitere Informationen enthält GitHubs Datenschutzerklärung."
+  },
+  "privacy.storage.title": {
+    "en": "Language preference, cookies and tracking",
+    "de": "Sprachwahl, Cookies und Tracking"
+  },
+  "privacy.storage.description": {
+    "en": "Our website does not use analytics tools, advertising pixels, profiling, newsletters or embedded social-media, map or video services. Our website code does not set cookies.\nIf you actively select EN or DE, we store only that language code under “afrisav-language” in your browser’s localStorage. The value is not a user identifier and is not sent to us by the language-selection function. It is read on subsequent visits to display your chosen language. It has no automatic expiry and remains until replaced, removed by you or cleared by your browser. You can remove it through your browser’s site-data settings; language switching also works when storage is blocked.\nThis storage serves the language function you have requested. We rely on Section 25(2)(2) TDDDG for storage/access necessary for that function. Insofar as personal data is processed, Article 6(1)(f) GDPR applies, based on our interest in providing the requested language setting.",
+    "de": "Wir setzen auf dieser Website keine Analysewerkzeuge, Werbepixel, Profilbildung, Newsletter oder eingebetteten Social-Media-, Karten- oder Videodienste ein. Unser Website-Code setzt keine Cookies.\nWenn Sie EN oder DE aktiv auswählen, speichern wir ausschließlich dieses Sprachkürzel unter „afrisav-language“ im localStorage Ihres Browsers. Der Wert ist keine Nutzerkennung und wird durch die Sprachwahlfunktion nicht an uns übermittelt. Bei späteren Besuchen wird er ausgelesen, damit die gewählte Sprache erscheint. Er hat kein automatisches Ablaufdatum und bleibt bis zur Ersetzung, Ihrer Löschung oder einer Bereinigung durch den Browser erhalten. Sie können ihn über die Website-Dateneinstellungen Ihres Browsers löschen; die Sprachumschaltung funktioniert auch bei blockierter Speicherung.\nDiese Speicherung dient der von Ihnen angeforderten Sprachfunktion. Für den hierfür erforderlichen Zugriff stützen wir uns auf § 25 Abs. 2 Nr. 2 TDDDG. Soweit dabei personenbezogene Daten verarbeitet werden, ist Art. 6 Abs. 1 lit. f DSGVO einschlägig; unser Interesse liegt in der Bereitstellung der gewünschten Spracheinstellung."
+  },
+  "privacy.fonts.title": {
+    "en": "Locally hosted fonts",
+    "de": "Lokal eingebundene Schriftarten"
+  },
+  "privacy.fonts.description": {
+    "en": "The Inter and Playfair Display fonts are delivered from the same hosting as this website. Loading these fonts does not require your browser to connect to Google Fonts servers. The technical connection data involved is covered by the hosting section above.",
+    "de": "Die Schriftarten Inter und Playfair Display werden über dasselbe Hosting wie die Website ausgeliefert. Für das Laden dieser Schriften ist keine Verbindung Ihres Browsers zu Google-Fonts-Servern erforderlich. Die dabei anfallenden technischen Verbindungsdaten sind im Abschnitt zum Hosting beschrieben."
+  },
+  "privacy.contact.title": {
+    "en": "Contact by email or telephone",
+    "de": "Kontakt per E-Mail oder Telefon"
+  },
+  "privacy.contact.description": {
+    "en": "If you contact us, we process the information you provide, such as your name, organisation, contact details, message, communication time and the information needed to respond. The purpose is to answer your enquiry and, where applicable, prepare or carry out a business relationship. No enquiry or patient data is collected through a website submission form; email and telephone links open your chosen communication application.\nThe legal basis is Article 6(1)(b) GDPR where the enquiry relates to a contract with you or steps requested by you before entering into a contract. For other enquiries, including communications with contacts at corporate clients, we rely on Article 6(1)(f) GDPR and our legitimate interest in responding and maintaining business communications. Statutory retention duties may require processing under Article 6(1)(c) GDPR.\nPlease do not send diagnoses, medical reports, psychological case details or other particularly sensitive information by ordinary email. Contact us first to arrange a suitable communication channel. This website notice does not replace the separate information and legal bases required for medical, psychological or other individual services.",
+    "de": "Wenn Sie Kontakt aufnehmen, verarbeiten wir Ihre übermittelten Angaben, etwa Name, Unternehmen, Kontaktdaten, Nachricht, Kommunikationszeitpunkt und die zur Beantwortung erforderlichen Informationen. Zweck ist die Bearbeitung Ihrer Anfrage und gegebenenfalls die Anbahnung oder Durchführung einer Geschäftsbeziehung. Über ein Website-Formular werden keine Anfragen oder Patientendaten erhoben; E-Mail- und Telefonlinks öffnen Ihr gewähltes Kommunikationsprogramm.\nRechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, wenn die Anfrage einen Vertrag mit Ihnen oder von Ihnen angeforderte vorvertragliche Maßnahmen betrifft. Für sonstige Anfragen, insbesondere die Kommunikation mit Ansprechpartnern von Unternehmenskunden, stützen wir uns auf Art. 6 Abs. 1 lit. f DSGVO und unser berechtigtes Interesse an der Beantwortung und geschäftlichen Kommunikation. Gesetzliche Aufbewahrungspflichten können eine Verarbeitung nach Art. 6 Abs. 1 lit. c DSGVO erfordern.\nBitte senden Sie Diagnosen, Befunde, psychologische Falldetails oder andere besonders sensible Angaben nicht per gewöhnlicher E-Mail. Stimmen Sie zunächst einen geeigneten Kommunikationsweg mit uns ab. Diese Website-Erklärung ersetzt nicht die gesondert erforderlichen Informationen und Rechtsgrundlagen für medizinische, psychologische oder sonstige individuelle Leistungen."
+  },
+  "privacy.recipients.title": {
+    "en": "Recipients and external links",
+    "de": "Empfänger und externe Links"
+  },
+  "privacy.recipients.description": {
+    "en": "Website requests are received by the hosting provider and the technical infrastructure it uses. Email and telephone communications involve the relevant email and telecommunications providers. Within our organisation, enquiries should be accessed only by those who need them for the matter concerned. Disclosure to other recipients requires an appropriate legal basis.\nLinks to Hafenpraxis, WOLDEAB Consulting, smadvo, usuk.de and other external information are ordinary links, not embedded services. The destination provider receives connection data when you follow a link. Our website uses a no-referrer policy, so the browser is instructed not to transmit our page address as a referrer. The destination website’s privacy notice applies there.",
+    "de": "Website-Anfragen erreichen den Hostinganbieter und dessen technische Infrastruktur. Bei E-Mail- und Telefonkommunikation sind die jeweiligen E-Mail- und Telekommunikationsanbieter beteiligt. Innerhalb unseres Unternehmens sollen nur diejenigen auf Anfragen zugreifen, die sie für den jeweiligen Vorgang benötigen. Eine Weitergabe an andere Empfänger setzt eine geeignete Rechtsgrundlage voraus.\nVerweise auf Hafenpraxis, WOLDEAB Consulting, smadvo, usuk.de und weitere Informationsangebote sind gewöhnliche Links, keine eingebetteten Dienste. Erst beim Aufrufen eines Links erhält der Zielanbieter Verbindungsdaten. Unsere Website verwendet die Referrer-Richtlinie „no-referrer“; der Browser wird damit angewiesen, unsere Seitenadresse nicht als Herkunftsangabe zu übermitteln. Auf der Zielwebsite gilt deren Datenschutzerklärung."
+  },
+  "privacy.retention.title": {
+    "en": "Retention and provision of data",
+    "de": "Speicherdauer und Bereitstellung von Daten"
+  },
+  "privacy.retention.description": {
+    "en": "Enquiry data is retained for as long as needed to handle the matter and any necessary follow-up. We then delete it unless statutory retention obligations or the establishment, exercise or defence of legal claims require further retention. Applicable duties depend on the document and business transaction; we do not apply one blanket period to all communications. If data must be retained after its original purpose has ended, further use must be limited to the purposes justifying that retention. Retention of hosting data and the language preference is described in their respective sections.\nSending us an enquiry is voluntary. Without sufficient contact details or the information necessary for your request, we may be unable to respond. Technical connection data is needed to deliver the website. We do not carry out automated individual decision-making or profiling through this website.",
+    "de": "Anfragedaten bewahren wir so lange auf, wie dies zur Bearbeitung des Vorgangs und erforderlicher Anschlussfragen notwendig ist. Anschließend löschen wir sie, sofern nicht gesetzliche Aufbewahrungspflichten oder die Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen eine weitere Aufbewahrung erfordern. Welche Pflichten greifen, hängt von Dokument und Geschäftsvorgang ab; eine pauschale Frist für sämtliche Kommunikation setzen wir nicht an. Müssen Daten nach Wegfall des ursprünglichen Zwecks aufbewahrt werden, ist ihre weitere Verwendung auf die Zwecke zu beschränken, die diese Aufbewahrung rechtfertigen. Für Hostingdaten und Sprachpräferenz gelten die Angaben in den jeweiligen Abschnitten.\nDie Kontaktaufnahme ist freiwillig. Ohne ausreichende Kontaktdaten oder die zur Anfrage erforderlichen Informationen können wir gegebenenfalls nicht antworten. Technische Verbindungsdaten sind für die Auslieferung der Website erforderlich. Eine automatisierte Entscheidung im Einzelfall oder Profilbildung führen wir über diese Website nicht durch."
+  },
+  "privacy.rights.title": {
+    "en": "Your rights",
+    "de": "Ihre Rechte"
+  },
+  "privacy.rights.description": {
+    "en": "You have the following rights, subject to the conditions and exceptions provided by law:\nAccess (Article 15 GDPR): confirmation of whether we process personal data about you, information about the processing and a copy of your personal data.\nRectification (Article 16): correction of inaccurate data and completion of incomplete data.\nErasure (Article 17): deletion where the legal conditions are met, for example because data is no longer needed. Statutory retention duties or the need to establish, exercise or defend legal claims can prevent immediate deletion.\nRestriction (Article 18): restriction of processing in the cases provided by law, for example while the accuracy of disputed data is being verified.\nData portability (Article 20): receipt of data you have provided in a structured, commonly used, machine-readable format and, where technically feasible, transmission to another controller, insofar as processing is automated and based on consent or a contract.\nWithdrawal of consent (Article 7(3)): where processing is based on consent, you may withdraw it at any time with effect for the future. Withdrawal does not affect the lawfulness of earlier processing.",
+    "de": "Unter den gesetzlichen Voraussetzungen und unter Beachtung der gesetzlichen Ausnahmen stehen Ihnen folgende Rechte zu:\nAuskunft (Art. 15 DSGVO): Bestätigung, ob wir personenbezogene Daten zu Ihnen verarbeiten, Informationen über diese Verarbeitung sowie eine Kopie Ihrer personenbezogenen Daten.\nBerichtigung (Art. 16): Korrektur unrichtiger und Vervollständigung unvollständiger Daten.\nLöschung (Art. 17): Löschung bei Vorliegen der gesetzlichen Voraussetzungen, etwa wenn die Daten nicht mehr benötigt werden. Gesetzliche Aufbewahrungspflichten oder die Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen können einer sofortigen Löschung entgegenstehen.\nEinschränkung (Art. 18): Begrenzung der Verarbeitung in den gesetzlich vorgesehenen Fällen, beispielsweise während der Prüfung bestrittener Datenrichtigkeit.\nDatenübertragbarkeit (Art. 20): Erhalt der von Ihnen bereitgestellten Daten in einem strukturierten, gängigen und maschinenlesbaren Format und, soweit technisch machbar, Übermittlung an einen anderen Verantwortlichen, sofern die Verarbeitung automatisiert und auf Grundlage einer Einwilligung oder eines Vertrags erfolgt.\nWiderruf einer Einwilligung (Art. 7 Abs. 3): Soweit eine Verarbeitung auf Einwilligung beruht, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit früherer Verarbeitungen bleibt davon unberührt."
+  },
+  "privacy.objection.title": {
+    "en": "Right to object",
+    "de": "Widerspruchsrecht"
+  },
+  "privacy.objection.description": {
+    "en": "Where we process personal data on the basis of Article 6(1)(f) GDPR, you may object at any time on grounds relating to your particular situation under Article 21 GDPR. We will then stop the processing unless we demonstrate compelling legitimate grounds overriding your interests, rights and freedoms, or the processing serves the establishment, exercise or defence of legal claims.",
+    "de": "Soweit wir personenbezogene Daten auf Art. 6 Abs. 1 lit. f DSGVO stützen, können Sie gemäß Art. 21 DSGVO aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen. Wir verarbeiten die Daten dann nicht weiter, es sei denn, wir weisen zwingende schutzwürdige Gründe nach, die Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen."
+  },
+  "privacy.complaint.title": {
+    "en": "Complaints to a supervisory authority",
+    "de": "Beschwerde bei einer Aufsichtsbehörde"
+  },
+  "privacy.complaint.description": {
+    "en": "Under Article 77 GDPR, you may lodge a complaint with a data protection supervisory authority, in particular in the EU Member State of your habitual residence, place of work or the place of the alleged infringement. For Hamburg, the authority is the Hamburg Commissioner for Data Protection and Freedom of Information. Its complaint service is linked below.",
+    "de": "Nach Art. 77 DSGVO können Sie sich bei einer Datenschutzaufsichtsbehörde beschweren, insbesondere im EU-Mitgliedstaat Ihres gewöhnlichen Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für Hamburg ist dies der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit. Dessen Beschwerdemöglichkeit ist unten verlinkt."
+  },
+  "privacy.security.title": {
+    "en": "Security",
+    "de": "Datensicherheit"
+  },
+  "privacy.security.description": {
+    "en": "The public website is delivered over HTTPS to protect data in transit. Email and telephone communication are separate from website delivery; a mailto link does not guarantee end-to-end encryption of your message. No method of transmission or storage can guarantee absolute security.",
+    "de": "Die öffentliche Website wird über HTTPS ausgeliefert, um Daten während der Übertragung zu schützen. E-Mail- und Telefonkommunikation sind von der Website-Auslieferung getrennt; ein mailto-Link gewährleistet keine Ende-zu-Ende-Verschlüsselung Ihrer Nachricht. Eine absolute Sicherheit jeder Übertragung oder Speicherung kann nicht garantiert werden."
+  },
+  "privacy.scope.title": {
+    "en": "Scope and updates",
+    "de": "Geltungsbereich und Aktualisierung"
+  },
+  "privacy.scope.description": {
+    "en": "This notice covers the current information website and initial enquiries. Changes to hosting, communication services, tracking, booking functions or other processing may require an update and additional information before use. Where a change requires consent or an individual notice, that consent must be obtained or that notice provided before the processing concerned.",
+    "de": "Diese Hinweise beziehen sich auf die aktuelle Informationswebsite und erste Kontaktanfragen. Änderungen an Hosting, Kommunikationsdiensten, Tracking, Buchungsfunktionen oder anderen Verarbeitungsvorgängen können eine Anpassung und zusätzliche Informationen vor deren Einsatz erforderlich machen. Soweit eine Änderung eine Einwilligung oder eine individuelle Information erfordert, sind diese vor der entsprechenden Verarbeitung einzuholen beziehungsweise bereitzustellen."
+  },
+  "privacy.githubLink": {
+    "en": "GitHub privacy statement",
+    "de": "Datenschutzerklärung von GitHub"
+  },
+  "privacy.authorityLink": {
+    "en": "Hamburg supervisory authority: submit a complaint",
+    "de": "Datenschutzaufsicht Hamburg: Beschwerde einreichen"
+  },
+  "privacy.overview.title": {
+    "en": "Overview of processing",
+    "de": "Übersicht der Verarbeitungen"
+  },
+  "privacy.overview.dataTitle": {
+    "en": "Types of data",
+    "de": "Verarbeitete Datenarten"
+  },
+  "privacy.overview.data": {
+    "en": "Technical connection and access data; the language preference stored in your browser; contact and business details and the contents of enquiries you send us. The following sections explain the respective purposes and legal bases.",
+    "de": "Technische Verbindungs- und Zugriffsdaten, die im Browser gespeicherte Spracheinstellung sowie Kontakt- und Unternehmensangaben und Inhalte Ihrer Anfragen. Die nachfolgenden Abschnitte erläutern jeweils Zweck und Rechtsgrundlage."
+  },
+  "privacy.overview.peopleTitle": {
+    "en": "People concerned",
+    "de": "Betroffene Personen"
+  },
+  "privacy.overview.people": {
+    "en": "Visitors to this website, people making enquiries and contacts at companies or other organisations who communicate with us.",
+    "de": "Besucher dieser Website, anfragende Personen sowie Ansprechpartner von Unternehmen oder anderen Organisationen, die mit uns kommunizieren."
+  },
+  "privacy.overview.purposesTitle": {
+    "en": "Purposes",
+    "de": "Verarbeitungszwecke"
+  },
+  "privacy.overview.purposes": {
+    "en": "Providing and securing the website, displaying the language you select, answering enquiries and preparing or carrying out the business relationship concerned.",
+    "de": "Bereitstellung und Absicherung der Website, Anzeige der von Ihnen gewählten Sprache, Bearbeitung von Anfragen und gegebenenfalls Anbahnung oder Durchführung der jeweiligen Geschäftsbeziehung."
+  },
+  "privacy.overview.sourcesTitle": {
+    "en": "Sources of data",
+    "de": "Herkunft der Daten"
+  },
+  "privacy.overview.sources": {
+    "en": "Connection data is transmitted by your browser when it requests pages. Other information is provided by you when contacting us. The language preference is generated by your active selection.",
+    "de": "Verbindungsdaten werden bei Seitenanfragen durch Ihren Browser übermittelt. Weitere Angaben teilen Sie uns bei der Kontaktaufnahme mit. Die Spracheinstellung entsteht durch Ihre aktive Auswahl."
+  },
+  "privacy.requests.title": {
+    "en": "Exercising your rights",
+    "de": "Ausübung Ihrer Rechte"
+  },
+  "privacy.requests.description": {
+    "en": "You can exercise your rights by emailing info@hafriva.com or writing to Hafriva GmbH at the address above. No particular form is required. If we have reasonable doubts about your identity, we may request only the additional information necessary to confirm it.\nUnder Article 12 GDPR, information on action taken must be provided without undue delay and generally within one month of receipt. Where a legally permitted extension is necessary, you must be informed within the first month of the extension and its reasons. Information and the first copy are generally free of charge; statutory exceptions apply, in particular to manifestly unfounded or excessive requests.",
+    "de": "Sie können Ihre Rechte per E-Mail an info@hafriva.com oder postalisch gegenüber Hafriva GmbH unter der oben genannten Anschrift ausüben. Eine bestimmte Form ist nicht vorgeschrieben. Bestehen begründete Zweifel an Ihrer Identität, dürfen wir nur die zusätzlich erforderlichen Angaben zur Bestätigung anfordern.\nNach Art. 12 DSGVO ist über Maßnahmen auf einen Antrag unverzüglich, grundsätzlich innerhalb eines Monats nach Eingang zu informieren. Ist eine gesetzlich zulässige Fristverlängerung erforderlich, muss innerhalb des ersten Monats über die Verlängerung und ihre Gründe informiert werden. Informationen und die erste Datenkopie sind grundsätzlich unentgeltlich; gesetzliche Ausnahmen gelten insbesondere bei offensichtlich unbegründeten oder exzessiven Anträgen."
   }
 };

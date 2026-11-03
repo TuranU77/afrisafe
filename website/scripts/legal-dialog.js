@@ -1,27 +1,29 @@
-export function initializeLegalDialog() {
-  const dialog = document.getElementById('impressum');
-  const trigger = document.querySelector('a[href="#impressum"]');
+export function initializeLegalDialogs() {
+  document.querySelectorAll('dialog.legal-dialog').forEach(dialog => {
+    const fragment = '#' + dialog.id;
+    const trigger = document.querySelector(`a[href="${fragment}"]`);
 
-  function openDialog() {
-    if (!dialog.open) {
-      dialog.showModal();
-      dialog.scrollTop = 0;
+    function openDialog() {
+      if (!dialog.open) {
+        dialog.showModal();
+        dialog.scrollTop = 0;
+      }
     }
-  }
 
-  trigger.addEventListener('click', event => {
-    event.preventDefault();
-    openDialog();
-  });
-  dialog.addEventListener('close', () => {
-    if (window.location.hash === '#impressum') {
-      history.replaceState(null, '', window.location.pathname + window.location.search);
+    trigger.addEventListener('click', event => {
+      event.preventDefault();
+      openDialog();
+    });
+    dialog.addEventListener('close', () => {
+      if (window.location.hash === fragment) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      trigger.focus({ preventScroll: true });
+    });
+    function openLinkedDialog() {
+      if (window.location.hash === fragment) openDialog();
     }
-    trigger.focus({ preventScroll: true });
+    window.addEventListener('hashchange', openLinkedDialog);
+    openLinkedDialog();
   });
-  function openLinkedDialog() {
-    if (window.location.hash === '#impressum') openDialog();
-  }
-  window.addEventListener('hashchange', openLinkedDialog);
-  openLinkedDialog();
 }
